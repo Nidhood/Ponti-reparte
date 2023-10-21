@@ -40,7 +40,15 @@ Dirígete al directorio del proyecto Ponti Reparte. Si estás utilizando la lín
 cd ../Ponti-reparte/proyect
 ```
 
-### Paso 2: Ejecutar el Servidor Backend
+### Paso 2: Limpiar e installar ejecutable
+
+Una vez que estés dentro del directorio del proyecto, limpia e installa el ejecutable utilizando el siguiente comando:
+
+```bash
+mvn clean install
+```
+
+### Paso 3: Ejecutar el Servidor Backend
 
 Una vez que estés dentro del directorio del proyecto, ejecuta el servidor backend utilizando el siguiente comando:
 
