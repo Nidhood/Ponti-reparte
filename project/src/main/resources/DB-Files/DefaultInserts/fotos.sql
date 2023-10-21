@@ -1,0 +1,66 @@
+-- Productos
+INSERT INTO fotos (tipofoto, nombre, descripcion, foto) VALUES
+                                                            ('Producto', 'croissant', NULL, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fphilippeconticini.co.uk%2Fproducts%2Fcroissant&psig=AOvVaw2w9TiarZN1P8BKiqJ2nQSO&ust=1696549960659000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCPCm-p_L3YEDFQAAAAAdAAAAABAi'),
+                                                            ('Producto', 'pan de chocolate', NULL, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fbakingamoment.com%2Fpain-au-chocolat%2F&psig=AOvVaw3-un-96CBZGL_eNNnkOxJq&ust=1696550074171000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCPjY-9XL3YEDFQAAAAAdAAAAABAR'),
+                                                            ('Producto', 'sandwich', NULL, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fphotos%2Fsandwiches&psig=AOvVaw3cQ7zak9WTsh4Hq4XV6wws&ust=1696550259672000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCIDbo67M3YEDFQAAAAAdAAAAABAJ'),
+                                                            ('Producto', 'pastel de pollo', NULL, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fzotechpro.com%2Fpastel-de-pollo-x-dd-14nxOECY&psig=AOvVaw0L1fTpaUWw3Lb5zr1BH90h&ust=1696550311467000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKDei8fM3YEDFQAAAAAdAAAAABAJ'),
+                                                            ('Producto', 'mantecada', NULL, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.organizacionsolarte.com.co%2Fcms%2Freceta%2Fmantecada&psig=AOvVaw0ND1UbP8W57iRym7PJ-7dx&ust=1696550345434000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKCApNfM3YEDFQAAAAAdAAAAABBO'),
+                                                            ('Producto', 'torta de chocolate', NULL, 'https://postimg.cc/Fd94KYH6'),
+                                                            ('Producto', 'americano', NULL, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.behance.net%2Fgallery%2F43251765%2Fimagen-para-Caf-Tinto&psig=AOvVaw2V2mCOMbNMHrdE1RqFfuRX&ust=1696550480160000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCNiwrJfN3YEDFQAAAAAdAAAAABAE'),
+                                                            ('Producto', 'chai', NULL, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fbakingmischief.com%2Fdirty-chai-latte%2F&psig=AOvVaw2YLtHs0ChdKupzmROFzx1q&ust=1696550537801000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCNCIgrPN3YEDFQAAAAAdAAAAABBB'),
+                                                            ('Producto', 'coca cola', NULL, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.target.com%2Fp%2Fcoca-cola-20-fl-oz-bottle%2F-%2FA-12953529&psig=AOvVaw0jih8QiETGGl241P6RpaMf&ust=1696550672614000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCPChvvPN3YEDFQAAAAAdAAAAABAv'),
+                                                            ('Producto', 'almohabana', NULL, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.delicioso.com.co%2Fes%2Falmohabana-de-la-seccion-la-especial-de-array-en-pereira-sector-plaza-de-bolivar-CP8212&psig=AOvVaw1S1vc2-ZQ5qh47xwtKT8H5&ust=1696550741953000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCNirhJTO3YEDFQAAAAAdAAAAABAu'),
+                                                            ('Producto', 'chocolate', NULL, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.vitamixespana.com%2Frecetas%2Fbebidas%2Fchocolate-caliente%2F&psig=AOvVaw2Gqh3C2vB-yuxfXsjUezxk&ust=1696550792859000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCNj-x6zO3YEDFQAAAAAdAAAAABA3'),
+                                                            ('Producto', 'chicles', NULL, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.larebajavirtual.com%2Fchicles-trident-vp-menta-sin-azucar-146287%2Fp&psig=AOvVaw2v4ldQGNboVDlLA9Fi5Y3N&ust=1696550905257000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCJDDlOLO3YEDFQAAAAAdAAAAABAE'),
+                                                            ('Producto', 'corazon', NULL, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fantonelly.com.co%2Fproducto%2Fcorazones%2F&psig=AOvVaw01Iwm17oHGepRtfDMweztK&ust=1696550945257000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCMjSsfXO3YEDFQAAAAAdAAAAABAE');
+
+-- Tiendas
+INSERT INTO fotos (tipofoto, nombre, descripcion, foto) VALUES
+                                                            ('Tienda', 'la central', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/95e00c843c6300b4c7410df8347fbd5c7a4aef6d/imagenes/LaCentral.png?raw=true'),
+                                                            ('Tienda', 'el italiano', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/italiano.png?raw=true'),
+                                                            ('Tienda', 'la creperia', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/creperia.png?raw=true'),
+                                                            ('Tienda', 'la frutera', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/frutera.png?raw=true'),
+                                                            ('Tienda', 'burritos', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/burrito.png?raw=true'),
+                                                            ('Tienda', 'teppanyaki', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/tepanyaki.png?raw=true'),
+                                                            ('Tienda', 'il posto', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/il-posto.png?raw=true'),
+                                                            ('Tienda', 'subway', NULL, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Ftwitter.com%2FSUBWAY&psig=AOvVaw1XfS-NpT3rZicoMc-h1BJ_&ust=1696551354008000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLj3ibjQ3YEDFQAAAAAdAAAAABAE'),
+                                                            ('Tienda', 'juan valdez', NULL, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fco.pinterest.com%2Fpin%2F440086194818344994%2F&psig=AOvVaw15MZtnUe4adtI_FY5VZTcC&ust=1696551400774000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCPDTrs7Q3YEDFQAAAAAdAAAAABAE'),
+                                                            ('Tienda', 'dunkin doughnuts', NULL, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fseeklogo.com%2Fvector-logo%2F286018%2Fdunkin-donuts&psig=AOvVaw0977PkGQoMII8LHLyoOiE3&ust=1696551423802000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCPiXrtnQ3YEDFQAAAAAdAAAAABAE');
+
+-- Perfiles
+INSERT INTO fotos (tipofoto, nombre, descripcion, foto) VALUES
+                                                            ('Perfil', 'avatar predeterminado', NULL, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fes.123rf.com%2Fphoto_85622928_icono-de-perfil-de-avatar-predeterminado-marcador-de-posici%25C3%25B3n-de-foto-gris-vectores-de.html&psig=AOvVaw1Gv_-rELjuBPL07hNV3GMk&ust=1697406969278000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCPCgou7D9oEDFQAAAAAdAAAAABAI'),
+                                                            ('Perfil', 'avatar 1 H', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/95e00c843c6300b4c7410df8347fbd5c7a4aef6d/imagenes/avatar1-H.png?raw=true'),
+                                                            ('Perfil', 'avatar 1 M', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/avatar1-M.png?raw=true'),
+                                                            ('Perfil', 'avatar 2 H', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/95e00c843c6300b4c7410df8347fbd5c7a4aef6d/imagenes/avatar2-H.png?raw=true'),
+                                                            ('Perfil', 'avatar 2 M', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/avatar2-M.png?raw=true'),
+                                                            ('Perfil', 'avatar 3 H', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/95e00c843c6300b4c7410df8347fbd5c7a4aef6d/imagenes/avatar3-H.png?raw=true'),
+                                                            ('Perfil', 'avatar 3 M', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/avatar3-M.png?raw=true'),
+                                                            ('Perfil', 'avatar 4 H', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/95e00c843c6300b4c7410df8347fbd5c7a4aef6d/imagenes/avatar4-H.png?raw=true'),
+                                                            ('Perfil', 'avatar 4 M', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/avatar4-M.png?raw=true'),
+                                                            ('Perfil', 'avatar 5 H', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/95e00c843c6300b4c7410df8347fbd5c7a4aef6d/imagenes/avatar5-H.png?raw=true'),
+                                                            ('Perfil', 'avatar 5 M', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/avatar5-M.png?raw=true');
+
+-- Front End
+INSERT INTO fotos (tipofoto, nombre, descripcion, foto) VALUES
+                                                            ('FrontEnd', 'arrow menu', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/FlechaContinuarInicioDeSesion.png?raw=true'),
+                                                            ('FrontEnd', 'campana', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/campana.png?raw=true'),
+                                                            ('FrontEnd', 'carrito', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/carrito.gif?raw=true'),
+                                                            ('FrontEnd', 'equis', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/equis.png?raw=true'),
+                                                            ('FrontEnd', 'estrellafav', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/estrellafav.png?raw=true'),
+                                                            ('FrontEnd', 'flechacontinuarinicio', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/carrito.gif?raw=true'),
+                                                            ('FrontEnd', 'fondo contrasena', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/fondoContrasena.png?raw=true'),
+                                                            ('FrontEnd', 'fondo inicio de sesion', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/fondoIniciosesion%20.png?raw=true'),
+                                                            ('FrontEnd', 'fondo registro', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/fondoregistro.png?raw=true'),
+                                                            ('FrontEnd', 'logo', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/logo.png?raw=true'),
+                                                            ('FrontEnd', 'lupa', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/lupa.png?raw=true'),
+                                                            ('FrontEnd', 'menu', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/menu.png?raw=true'),
+                                                            ('FrontEnd', 'pizza intro', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/pizza%20intro.png?raw=true'),
+                                                            ('FrontEnd', 'plus', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/plus.png?raw=true'),
+                                                            ('FrontEnd', 'porcentaje', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/porcentaje.png?raw=true'),
+                                                            ('FrontEnd', 'screenshot', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/screenshot.png?raw=true'),
+                                                            ('FrontEnd', 'settings', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/settings.png?raw=true'),
+                                                            ('FrontEnd', 'tick', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/tick.png?raw=true'),
+                                                            ('FrontEnd', 'tienda', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/tienda.png?raw=true'),
+                                                            ('FrontEnd', 'trash', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/trash.png?raw=true'),
+                                                            ('FrontEnd', 'mapaUniversidad', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/mapaUniversidad.png?raw=true');
