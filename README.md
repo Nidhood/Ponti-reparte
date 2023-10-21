@@ -4,56 +4,56 @@ A CockroachDB Spring Boot Demo using [Spring Data JPA](https://spring.io/project
 with Hibernate for data access.
 
 Spring Data JPA provides a powerful model for using ORM frameworks such as Hibernate. It's considered a good
-fit for data access logic that involve large, complex domain model mapping. Spring Data JPA essentially
+fit for data access logic that involves large, complex domain model mapping. Spring Data JPA essentially
 removes the need for application code to bind directly to Hibernate APIs. It also unlocks many advanced
 features of JPA.
 
 ## Dependencies Installation
 
-Antes de comenzar, asegúrate de tener instaladas las siguientes dependencias:
+Before you begin, make sure you have the following dependencies installed:
 
-#### 1. Instalar JDK
+#### 1. Install JDK
 
-Descarga e instala un Java Development Kit. Spring Boot es compatible con las versiones de Java 8, 11 y 14. En este tutorial, utilizamos JDK 17 de OpenJDK.
+Download and install a Java Development Kit. Spring Boot is compatible with Java versions 8, 11, and 14. In this tutorial, we use JDK 17 from OpenJDK.
 
-#### 2. Instalar Maven
+#### 2. Install Maven
 
-Esta aplicación de ejemplo utiliza Maven para gestionar todas las dependencias de la aplicación. Spring admite versiones de Maven 3.2 en adelante.
+This sample application uses Maven to manage all application dependencies. Spring supports Maven versions 3.2 onwards.
 
-Para instalar Maven en macOS, ejecuta el siguiente comando:
+To install Maven on macOS, run the following command:
 
 ```bash
 brew install maven
 ```
 
-Esto asegurará que Maven esté instalado y listo para gestionar las dependencias de tu aplicación.
+This ensures that Maven is installed and ready to manage your application dependencies.
 
 ## Ponti Reparte Project CONFIGURATION
 
-¡Bienvenido/a al proyecto Ponti Reparte! Aquí encontrarás los pasos necesarios para comenzar con el servidor backend.
+Welcome to the Ponti Reparte project! Here are the necessary steps to get started with the backend server.
 
-### Paso 1: Acceder al Proyecto
+### Step 1: Access the Project
 
-Dirígete al directorio del proyecto Ponti Reparte. Si estás utilizando la línea de comandos, puedes hacerlo con el siguiente comando:
+Navigate to the Ponti Reparte project directory. If you are using the command line, you can do this with the following command:
 
 ```bash
-cd ../Ponti-reparte/proyect
+cd ../Ponti-reparte/project
 ```
 
-### Paso 2: Limpiar e installar ejecutable
+### Step 2: Clean and Install Executable
 
-Una vez que estés dentro del directorio del proyecto, limpia e installa el ejecutable utilizando el siguiente comando:
+Once you are inside the project directory, clean and install the executable using the following command:
 
 ```bash
 mvn clean install
 ```
 
-### Paso 3: Ejecutar el Servidor Backend
+### Step 3: Run the Backend Server
 
-Una vez que estés dentro del directorio del proyecto, ejecuta el servidor backend utilizando el siguiente comando:
+Once you are inside the project directory, run the backend server using the following command:
 
 ```bash
 java -jar .target/ponti-reparte-2.7.1.jar
 ```
 
-¡Y eso es todo! Ahora deberías tener todo lo necesario para ejecutar y desarrollar en el proyecto Ponti Reparte. Si tienes alguna pregunta o problema, no dudes en ponerte en contacto con nosotros. ¡Feliz desarrollo!
+And that's it! You should now have everything you need to run and develop on the Ponti Reparte project. If you have any questions or issues, feel free to reach out to us. Happy coding!
