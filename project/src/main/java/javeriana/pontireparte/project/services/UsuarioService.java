@@ -31,9 +31,10 @@ public class UsuarioService {
     }
     public Usuario loginWithUsuario(Usuario usuario) {
 
-        Usuario storedUserDetails = usuarioRepository.findByNombreusuario(usuario.getNombre());
+        Usuario storedUserDetails = usuarioRepository.findByNombreusuario(usuario.getNombreusuario());
         Usuario storedUserDetails1 = usuarioRepository.findByContrasena(usuario.getContrasena());
-        String storedUserDetails2 = String.valueOf(usuario.getId());
+        System.out.println("Usuario: " + storedUserDetails);
+        System.out.println("Clave: " + storedUserDetails1);
         if(storedUserDetails == null) throw new RuntimeException("Usuario No existe");
         else
         if(storedUserDetails1 == null) throw new RuntimeException("Clave incorrecta");

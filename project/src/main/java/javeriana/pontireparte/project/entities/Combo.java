@@ -40,4 +40,14 @@ public class Combo {
     public void setPrecio(Float precio) {
         this.precio = precio;
     }
+
+    // ToString:
+    @Override
+    public String toString() {
+        return "Combo{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", precio=" + precio +
+                '}';
+    }
 }

@@ -94,4 +94,20 @@ public class Pedido {
     public void setValortotal(Float valortotal) {
         this.valortotal = valortotal;
     }
+
+    // ToString:
+    @Override
+    public String toString() {
+        return "Pedido{" +
+                "id=" + id +
+                ", numeropedido='" + numeropedido + '\'' +
+                ", compradorid=" + compradorid +
+                ", repartidorid=" + repartidorid +
+                ", tiendaid=" + tiendaid +
+                ", estadopedidoid=" + estadopedidoid +
+                ", ubicacionid=" + ubicacionid +
+                ", tipopedido='" + tipopedido + '\'' +
+                ", valortotal=" + valortotal +
+                '}';
+    }
 }

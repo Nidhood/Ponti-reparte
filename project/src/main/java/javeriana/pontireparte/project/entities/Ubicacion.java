@@ -41,4 +41,14 @@ public class Ubicacion {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    // ToString:
+    @Override
+    public String toString() {
+        return "Ubicacion{" +
+                "id=" + id +
+                ", edificio='" + edificio + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                '}';
+    }
 }

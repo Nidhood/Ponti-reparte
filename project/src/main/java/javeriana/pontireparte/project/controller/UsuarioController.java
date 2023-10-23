@@ -25,8 +25,8 @@ public class UsuarioController {
 
         return usuarioService.getUsuarios();
     }
-    @RequestMapping(value = "/crear", method = RequestMethod.POST)
 
+    @RequestMapping(value = "/crear", method = RequestMethod.POST)
     public void registerNewUsuario(@RequestBody Usuario usuario){
         System.out.println(usuario);
         usuarioService.addNewUsuario(usuario);

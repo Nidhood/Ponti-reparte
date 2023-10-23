@@ -32,4 +32,13 @@ public class ingrediente {
     public void setNombreingrediente(String nombreingrediente) {
         this.nombreingrediente = nombreingrediente;
     }
+
+    // ToString:
+    @Override
+    public String toString() {
+        return "ingrediente{" +
+                "id=" + id +
+                ", nombreingrediente='" + nombreingrediente + '\'' +
+                '}';
+    }
 }

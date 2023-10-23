@@ -57,4 +57,15 @@ public class Foto {
     public void setFoto(String foto) {
         this.foto = foto;
     }
+
+    @Override
+    public String toString() {
+        return "Foto{" +
+                "id=" + id +
+                ", tipofoto='" + tipofoto + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", foto='" + foto + '\'' +
+                '}';
+    }
 }

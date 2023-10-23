@@ -1,0 +1,417 @@
+#fondoSesion
+{
+    width: 100%; 
+    height: 100%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    z-index: -50;
+}
+
+section
+{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body
+{
+  padding-bottom: 30px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 140px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(to right, #f6d365 20%,#eead58 50%, #fda085 100%);
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-image: linear-gradient(to right, #b19c54 20%,#b48241 50%, #b56f5c 100%);
+ 
+}
+
+/* input:focus + .slider {  
+}*/
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(105px);
+  -ms-transform: translateX(105px);
+  transform: translateX(105px);
+}
+
+#logo
+{
+  height: 70px;
+  margin: 10px;
+  position: fixed;
+}
+
+#LineaH
+{
+height: 3px;
+width: 140px;
+border-width:0;
+background-color:#f19ba6;
+position: absolute;
+  top: 85px;
+  left: 50%; /* Mover el elemento a la mitad de su contenedor */
+  transform: translateX(-50%); /* Desplazar el elemento a la izquierda en un 50% de su propio ancho */
+}
+
+#IngresarTitle
+{
+  position: absolute;
+  top: 40px;
+  left: 50%; /* Mover el elemento a la mitad de su contenedor */
+  transform: translateX(-50%); /* Desplazar el elemento a la izquierda en un 50% de su propio ancho */
+}
+
+#B1
+{
+  position: absolute;
+  top: 110px; 
+  color: #919596;
+  left: 50%; /* Mover el elemento a la mitad de su contenedor */
+  transform: translateX(-50%); /* Desplazar el elemento a la izquierda en un 50% de su propio ancho */
+}
+@media screen and (max-width: 647px) 
+{
+    #B1{
+        font-size: 12px;
+        text-align: center;
+    }
+    #B2{
+      text-align: center;
+    }
+}
+
+@media screen and (max-width: 1047px) 
+{
+    #B1{
+      font-size: 14px;
+        text-align: center;
+    }
+}
+
+#B2
+{
+  position: absolute;
+  left: 50%; /* Mover el elemento a la mitad de su contenedor */
+  transform: translateX(-50%);
+  color: #919596;
+  font-size: x-small;
+  top: 146px;
+}
+
+#B3
+{
+  position: absolute;
+  left: 50%; /* Mover el elemento a la mitad de su contenedor */
+  transform: translateX(-50%);
+  top: 173px;
+  color: #919596;
+  font-size: x-small;
+}
+
+#ID
+{
+  position: absolute;
+  top: 270px;
+  width: 210px;
+  left: 50%; /* Mover el elemento a la mitad de su contenedor */
+  transform: translateX(-155%);
+}
+
+#Nombreusuario
+{
+  position: absolute;
+  top: 270px;
+  width: 210px;
+  left: 50%; /* Mover el elemento a la mitad de su contenedor */
+  transform: translateX(30%);
+  background-color: transparent;
+}
+
+#contrasena
+{
+  position: absolute;
+  top: 330px;
+  width: 210px;
+  left: 50%; /* Mover el elemento a la mitad de su contenedor */
+  transform: translateX(-155%);
+}
+
+#correo
+{
+  position: absolute;
+  top: 330px;
+  width: 210px;
+  left: 50%; /* Mover el elemento a la mitad de su contenedor */
+  transform: translateX(30%);
+  background-color: transparent;
+}
+
+#nombre
+{
+  position: absolute;
+  top: 390px;
+  width: 210px;
+  left: 50%; /* Mover el elemento a la mitad de su contenedor */
+  transform: translateX(-155%);
+}
+
+#apellido
+{
+  position: absolute;
+  top: 390px;
+  width: 210px;
+  left: 50%; /* Mover el elemento a la mitad de su contenedor */
+  transform: translateX(30%);
+}
+
+#telefono
+{
+  position: absolute;
+  top: 450px;
+  width: 210px;
+  left: 50%; /* Mover el elemento a la mitad de su contenedor */
+  transform: translateX(-155%);
+}
+
+#fecha
+{
+  position: absolute;
+  top: 450px;
+  width: 18%;
+  width: 210px;
+  left: 50%; /* Mover el elemento a la mitad de su contenedor */
+  transform: translateX(30%);
+}
+
+.texto
+{
+width: 18%;
+position: absolute;
+border: none;
+border-bottom: 1.5px solid #171616; /* Define un borde inferior de 2px de grosor y color gris */
+outline: none; /* Elimina el resaltado al enfocar */
+}
+
+input[type="text"]::-webkit-input-placeholder , input[type="password"]::-webkit-input-placeholder {
+color: #a99f9f;
+}
+
+#soy
+{
+
+  font-weight: bold;
+  top: 490px;
+  position: absolute;
+  left: 50%; /* Mover el elemento a la mitad de su contenedor */
+  transform: translateX(-500%);
+}
+
+#tipoUsuario
+{
+display: flex;          /* Convierte el contenedor en un contenedor flex */
+align-items: center;
+gap: 20px;
+top: 530px;
+position: absolute;
+left: 50%; /* Mover el elemento a la mitad de su contenedor */
+transform: translateX(-50%);
+}
+
+#Registrarme
+{
+border: none;
+border-radius: 34px;
+background-color: #6ba1ed;
+width: 200px;
+padding: 10px 25px;    
+font-size: larger; 
+display: flex;
+align-items: center;   /* Centra los ítems verticalmente */
+justify-content: center; /* Centra los ítems horizontalmente */  
+position: absolute;
+top: 610px;
+left: 50%; /* Mover el elemento a la mitad de su contenedor */
+transform: translateX(-58%);
+
+}
+#flecha
+{
+  height: 28px;
+  margin-right: 20px;
+}
+
+div.vertical-line {
+width: 1.6px;
+height: 20px;
+background-color: rgb(48, 45, 45);
+display: inline-block;
+position: relative;
+top: 100%;
+right: 50%;
+bottom: 50px; 
+}
+
+#final
+{
+position: relative;
+top: 105%;
+}
+
+
+.alert
+{
+  background: #ffdb9b;
+  padding: 20px 40px;
+  min-width: 420px;
+  position: absolute;
+  right: 0;
+  top: 10px;
+  border-radius: 4px;
+  border-left: 8px solid #ffa502;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}  
+
+.alert.showAlert{
+  opacity: 1;
+  pointer-events: auto;
+}
+.alert.show{
+  animation: show_slide 1s ease forwards;
+}
+@keyframes show_slide {
+  0%{
+    transform: translateX(100%);
+  }
+  40%{
+    transform: translateX(-10%);
+  }
+  80%{
+    transform: translateX(0%);
+  }
+  100%{
+    transform: translateX(-10px);
+  }
+}
+
+.alert.hide{
+  animation: hide_slide 1s ease forwards;
+}
+@keyframes hide_slide {
+  0%{
+    transform: translateX(-10px);
+  }
+  40%{
+    transform: translateX(0%);
+  }
+  80%{
+    transform: translateX(-10%);
+  }
+  100%{
+    transform: translateX(100%);
+  }
+}
+
+
+.alert .fa-exclamation-circle{
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ce8500;
+  font-size: 30px;
+}
+
+.alert .msg{
+  padding: 0 20px;
+  font-size: 14px;
+  color: #ce8500;
+}
+
+.alert .close-btn{
+  position: absolute;
+  right: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #ffd080;
+  padding: 3px 18px;
+  cursor: pointer;
+}
+
+.alert .close-btn:hover{
+  background: #ffc766;
+}
+
+.alert .close-btn .fas{
+  color: #ce8500;
+  font-size: 22px;
+  line-height: 40px;
+}
+
+
+.contenedor {
+  width: 100%; /* O el ancho que prefieras */
+  height: 100%;
+  margin: 0 auto; /* Esto centra el contenedor */
+  display: flex; /* Esto es necesario */
+  justify-content: center; /* Centrar horizontalmente */
+  position: relative;
+}
+
+@media screen and (min-width: 1643px) 
+{
+  body, h1, h2, h3, h4, h5, h6, p, li, a, input, button
+  {
+    font-size: calc(1em + 6px);
+  } 
+  input,#B2,#B3
+  {
+    font-size: calc(1em + 2px);
+  } 
+  #B2,#B3
+  {
+    font-size: calc(1em + 1px);
+  }
+
+}

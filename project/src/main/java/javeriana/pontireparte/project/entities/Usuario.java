@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.OneToOne;
+import  javax.persistence.JoinColumn;
 import java.util.UUID;
 
 @Entity
@@ -15,7 +17,11 @@ public class Usuario {
     private UUID id;
     private Integer idjaveriana;
     private String nombreusuario;
-    private UUID fotoid;
+
+    // Cambiado de UUID fotoid a Foto foto
+    @OneToOne
+    @JoinColumn(name = "fotoid")
+    private Foto foto;
     private String tipousuario;
     private String contrasena;
     private String correoinstitucional;
@@ -27,27 +33,6 @@ public class Usuario {
     private Integer puntos;
     private Double calificacion;
     private String disponibilidad;
-
-    // Constructors:
-
-    public Usuario() {} // Default constructor
-    public Usuario(UUID id, Integer idjaveriana, String nombreusuario, UUID fotoid, String tipousuario, String contrasena, String correoinstitucional, String nombre, String apellido, Integer edad, String telefono, String correo, String estadosesion, Integer puntos, Double calificacion, String disponibilidad) {
-        this.id = id;
-        this.idjaveriana = idjaveriana;
-        this.nombreusuario = nombreusuario;
-        this.fotoid = fotoid;
-        this.tipousuario = tipousuario;
-        this.contrasena = contrasena;
-        this.correoinstitucional = correoinstitucional;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.edad = edad;
-        this.telefono = telefono;
-        this.estadosesion = estadosesion;
-        this.puntos = puntos;
-        this.calificacion = calificacion;
-        this.disponibilidad = disponibilidad;
-    }
 
     // Getters and setters:
 
@@ -75,12 +60,12 @@ public class Usuario {
         this.nombreusuario = nombreusuario;
     }
 
-    public UUID getFotoid() {
-        return fotoid;
+    public Foto getFoto() {
+        return foto;
     }
 
-    public void setFotoid(UUID fotoid) {
-        this.fotoid = fotoid;
+    public void setFoto(Foto foto) {
+        this.foto = foto;
     }
 
     public String getTipousuario() {
@@ -169,5 +154,27 @@ public class Usuario {
 
     public void setDisponibilidad(String disponibilidad) {
         this.disponibilidad = disponibilidad;
+    }
+
+    // ToString:
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "id=" + id +
+                ", idjaveriana=" + idjaveriana +
+                ", nombreusuario='" + nombreusuario + '\'' +
+                ", foto=" + foto +
+                ", tipousuario='" + tipousuario + '\'' +
+                ", contrasena='" + contrasena + '\'' +
+                ", correoinstitucional='" + correoinstitucional + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", edad=" + edad +
+                ", telefono='" + telefono + '\'' +
+                ", estadosesion='" + estadosesion + '\'' +
+                ", puntos=" + puntos +
+                ", calificacion=" + calificacion +
+                ", disponibilidad='" + disponibilidad + '\'' +
+                '}';
     }
 }

@@ -1,0 +1,74 @@
+body
+{
+    font-family: Arial, Helvetica, sans-serif;
+    background: #ffffff;
+}
+
+header
+{
+    color: rgb(18, 2, 4);
+    background-color: #FFF3D7;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 10%;
+    display: absolute;
+    gap: 40px;
+}
+
+#logo
+{
+    height: 60px;
+    margin: 5px;
+    position: absolute;
+    left: 8px;
+}
+
+#userimg
+{
+    height: 42px;
+    position: absolute;
+    top: 11px;
+    right: 14%;
+    border-radius: 50%;  
+    border: 2px solid rgb(79, 156, 244);
+}
+.circulo-verde
+{
+    position: absolute; /* Esto saca el círculo del flujo normal del documento y te permite posicionarlo */
+    z-index: 1000; /* Asegúrate de que este valor sea mayor que el z-index del header para que se renderice por encima */
+}
+#settings
+{
+    height: 55px;
+    position: absolute;
+    top: 7px;
+    right: 7.5%;
+}
+
+#notificaciones
+{
+    height: 45px;
+    position: absolute;
+    top: 10px;
+    right: 3%;
+}
+
+#slogan1
+{
+    font-family: 'Bowlby One', cursive;
+    font-family: 'Manjari', sans-serif;
+    font-family: 'Shantell Sans', cursive;
+    font-size: x-large;
+    position: absolute;
+    left: 7%;
+    top: 0%;
+}
+
+.btnTop
+{
+    background-color: transparent;
+    font-family: Arial;
+    border: none;
+    font-size: larger;
+}

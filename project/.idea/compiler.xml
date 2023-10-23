@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ponti-reparte" />
+        <module name="project" />
         <module name="leaderboard" />
       </profile>
     </annotationProcessing>
@@ -18,6 +19,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="leaderboard" options="-parameters" />
       <module name="ponti-reparte" options="-parameters" />
+      <module name="project" options="-parameters" />
       <module name="proyect" options="-parameters" />
     </option>
   </component>

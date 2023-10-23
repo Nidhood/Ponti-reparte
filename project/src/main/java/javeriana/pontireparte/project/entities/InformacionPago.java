@@ -60,4 +60,16 @@ public class InformacionPago {
     public void setTipopago(String tipopago) {
         this.tipopago = tipopago;
     }
+
+    // ToString:
+    @Override
+    public String toString() {
+        return "InformacionPago{" +
+                "id=" + id +
+                ", nombretitular='" + nombretitular + '\'' +
+                ", pin=" + pin +
+                ", tipotarjeta='" + tipotarjeta + '\'' +
+                ", tipopago='" + tipopago + '\'' +
+                '}';
+    }
 }
