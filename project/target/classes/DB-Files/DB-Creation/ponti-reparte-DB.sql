@@ -20,8 +20,8 @@ CREATE TABLE IF NOT EXISTS informacionpagos
 CREATE TABLE IF NOT EXISTS ubicaciones
 (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    edificio STRING(20) NOT NULL,
-    piso SMALLINT,
+    edificio STRING(320) NOT NULL,
+    numero SMALLINT,
     descripcion STRING(320),
     UNIQUE (edificio)
     )
@@ -99,15 +99,27 @@ CREATE TABLE IF NOT EXISTS tiendas
 (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     nombretienda STRING(20) NOT NULL,
-    personaltiendaid UUID NOT NULL,
     ubicacionid UUID NOT NULL,
+    fotoid UUID NOT NULL,
     estadotienda STRING(20) NOT NULL,
     CONSTRAINT ok_pay_state CHECK (estadotienda IN ('Abierta', 'Cerrada')),
-    CONSTRAINT fk_store_staff  FOREIGN KEY (personaltiendaid) REFERENCES usuarios (id) ON DELETE CASCADE,
     CONSTRAINT fk_store_address FOREIGN KEY (ubicacionid) REFERENCES ubicaciones (id) ON DELETE CASCADE,
-    UNIQUE (nombretienda)
+    CONSTRAINT fk_store_photo FOREIGN KEY (fotoid) REFERENCES fotos (id) ON DELETE CASCADE
     )
 ;
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS tiendaspersonaldetienda
+(
+    personaltiendaid UUID NOT NULL,
+    tiendasid UUID NOT NULL,
+    CONSTRAINT fk_staff FOREIGN KEY (personaltiendaid) REFERENCES usuarios (id) ON DELETE CASCADE,
+    CONSTRAINT fk_store FOREIGN KEY (tiendasid) REFERENCES tiendas (id) ON DELETE CASCADE
+    )
+;
+
+
 
 --------------------------------------------------------------------------------------------------------------------------------
 
