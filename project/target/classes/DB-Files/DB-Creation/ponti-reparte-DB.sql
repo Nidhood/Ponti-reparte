@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS usuarios
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     idjaveriana STRING(20) NOT NULL,
     nombreusuario STRING(320) NOT NULL,
-    fotoid UUID NOT NULL,
+    fotoid UUID NOT NULL DEFAULT 'e094c14f-bfac-4653-a6af-3c0111ae2dc4' ,
     tipousuario STRING(20) NOT NULL,
     contrasena STRING(320) NOT NULL,
     correoinstitucional STRING(320) NOT NULL,

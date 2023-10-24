@@ -29,7 +29,7 @@ INSERT INTO fotos (tipofoto, nombre, descripcion, foto) VALUES
 
 -- Perfiles
 INSERT INTO fotos (tipofoto, nombre, descripcion, foto) VALUES
-                                                            ('Perfil', 'avatar predeterminado', NULL, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fes.123rf.com%2Fphoto_85622928_icono-de-perfil-de-avatar-predeterminado-marcador-de-posici%25C3%25B3n-de-foto-gris-vectores-de.html&psig=AOvVaw1Gv_-rELjuBPL07hNV3GMk&ust=1697406969278000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCPCgou7D9oEDFQAAAAAdAAAAABAI'),
+                                                            ('Perfil', 'avatar predeterminado', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/predeterminado.png?raw=true'),
                                                             ('Perfil', 'avatar 1 H', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/95e00c843c6300b4c7410df8347fbd5c7a4aef6d/imagenes/avatar1-H.png?raw=true'),
                                                             ('Perfil', 'avatar 1 M', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/avatar1-M.png?raw=true'),
                                                             ('Perfil', 'avatar 2 H', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/95e00c843c6300b4c7410df8347fbd5c7a4aef6d/imagenes/avatar2-H.png?raw=true'),
