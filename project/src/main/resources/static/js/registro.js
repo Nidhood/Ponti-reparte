@@ -81,9 +81,9 @@ $(document).ready(function () {
     var tipo;
 
     if ($("#Tipo").is(":checked")) {
-      tipo = "domiciliario";
+      tipo = "Cliente";
     } else {
-      tipo = "cliente";
+      tipo = "Comprador";
     }
     //evaluar si es un numero
     if (isNaN(inputID) || inputID.trim() === "") {
