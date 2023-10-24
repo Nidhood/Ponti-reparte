@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ff1f0eab-d4ac-48b5-8707-7752c3779c3b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/PontireparteApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/PontireparteApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/controller/UsuarioController.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/controller/UsuarioController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/entities/Combo.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/entities/Combo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/entities/Foto.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/entities/Foto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/entities/InformacionPago.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/entities/InformacionPago.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/entities/Pedido.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/entities/Pedido.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/entities/Producto.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/entities/Producto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/entities/Tienda.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/entities/Tienda.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/entities/Ubicacion.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/entities/Ubicacion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/entities/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/entities/Usuario.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/entities/ingrediente.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/entities/ingrediente.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/repositories/UsuarioRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/repositories/UsuarioRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/services/UsuarioService.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/services/UsuarioService.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2XBjABhVX9MB0Kt2H9mTT6hFITF" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.importing"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ff1f0eab-d4ac-48b5-8707-7752c3779c3b" name="Changes" comment="" />
+      <created>1698109249972</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1698109249972</updated>
+    </task>
+    <servers />
+  </component>
+</project>

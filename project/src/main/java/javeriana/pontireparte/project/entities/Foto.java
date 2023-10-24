@@ -68,4 +68,6 @@ public class Foto {
                 ", foto='" + foto + '\'' +
                 '}';
     }
+    // Create a new Foto object
+
 }
