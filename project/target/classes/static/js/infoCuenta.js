@@ -86,8 +86,8 @@ async function postInfoUsuario(
       nombreusuario: inputNombreusuario,
       nombre: inputnombre,
       apellido: inputapellido,
-      telefeono: inputtelefono,
-      foto: inputfoto,
+      telefono: inputtelefono,
+      foto: inputfoto
     }),
   });
 }

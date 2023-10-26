@@ -21,6 +21,10 @@ const promesaInformacionUsuario = getInfoUsuario();
 promesaInformacionUsuario
   .then((res) => {
     console.log(res.ok);
+    if (!res.ok) {
+        throw new Error("Server responded with a non-OK status");
+    }
+    return res.json();  // Convert the response to JSON
   })
   .then((data) => {
     console.log(data);
@@ -32,9 +36,11 @@ promesaInformacionUsuario
       data.correoinstitucional
     );
   })
-  .catch(() => {
-    console.log("error de inicio");
+  .catch((error) => {
+    console.log("Error:", error);
+    console.log("no me envian nada");
   });
+
 //aqui los asigna
 function generateInfoUsuario(usuario, nombre, apellido, telefono, correo) {
   // Asignando el valor a los inputs correspondientes

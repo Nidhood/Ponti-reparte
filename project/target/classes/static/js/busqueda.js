@@ -103,12 +103,12 @@ function generateProductList(data) {
       var productBlock = `
         <div class="producto">
             <div class="circuloproducto">
-                <a href="#" class="productLink" id="${data[i].id}">
-                    <img class="fotominipRODUCTO" src="${data[i].foto}" alt="foto Producto">
+                <a href="#" class="productLink" id="${data[i].ID}">
+                    <img class="fotominipRODUCTO" src="${data[i].foto.foto}" alt="foto Producto">
                 </a>
             </div>
             <p class="nombreminiProducto">
-                ${data[i].nombre}
+                ${data[i].NombreProducto}
             </p>
         </div>
     `;
@@ -367,13 +367,13 @@ async function getTiendas(){
         var tiendaBlock = `
         <div class="minitienda">
             <div class="circuloTIENDA">
-              <a href="#" class="tiendaLink" id="${data[i].id}">
-                  <img class="fotominiTIENDA" src=${data[i].foto} alt="foto Tienda">
+              <a href="#" class="tiendaLink" id="${data[i].ID}">
+                  <img class="fotominiTIENDA" src=${data[i].foto.foto} alt="foto Tienda">
               </a>
             </div>
             
             <p class="nombreminiTIENDA">
-              ${data[i].nombre}
+              ${data[i].NombreTienda}
             </p>
         </div>
         `;

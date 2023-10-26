@@ -35,7 +35,11 @@ function asignarFoto() {
 }
 
 async function getInfoPedido() {
+<<<<<<< Updated upstream
   return await fetch("http://localhost:8080/pedido/"+ sessionStorage.getItem("IDpedido"), {
+=======
+  return await fetch("http://localhost:8080/pedido/"+ sessionStorage.getItem("IDpedido")+"/domiciliario", {
+>>>>>>> Stashed changes
     headers: {
       "Content-Type": "application/json",
     },
@@ -70,3 +74,23 @@ async function main()
   //EvaluarIngresoDeSesion();
   asignarFoto();
 }
+<<<<<<< Updated upstream
+=======
+
+window.addEventListener('DOMContentLoaded', (event) => {
+
+  setTimeout(() => {
+      // Cambia el texto después de 4 segundos
+      document.getElementById('cargaText').textContent = 'Terminando términos del domicilio';
+  }, 3000);
+
+  setTimeout(() => {
+      // Oculta y muestra los elementos después de 9 segundos
+      document.getElementById('Carga').style.display = 'none';
+      document.getElementById('Resultado').style.display = 'block';
+  }, 9000);
+
+});
+
+
+>>>>>>> Stashed changes
