@@ -38,9 +38,9 @@ $(document).ready(function () {
     var inputTipo;
 
     if ($("#Tipo").is(":checked")) {
-      inputTipo = "domiciliario";
+      inputTipo = "Cliente";
     } else {
-      inputTipo = "cliente";
+      inputTipo = "Comprador";
     }
 
     if (isValid) {

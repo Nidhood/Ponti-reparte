@@ -15,6 +15,7 @@ function InicializarPedido() {
   if (!pedidoGuardado) {
     const pedido = {
       total: 0,
+      id:null,
       productos: [],
     };
     // Convierte el objeto 'pedido' a una cadena JSON y almacénalo en el sessionStorage

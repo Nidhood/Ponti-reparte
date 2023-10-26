@@ -42,9 +42,10 @@ public class UsuarioService {
     public Usuario loginWithUsuario(Usuario usuario) {
         String TipoPorDefecto = "cliente";
         Usuario storedUserDetails = usuarioRepository.findByNombreusuario(usuario.getNombreusuario());
+        Usuario storedUserDetails2 = usuarioRepository.findByContrasena(usuario.getContrasena());
         if(storedUserDetails == null) throw new RuntimeException("Usuario No existe");
         else
-        if(storedUserDetails.getContrasena() == null) throw new RuntimeException("Clave incorrecta");
+        if(storedUserDetails2.getContrasena() == null) throw new RuntimeException("Clave incorrecta");
         else
         /*if(!storedUserDetails.equals(TipoPorDefecto)) throw new RuntimeException("Tipo Usuario distinto a cliente");
         else*/
@@ -57,21 +58,18 @@ public class UsuarioService {
     }
     public void updateWithID(Usuario usuario){
 
-        // Nidhood : Modifique usuario.getUsuarioId() por usuario.getId().
         Usuario storedUserDetails = usuarioRepository.findById(usuario.getId());
         if(storedUserDetails == null) throw new RuntimeException("ID invalido");
         usuarioRepository.save(usuario);
     }
-    public void deleteWithID(Usuario usuario){
+    public void deleteWithID(UUID usuarioId){
 
-        // Nidhood : Modifique usuario.getUsuarioId() por usuario.getId().
-        Usuario storedUserDetails = usuarioRepository.findById(usuario.getId());
-        usuarioRepository.delete(usuario);
+        Usuario storedUserDetails = usuarioRepository.findById(usuarioId);
+        usuarioRepository.delete(storedUserDetails);
 
     }
     public Usuario infoWithUsuario(UUID usuarioId) {
 
-        // Nidhood : Modifique usuario.getUsuarioId() por usuario.getId().
         Usuario storedUserDetails = usuarioRepository.findById(usuarioId);
         return storedUserDetails;
     }

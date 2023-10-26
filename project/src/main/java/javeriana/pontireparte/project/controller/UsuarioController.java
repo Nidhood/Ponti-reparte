@@ -45,7 +45,6 @@ public class UsuarioController {
         return codi;
     }
 
-    // Nidhood : Modifique el tipo de dato usuarioId de int por UUID.
     @RequestMapping(value = "/{usuarioId}", method = RequestMethod.PUT)
     public void updateUsuario(@PathVariable UUID usuarioId, @RequestBody Usuario usuario){
         System.out.println("Datos que se van a actualizar: " + usuario);
@@ -53,12 +52,10 @@ public class UsuarioController {
         usuarioService.updateWithID(usuario);
     }
 
-    // Nidhood : Modifique el tipo de dato usuarioId de int por UUID.
     @RequestMapping(value = "/{usuarioId}/delete", method = RequestMethod.DELETE)
-    public void deleteUsuario(@PathVariable UUID usuarioId, @RequestBody Usuario usuario){
-        System.out.println("Datos que se van a borrar: " + usuario);
-        usuario.setId(usuarioId);
-        usuarioService.deleteWithID(usuario);
+    public void deleteUsuario(@PathVariable (value = "usuarioId") UUID id ){
+        System.out.println("ID del usuario que se va a borrar: " + id);
+        usuarioService.deleteWithID(id);
     }
 
 }
