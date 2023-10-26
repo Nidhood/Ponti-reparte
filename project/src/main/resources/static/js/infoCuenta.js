@@ -212,7 +212,7 @@ $(document).ready(function () {
 
       var isValid = true;
       var inputNombreusuario = $("#Nombreusuario").val().trim();
-      var inputcontrasena = $("#contrasena").val().trim();
+      var imgSrc = document.getElementById("foto").getAttribute("src");
       var inputtelefono = $("#telefono").val().trim();
 
       if (inputNombreusuario === "") {
@@ -232,7 +232,7 @@ $(document).ready(function () {
       if (isValid) {
         const promesaUpdateInformacionUsuario = postInfoUsuario(
           inputNombreusuario,
-          inputcontrasena,
+          imgSrc,
           $("#nombre").val().trim(),
           $("#apellido").val().trim(),
           parseInt(inputtelefono, 10)
