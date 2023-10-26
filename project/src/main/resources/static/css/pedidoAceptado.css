@@ -304,7 +304,11 @@ a {
     -webqkit-animation: spin 1s linear infinite; /* Safari */
     animation: spin 0.7s linear infinite;
     position: absolute;
-    top: 80px
+    top: 250px;
+    position: absolute;
+    left: 48%; /* Mover el elemento a la mitad de su contenedor */
+    transform: translateX(-60%); /* Desplazar el elemento a la izquierda en un 50% de su propio ancho */
+    text-align: center;
   }
   
   /* Safari */
@@ -317,5 +321,22 @@ a {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
+  
+#Resultado
+{
+    display: none;
+}
 
+#cargaText
+{
+    position: absolute;
+    top: 45%;
+    left: 50%; /* Mover el elemento a la mitad de su contenedor */
+    transform: translateX(-50%); /* Desplazar el elemento a la izquierda en un 50% de su propio ancho */
+    text-align: center;
+}
 
+#Carga
+{
+    display: block;
+}

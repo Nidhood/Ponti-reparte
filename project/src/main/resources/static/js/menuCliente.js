@@ -106,12 +106,12 @@ function generateProductList(data) {
     var productBlock = `
         <div class="producto">
             <div class="circuloproducto">
-                <a href="#" class="productLink" id="${data[i].id}">
-                    <img class="fotominipRODUCTO" src="${data[i].foto}" alt="foto Producto">
+                <a href="#" class="productLink" id="${data[i].ID}">
+                    <img class="fotominipRODUCTO" src="${data[i].foto.foto}" alt="foto Producto">
                 </a>
             </div>
             <p class="nombreminiProducto">
-                ${data[i].nombre}
+                ${data[i].NombreProducto}
             </p>
         </div>
     `;
@@ -162,37 +162,37 @@ async function getInfoProducto(idproducto) {
 //genera la informacion del producto en el pop up conforme a la info mandada
 function generateInfoProducto(data) {
   //titulo grande del producto
-  $("#tituloProducto").text(data.nombre);
+  $("#tituloProducto").text(data.nombreProducto);
 
   //foto del producto
-  $("#fotopRODUCTO").attr("src", data.foto);
+  $("#fotopRODUCTO").attr("src", data.foto.foto);
 
   //calcula el precio actual con base en si tiene promocion o no
-  const precioTot = data.precio - data.precio * data.promocion;
+  const precioTot = data.PrecioDinero - data.PrecioDinero * data.Promocion;
   $("#precioText").text(precioTot.toFixed(2));
 
   //si no tiene descuento no se muestra la info de promocion
-  if (data.descuento == 0) {
+  if (data.Promocion == 0) {
     $("#DescText").hide();
     $("#porcentajePopUp").hide();
     $("#DescText2").hide();
   } else {
     //si si hay
     //se muestra la promocion
-    $("#DescText2").text(data.promocion * 100 + "%");
+    $("#DescText2").text(data.Promocion * 100 + "%");
     //se muestra el precio anterior tachado
-    $("#DescText").text(data.precio);
+    $("#DescText").text(data.PrecioDinero);
     $("#DescText").css("text-decoration", "line-through");
   }
 
   //si la cantidad esta en cero es porque no hay
-  if (data.cantidad == 0) {
+  if (data.CantidadDisponible == 0) {
     $("#disponible").text("Agotado");
     $("#disponible").css("background-color", "#f17e7e"); // Cambia el color a rojo
   }
 
   //descripcion del producto
-  $("#textoDescrip").text(data.descripcion);
+  $("#textoDescrip").text(data.Descripcion);
 
   //ingredientes del producto
   const ingredientesList = data.ingredientes;
@@ -214,8 +214,8 @@ function generateInfoProducto(data) {
     //
     var tiendaBlock = `
     <div id="RadioOptions1">
-          <input type="radio" class="tienda" id="tienda${tiendasList[i].id}" name="TiendaSeleccion" value="${tiendasList[i].id}">
-          <label id="labelt" for="tienda${tiendasList[i].id}">${tiendasList[i].nombre}</label>
+          <input type="radio" class="tienda" id="tienda${tiendasList[i].ID}" name="TiendaSeleccion" value="${tiendasList[i].ID}">
+          <label id="labelt" for="tienda${tiendasList[i].ID}">${tiendasList[i].NombreTienda}</label>
     </div>
     `;
 
@@ -362,13 +362,13 @@ function generateTiendaList(data) {
     var tiendaBlock = `
       <div class="minitienda">
           <div class="circuloTIENDA">
-            <a href="#" class="tiendaLink" id="${data[i].id}">
-                <img class="fotominiTIENDA" src=${data[i].foto} alt="foto Tienda">
+            <a href="#" class="tiendaLink" id="${data[i].ID}">
+                <img class="fotominiTIENDA" src=${data[i].foto.foto} alt="foto Tienda">
             </a>
           </div>
           
           <p class="nombreminiTIENDA">
-            ${data[i].nombre}
+            ${data[i].NombreTienda}
           </p>
       </div>
       `;
@@ -467,7 +467,7 @@ function generateProducts(containerSelector) {
 //todo lo relacionado con la modificacion de la cantidad de producto
 //tambien hara la labor de main
 $(document).ready(function () {
-  EvaluarIngresoDeSesion();
+  //EvaluarIngresoDeSesion();
   InicializarPedido();
 
   //asignar la foto del usuario
