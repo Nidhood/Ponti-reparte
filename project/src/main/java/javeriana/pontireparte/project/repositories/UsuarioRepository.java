@@ -11,7 +11,7 @@ public interface UsuarioRepository
 
     // Nidhood : Modifique el findByUsuarioId por  findById.
     Usuario findById(UUID id);
-
+    Usuario findByIdjaveriana(String idjaveriana);
     // Nidhood : Modifique el findByNombreUsuario por findByNombreusuario.
     Usuario findByNombreusuario(String nombreusuario);
 

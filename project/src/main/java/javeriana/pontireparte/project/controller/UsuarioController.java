@@ -38,10 +38,10 @@ public class UsuarioController {
         return codi;
     }
     @RequestMapping(value = "/{usuarioId}/infousuario", method = RequestMethod.GET)
-    public Usuario infoUsuario(@RequestBody Usuario usuario){
+    public Usuario infoUsuario(@PathVariable (value = "usuarioId") UUID id){
         //Nuevo
-        System.out.println("Datos: " + usuario);
-        Usuario codi =usuarioService.infoWithUsuario(usuario);
+        System.out.println("Datos: " + id);
+        Usuario codi =usuarioService.infoWithUsuario(id);
         return codi;
     }
 

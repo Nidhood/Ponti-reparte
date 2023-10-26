@@ -69,10 +69,10 @@ public class UsuarioService {
         usuarioRepository.delete(usuario);
 
     }
-    public Usuario infoWithUsuario(Usuario usuario) {
+    public Usuario infoWithUsuario(UUID usuarioId) {
 
         // Nidhood : Modifique usuario.getUsuarioId() por usuario.getId().
-        Usuario storedUserDetails = usuarioRepository.findById(usuario.getId());
+        Usuario storedUserDetails = usuarioRepository.findById(usuarioId);
         return storedUserDetails;
     }
 }
