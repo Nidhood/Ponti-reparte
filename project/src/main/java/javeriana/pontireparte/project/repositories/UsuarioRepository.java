@@ -20,5 +20,6 @@ public interface UsuarioRepository
     // Nidhood : Modifique el deleteUsuarioByUsuarioId por  deleteUsuarioById.
     // Nidhood : Modifique el tipo de dato usuarioId de int por UUID id.
     Usuario deleteUsuarioById(UUID id);
+    Usuario findByTipousuario(String tipousuario);
 }
 

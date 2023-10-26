@@ -24,7 +24,6 @@ public class UsuarioService {
 
     //Nuevo
     public void addNewUsuario(Usuario usuario) {
-        System.out.println(usuario);
         Foto foto = new Foto();
 
         foto.setId(UUID.randomUUID());
@@ -37,18 +36,24 @@ public class UsuarioService {
         usuario.setEstadosesion(EstadoSesion);
         String Disponibilidad = "??";
         usuario.setDisponibilidad(Disponibilidad);
+        System.out.println(usuario);
         usuarioRepository.save(usuario);
     }
     public Usuario loginWithUsuario(Usuario usuario) {
-
+        String TipoPorDefecto = "cliente";
         Usuario storedUserDetails = usuarioRepository.findByNombreusuario(usuario.getNombreusuario());
-        Usuario storedUserDetails1 = usuarioRepository.findByContrasena(usuario.getContrasena());
-        System.out.println("Usuario: " + storedUserDetails);
-        System.out.println("Clave: " + storedUserDetails1);
         if(storedUserDetails == null) throw new RuntimeException("Usuario No existe");
         else
-        if(storedUserDetails1 == null) throw new RuntimeException("Clave incorrecta");
-        return storedUserDetails1;
+        if(storedUserDetails.getContrasena() == null) throw new RuntimeException("Clave incorrecta");
+        else
+        /*if(!storedUserDetails.equals(TipoPorDefecto)) throw new RuntimeException("Tipo Usuario distinto a cliente");
+        else*/
+        System.out.println(usuario);
+        System.out.println("Nombre de usuario: " + storedUserDetails.getNombreusuario());
+        System.out.println("Contrasena: " + storedUserDetails.getContrasena());
+        System.out.println("Tipo Usuario: " + storedUserDetails.getTipousuario());
+
+        return storedUserDetails;
     }
     public void updateWithID(Usuario usuario){
 
