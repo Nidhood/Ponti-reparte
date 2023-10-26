@@ -49,6 +49,8 @@ function generateInfoUsuario(usuario, nombre, apellido, telefono, correo) {
   document.getElementById("apellido").value = apellido;
   document.getElementById("telefono").value = telefono;
   document.getElementById("correo").value = correo;
+  //se guarda en memoria
+  initializeSessionStorage();
 }
 
 //esta funcion es necesaria por si pone cancelar la persona
@@ -128,13 +130,11 @@ function changeProfileImage(imgSrc, id) {
 }
 
 $(document).ready(function () {
-  initializeSessionStorage();
 
   // Evento al hacer clic en el botón Cancelar
   $("#cancelar").click(function () {
     var campos = [
       "Nombreusuario",
-      "contrasena",
       "nombre",
       "apellido",
       "telefono",
