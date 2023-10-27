@@ -17,6 +17,7 @@ function InicializarPedido()
   if (!pedidoGuardado) {
       const pedido = {
         total: 0, 
+        tienda: null, //si es null es porque no ha seleccionado la tienda
         productos: []
       }
       // Convierte el objeto 'pedido' a una cadena JSON y almacénalo en el sessionStorage
@@ -153,7 +154,7 @@ function generateProductList(data) {
 //PONER LA INFO EN EL POPUP DEL PRODUCTO
 //se pide la informacion del producto
 async function getInfoProducto(idproducto){
-  return await fetch('http://localhost:3000/producto/'+idproducto, {
+  return await fetch('http://localhost:8080/producto/'+idproducto, {
       headers: {
           'Content-Type': 'application/json'
       }
@@ -336,7 +337,7 @@ document.addEventListener('DOMContentLoaded', function() { // Asegurarte de que 
 
   //PROCESO PARA OBTENER TIENDAS MINIS
 async function getTiendas(){
-  return await fetch('http://localhost:3000/buscar/tiendas/'+sessionStorage.getItem('palabrasClave'), {
+  return await fetch('http://localhost:8080/buscar/tiendas/'+sessionStorage.getItem('palabrasClave'), {
   
       headers: {
           'Content-Type': 'application/json'
