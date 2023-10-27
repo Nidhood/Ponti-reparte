@@ -67,7 +67,7 @@ function generateInfoPedido(data)
 
 async function main()
 {
-  //EvaluarIngresoDeSesion();
+  EvaluarIngresoDeSesion();
   asignarFoto();
 }
 

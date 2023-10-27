@@ -482,9 +482,8 @@ function Ver()
   
     generateTiendas(".scrollBoxTienda");
 
-     //EvaluarIngresoDeSesion();
-    InicializarPedido();
-  
+    EvaluarIngresoDeSesion();
+    //InicializarPedido();//revisar
     asignarFoto();
   
     //ESTO SE QUITA
