@@ -52,6 +52,8 @@ $(document).ready(function () {
           console.log(res.json);
           if (res.ok) {
             res.json().then((data) => {
+              console.log(data.id);
+              console.log(data.foto.foto);
               sessionStorage.setItem("idUsuario", data.id); //GUARDAR EL ID DEL USUARIO EN EL LOCAL STORAGE
               sessionStorage.setItem("fotoPerfil", data.foto.foto); //PEDIR EL AVATAR Y GUARDARLO EN EL LOCAL STORAGE
               // Desvincula el evento 'submit' y luego envía el formulario

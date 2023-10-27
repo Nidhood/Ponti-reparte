@@ -21,6 +21,10 @@ const promesaInformacionUsuario = getInfoUsuario();
 promesaInformacionUsuario
   .then((res) => {
     console.log(res.ok);
+    if (!res.ok) {
+        throw new Error("Server responded with a non-OK status");
+    }
+    return res.json();  // Convert the response to JSON
   })
   .then((data) => {
     console.log(data);
@@ -32,9 +36,11 @@ promesaInformacionUsuario
       data.correoinstitucional
     );
   })
-  .catch(() => {
-    console.log("error de inicio");
+  .catch((error) => {
+    console.log("Error:", error);
+    console.log("no me envian nada");
   });
+
 //aqui los asigna
 function generateInfoUsuario(usuario, nombre, apellido, telefono, correo) {
   // Asignando el valor a los inputs correspondientes
@@ -43,6 +49,8 @@ function generateInfoUsuario(usuario, nombre, apellido, telefono, correo) {
   document.getElementById("apellido").value = apellido;
   document.getElementById("telefono").value = telefono;
   document.getElementById("correo").value = correo;
+  //se guarda en memoria
+  initializeSessionStorage();
 }
 
 //esta funcion es necesaria por si pone cancelar la persona
@@ -122,13 +130,11 @@ function changeProfileImage(imgSrc, id) {
 }
 
 $(document).ready(function () {
-  initializeSessionStorage();
 
   // Evento al hacer clic en el botón Cancelar
   $("#cancelar").click(function () {
     var campos = [
       "Nombreusuario",
-      "contrasena",
       "nombre",
       "apellido",
       "telefono",
@@ -206,7 +212,7 @@ $(document).ready(function () {
 
       var isValid = true;
       var inputNombreusuario = $("#Nombreusuario").val().trim();
-      var inputcontrasena = $("#contrasena").val().trim();
+      var imgSrc = document.getElementById("foto").getAttribute("src");
       var inputtelefono = $("#telefono").val().trim();
 
       if (inputNombreusuario === "") {
@@ -226,7 +232,7 @@ $(document).ready(function () {
       if (isValid) {
         const promesaUpdateInformacionUsuario = postInfoUsuario(
           inputNombreusuario,
-          inputcontrasena,
+          imgSrc,
           $("#nombre").val().trim(),
           $("#apellido").val().trim(),
           parseInt(inputtelefono, 10)
