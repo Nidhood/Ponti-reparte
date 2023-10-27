@@ -304,15 +304,11 @@ a {
     -webqkit-animation: spin 1s linear infinite; /* Safari */
     animation: spin 0.7s linear infinite;
     position: absolute;
-<<<<<<< Updated upstream
-    top: 80px
-=======
     top: 250px;
     position: absolute;
     left: 48%; /* Mover el elemento a la mitad de su contenedor */
     transform: translateX(-60%); /* Desplazar el elemento a la izquierda en un 50% de su propio ancho */
     text-align: center;
->>>>>>> Stashed changes
   }
   
   /* Safari */
@@ -325,10 +321,6 @@ a {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
-<<<<<<< Updated upstream
-
-
-=======
   
 #Resultado
 {
@@ -348,4 +340,3 @@ a {
 {
     display: block;
 }
->>>>>>> Stashed changes

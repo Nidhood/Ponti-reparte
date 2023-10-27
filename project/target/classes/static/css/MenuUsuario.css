@@ -181,6 +181,7 @@ a {
     padding: 0px 20px; /* Esto añade un padding (relleno) superior e inferior de 10px a cada producto */
     display: inline-block;
     vertical-align: top;  /* Asegura que se alineen por la parte superior */
+    z-index: 2000;
 }
 .circuloproducto 
 {   
@@ -193,6 +194,7 @@ a {
     height: 135px;
     top: 12.5%;
     overflow: hidden; 
+    z-index: 2000;
 }
 
 .fotominipRODUCTO
@@ -202,6 +204,7 @@ a {
     height: 100%;
     object-fit: cover;
     object-position: center; /* Centra la imagen */
+    z-index: 2000;
 }
 
 .nombreminiProducto

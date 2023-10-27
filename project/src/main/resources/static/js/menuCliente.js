@@ -72,166 +72,6 @@ var hide = function (id) {
   document.body.classList.remove("overlayActive");
 };
 
-//OBTENER LOS PRODUCTOS
-// peticion
-//se manda la cant de productos que se quiere leer
-async function getProductos() {
-  return await fetch("http://localhost:8080/productos/limit/8", {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-}
-//se llama la peticion y se guarda en promesaProductos
-const promesaProductos = getProductos();
-promesaProductos
-  .then((res) => {
-    console.log(res);
-  })
-  .then((data) => {
-    console.log(data);
-    //ingresarlo al local storage la lista de ids de productos
-    //y hacer el proceso de ingresar las fotos
-    generateProductList(data);
-  })
-  .catch(() => {
-    console.log("error");
-  });
-//se generan los productos para poner
-function generateProductList(data) {
-  var container = $(".scrollBoxProducto");
-
-  for (var i = 0; i < data.size; i++) {
-    var productBlock = `
-        <div class="producto">
-            <div class="circuloproducto">
-                <a href="#" class="productLink" id="${data[i].ID}">
-                    <img class="fotominipRODUCTO" src="${data[i].foto.foto}" alt="foto Producto">
-                </a>
-            </div>
-            <p class="nombreminiProducto">
-                ${data[i].NombreProducto}
-            </p>
-        </div>
-    `;
-
-    container.append(productBlock);
-  }
-
-  // Es importante hacer el evento click DESPUÉS de agregar los productos al contenedor
-  container.find(".productLink").on("click", function (event) {
-    event.preventDefault();
-    $("#cantidadProducto").val(1);
-    console.log(event.currentTarget.id);
-
-    //SE MANDA EL ID DEL PRODUCTO PARA QUE ME MANDEN LA INFO DE ESE PRODUCTO
-    const promesaInformacionProducto = getInfoProducto(event.currentTarget.id);
-
-    //guardar el id del producto para usarlo despues//
-    sessionStorage.setItem("idproducto", event.currentTarget.id);
-
-    promesaInformacionProducto
-      .then((res) => {
-        console.log(res.ok);
-        res.json();
-      })
-      .then((data) => {
-        console.log(data);
-
-        generateInfoProducto(data);
-
-        show("popup");
-      })
-      .catch(() => {
-        console.log("error");
-      });
-  });
-}
-
-//PONER LA INFO EN EL POPUP DEL PRODUCTO
-//se pide la informacion del producto
-async function getInfoProducto(idproducto) {
-  return await fetch("http://localhost:8080/producto/" + idproducto, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-}
-
-//genera la informacion del producto en el pop up conforme a la info mandada
-function generateInfoProducto(data) {
-  //titulo grande del producto
-  $("#tituloProducto").text(data.nombreProducto);
-
-  //foto del producto
-  $("#fotopRODUCTO").attr("src", data.foto.foto);
-
-  //calcula el precio actual con base en si tiene promocion o no
-  const precioTot = data.PrecioDinero - data.PrecioDinero * data.Promocion;
-  $("#precioText").text(precioTot.toFixed(2));
-
-  //si no tiene descuento no se muestra la info de promocion
-  if (data.Promocion == 0) {
-    $("#DescText").hide();
-    $("#porcentajePopUp").hide();
-    $("#DescText2").hide();
-  } else {
-    //si si hay
-    //se muestra la promocion
-    $("#DescText2").text(data.Promocion * 100 + "%");
-    //se muestra el precio anterior tachado
-    $("#DescText").text(data.PrecioDinero);
-    $("#DescText").css("text-decoration", "line-through");
-  }
-
-  //si la cantidad esta en cero es porque no hay
-  if (data.CantidadDisponible == 0) {
-    $("#disponible").text("Agotado");
-    $("#disponible").css("background-color", "#f17e7e"); // Cambia el color a rojo
-  }
-
-  //descripcion del producto
-  $("#textoDescrip").text(data.Descripcion);
-
-  //ingredientes del producto
-  const ingredientesList = data.ingredientes;
-
-  //como es en una lista se concatenen con comas
-  var ingredientesText = ingredientesList.join(", ");
-
-  $("#textoIngred").text(ingredientesText);
-
-  //una lista de tiendas
-  const tiendasList = data.tiendas;
-
-  var container = $("#RadioOptions");
-
-  for (var i = 0; i < tiendasList.size; i++) {
-    //mirar como saber cual tienda es
-    //en este caso se mandan las tiendas donde esta disponible el producto
-    //en radio se pone en value el valor que se enviara al servidor (que es el id de la tienda)
-    //
-    var tiendaBlock = `
-    <div id="RadioOptions1">
-          <input type="radio" class="tienda" id="tienda${tiendasList[i].ID}" name="TiendaSeleccion" value="${tiendasList[i].ID}">
-          <label id="labelt" for="tienda${tiendasList[i].ID}">${tiendasList[i].NombreTienda}</label>
-    </div>
-    `;
-
-    //REVISAR
-    container.append(tiendaBlock);
-  }
-
-  //se muestra el boton el total propuesto si compre una und del producto mas lo que ya ha
-  //anadido antes al carrito
-  const pedidoActual = JSON.parse(sessionStorage.getItem("pedido"));
-  var cantidad = parseInt($("#cantidadProducto").val(), 10);
-  const totalPropuesto = pedidoActual.total + cantidad * precioTot;
-  $("#BAgregarEirPagar").text(
-    "Agregar e ir a pagar " + totalPropuesto.toFixed(2)
-  ); // toFixed(2) asegura que se muestren solo dos decimales
-}
-
 //ANADIR AL CARRITO
 //aqui se hace el proceso de anadir lo pedido en memoria dependiendo del boton
 document.addEventListener("DOMContentLoaded", function () {
@@ -331,6 +171,175 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+//OBTENER LOS PRODUCTOS
+// peticion
+//se manda la cant de productos que se quiere leer
+async function getProductos() {
+  return await fetch("http://localhost:8080/productos", {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+}
+//se llama la peticion y se guarda en promesaProductos
+const promesaProductos = getProductos();
+promesaProductos
+  .then((res) => {
+    console.log(res+"hola");
+    return res.json(); 
+  })
+  .then((data) => {
+    console.log(data);
+    //ingresarlo al local storage la lista de ids de productos
+    //y hacer el proceso de ingresar las fotos
+    generateProductList(data);
+  })
+  .catch(() => {
+    console.log("error");
+  });
+//se generan los productos para poner
+function generateProductList(data) {
+  var container = $(".scrollBoxProducto");
+
+  for (var i = 0; i < data.length; i++) {
+    console.log(data[i].id);
+    console.log(data[i].foto.foto);
+    //https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpvZ9eeenLIKseXfTl1ReQ6APmZi8nnJfjeJI59MUt&s
+    var productBlock = `
+      <a href="#" class="productLink" id="${data[i].id}">
+        <div class="producto">
+            <div class="circuloproducto">
+                    <img class="fotominipRODUCTO" src="${data[i].foto.foto}" alt="foto Producto">
+            </div>
+            <p class="nombreminiProducto">
+                ${data[i].nombreproducto}
+            </p>
+        </div>
+        </a>
+    `;
+
+    container.append(productBlock);
+  }
+
+  // Es importante hacer el evento click DESPUÉS de agregar los productos al contenedor
+  container.find(".productLink").on("click", function (event) {
+      
+        event.preventDefault(); // Prevenir la acción predeterminada del enlace
+        $("#cantidadProducto").val(1);
+        console.log(event.currentTarget.id);
+        show("popup");
+    
+        //SE MANDA EL ID DEL PRODUCTO PARA QUE ME MANDEN LA INFO DE ESE PRODUCTO
+        const promesaInformacionProducto = getInfoProducto(event.currentTarget.id);
+    
+        //guardar el id del producto para usarlo despues//
+        sessionStorage.setItem("idproducto", event.currentTarget.id);
+    
+        promesaInformacionProducto
+          .then((res) => {
+            console.log(res.ok);
+            return res.json();
+          })
+          .then((data) => {
+            console.log(data);
+    
+            generateInfoProducto(data);
+    
+            show("popup");
+          })
+          .catch(() => {
+            console.log("error");
+          });
+
+    });
+  
+}
+
+//PONER LA INFO EN EL POPUP DEL PRODUCTO
+//se pide la informacion del producto
+async function getInfoProducto(idproducto) {
+  return await fetch("http://localhost:8080/producto/" + idproducto, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+}
+
+//genera la informacion del producto en el pop up conforme a la info mandada
+function generateInfoProducto(data) {
+  //titulo grande del producto
+  $("#tituloProducto").text(data.nombreProducto);
+
+  //foto del producto
+  $("#fotopRODUCTO").attr("src", data.foto.foto);
+
+  //calcula el precio actual con base en si tiene promocion o no
+  const precioTot = data.PrecioDinero - data.PrecioDinero * data.Promocion;
+  $("#precioText").text(precioTot.toFixed(2));
+
+  //si no tiene descuento no se muestra la info de promocion
+  if (data.Promocion == 0) {
+    $("#DescText").hide();
+    $("#porcentajePopUp").hide();
+    $("#DescText2").hide();
+  } else {
+    //si si hay
+    //se muestra la promocion
+    $("#DescText2").text(data.Promocion * 100 + "%");
+    //se muestra el precio anterior tachado
+    $("#DescText").text(data.PrecioDinero);
+    $("#DescText").css("text-decoration", "line-through");
+  }
+
+  //si la cantidad esta en cero es porque no hay
+  if (data.CantidadDisponible == 0) {
+    $("#disponible").text("Agotado");
+    $("#disponible").css("background-color", "#f17e7e"); // Cambia el color a rojo
+  }
+
+  //descripcion del producto
+  $("#textoDescrip").text(data.Descripcion);
+
+  //ingredientes del producto
+  const ingredientesList = data.ingredientes;
+
+  //como es en una lista se concatenen con comas
+  var ingredientesText = ingredientesList.join(", ");
+
+  $("#textoIngred").text(ingredientesText);
+
+  //una lista de tiendas
+  const tiendasList = data.tiendas;
+
+  var container = $("#RadioOptions");
+
+  for (var i = 0; i < tiendasList.size; i++) {
+    //mirar como saber cual tienda es
+    //en este caso se mandan las tiendas donde esta disponible el producto
+    //en radio se pone en value el valor que se enviara al servidor (que es el id de la tienda)
+    //
+    var tiendaBlock = `
+    <div id="RadioOptions1">
+          <input type="radio" class="tienda" id="tienda${tiendasList[i].ID}" name="TiendaSeleccion" value="${tiendasList[i].ID}">
+          <label id="labelt" for="tienda${tiendasList[i].ID}">${tiendasList[i].NombreTienda}</label>
+    </div>
+    `;
+
+    //REVISAR
+    container.append(tiendaBlock);
+  }
+
+  //se muestra el boton el total propuesto si compre una und del producto mas lo que ya ha
+  //anadido antes al carrito
+  const pedidoActual = JSON.parse(sessionStorage.getItem("pedido"));
+  var cantidad = parseInt($("#cantidadProducto").val(), 10);
+  const totalPropuesto = pedidoActual.total + cantidad * precioTot;
+  $("#BAgregarEirPagar").text(
+    "Agregar e ir a pagar " + totalPropuesto.toFixed(2)
+  ); // toFixed(2) asegura que se muestren solo dos decimales
+}
+
+
 //PROCESO PARA OBTENER TIENDAS MINIS
 async function getTiendas() {
   return await fetch("http://localhost:8080/tiendas/limit/8", {
@@ -344,6 +353,7 @@ const promesaTiendas = getTiendas();
 promesaTiendas
   .then((res) => {
     console.log(res.ok);
+    return res.json(); 
   })
   .then((data) => {
     console.log(data);
@@ -357,17 +367,17 @@ promesaTiendas
 //generar cada tienda
 function generateTiendaList(data) {
   var container = $(".scrollBoxTienda");
-  for (var i = 0; i < data.size; i++) {
+  for (var i = 0; i < data.length; i++) {
     var tiendaBlock = `
       <div class="minitienda">
           <div class="circuloTIENDA">
-            <a href="#" class="tiendaLink" id="${data[i].ID}">
+            <a href="#" class="tiendaLink" id="${data[i].id}">
                 <img class="fotominiTIENDA" src=${data[i].foto.foto} alt="foto Tienda">
             </a>
           </div>
           
           <p class="nombreminiTIENDA">
-            ${data[i].NombreTienda}
+            ${data[i].nombretienda}
           </p>
       </div>
       `;
@@ -381,7 +391,7 @@ function generateTiendaList(data) {
     event.preventDefault(); // Prevenir la acción predeterminada del enlace
     sessionStorage.setItem("idTienda", event.currentTarget.id); // Guardar el ID de la tienda en sessionStorage
     //ESTO SE DEBE EDITAR
-    window.location.href = "ruta_de_tu_nueva_pagina.html"; // Redirigir a la nueva página
+    window.location.href = "../html/plantilla.html"; // Redirigir a la nueva página
   });
 }
 
@@ -397,9 +407,6 @@ $(document).ready(function () {
 
   //asignar la foto del usuario
   asignarFoto();
-
-  //ESTO SE QUITA
-  Ver();
 
   $("#basura").on("click", function () {
     $("#cantidadProducto").val("1");

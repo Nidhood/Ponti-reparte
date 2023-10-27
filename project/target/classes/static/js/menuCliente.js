@@ -72,11 +72,110 @@ var hide = function (id) {
   document.body.classList.remove("overlayActive");
 };
 
+//ANADIR AL CARRITO
+//aqui se hace el proceso de anadir lo pedido en memoria dependiendo del boton
+/*document.addEventListener("DOMContentLoaded", function () {
+  // Asegurarte de que el DOM esté cargado
+  const BAgregarEirPagar = document.getElementById("BAgregarEirPagar"); // Selecciona el botón por su ID
+  const BAgregarSeguirComprando = document.getElementById(
+    "BAgregarSeguirComprando"
+  ); // Selecciona el botón por su ID
+  const cantidadInput = document.getElementById("cantidadProducto"); // Selecciona el input por su ID
+
+  //si selecciona este
+  //se debe anadir la info a la memoria e ir a la pantalla de realizar compra
+  BAgregarEirPagar.addEventListener("click", function (event) {
+    var cantidad = cantidadInput.value;
+
+    if (isNaN(cantidad) || cantidad.trim() === "") {
+      alert("Por favor, introduce un número válido en la cantidad.");
+      event.preventDefault(); // Evita que se ejecute cualquier otro comportamiento del botón.
+    } else {
+      //se hace el proceso de guardar el info del pedido
+      //se anade el producto con su informacion de id cantidad y precio
+      //se suma guarda el valor total
+
+      // Obtener el pedido actual del sessionStorage
+      let pedidoActual = JSON.parse(sessionStorage.getItem("pedido")) || pedido;
+
+      /* constructor(idProducto, idTienda, cantidad, precio)
+      var idproducto = sessionStorage.getItem("idproducto");
+      var idtienda = $('input[name="TiendaSeleccion"]:checked').val();
+      var cant = parseInt($("#cantidadProducto").val(), 10);
+      var precio = parseInt($("#precioText").val(), 10);
+
+      // Crear un nuevo producto
+      let nuevoProducto = new ProductosPedidos(
+        idproducto,
+        idtienda,
+        cant,
+        precio
+      );
+
+      // Añadir el nuevo producto a la lista de productos
+      pedidoActual.productos.push(nuevoProducto);
+
+      // Actualizar el total (por ejemplo, sumando la cantidad * precio del nuevo producto)
+      pedidoActual.total += nuevoProducto.cantidad * nuevoProducto.precio;
+
+      // Guardar el pedido actualizado de vuelta en el sessionStorage
+      sessionStorage.setItem("pedido", JSON.stringify(pedidoActual));
+
+      //TOCA CAMBIARLO
+      window.location.href = "../html/pago.html";
+    }
+  });
+
+  //si selecciona este
+  //se anade a la memoria de pedido
+  //se cierra el pop up
+  BAgregarSeguirComprando.addEventListener("click", function (event) {
+    var cantidad = cantidadInput.value;
+
+    if (isNaN(cantidad) || cantidad.trim() === "") {
+      alert("Por favor, introduce un número válido en la cantidad.");
+      event.preventDefault(); // Evita que se ejecute cualquier otro comportamiento del botón.
+    } else {
+      //se hace el proceso de guardar el info del pedido
+      //se anade el producto con su informacion de id cantidad y precio
+      //se suma guarda el valor total
+
+      // Obtener el pedido actual del sessionStorage
+      let pedidoActual = JSON.parse(sessionStorage.getItem("pedido")) || pedido;
+
+      /* constructor(idProducto, idTienda, cantidad, precio)
+      var idproducto = sessionStorage.getItem("idproducto");
+      var idtienda = $('input[name="TiendaSeleccion"]:checked').val();
+      var cant = parseInt($("#cantidadProducto").val(), 10);
+      var precio = parseInt($("#precioText").val(), 10);
+
+      // Crear un nuevo producto
+      let nuevoProducto = new ProductosPedidos(
+        idproducto,
+        idtienda,
+        cant,
+        precio
+      );
+
+      // Añadir el nuevo producto a la lista de productos
+      pedidoActual.productos.push(nuevoProducto);
+
+      // Actualizar el total (por ejemplo, sumando la cantidad * precio del nuevo producto)
+      pedidoActual.total += nuevoProducto.cantidad * nuevoProducto.precio;
+
+      // Guardar el pedido actualizado de vuelta en el sessionStorage
+      sessionStorage.setItem("pedido", JSON.stringify(pedidoActual));
+
+      hide("popup");
+    }
+  });
+});*/
+
 //OBTENER LOS PRODUCTOS
 // peticion
 //se manda la cant de productos que se quiere leer
 async function getProductos() {
-  return await fetch("http://localhost:8080/productos/limit/8", {
+  return await fetch("http://localhost:8080/productos", {
     headers: {
       "Content-Type": "application/json",
     },
@@ -86,11 +185,11 @@ async function getProductos() {
 const promesaProductos = getProductos();
 promesaProductos
   .then((res) => {
-    console.log(res);
+    console.log(res+"hola");
+    return res.json(); 
   })
   .then((data) => {
     console.log(data);
-
     //ingresarlo al local storage la lista de ids de productos
     //y hacer el proceso de ingresar las fotos
     generateProductList(data);
@@ -102,18 +201,22 @@ promesaProductos
 function generateProductList(data) {
   var container = $(".scrollBoxProducto");
 
-  for (var i = 0; i < data.size; i++) {
+  for (var i = 0; i < data.length; i++) {
+    console.log(data[i].id);
+    console.log(data[i].foto.foto);
     var productBlock = `
+    <a href="#" class="productLink" id="${data[i].id}">
         <div class="producto">
             <div class="circuloproducto">
-                <a href="#" class="productLink" id="${data[i].ID}">
-                    <img class="fotominipRODUCTO" src="${data[i].foto.foto}" alt="foto Producto">
-                </a>
+                
+                    <img class="fotominipRODUCTO" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpvZ9eeenLIKseXfTl1ReQ6APmZi8nnJfjeJI59MUt&s" alt="foto Producto">
+           
             </div>
             <p class="nombreminiProducto">
-                ${data[i].NombreProducto}
+                ${data[i].nombreproducto}
             </p>
         </div>
+        </a>
     `;
 
     container.append(productBlock);
@@ -121,32 +224,35 @@ function generateProductList(data) {
 
   // Es importante hacer el evento click DESPUÉS de agregar los productos al contenedor
   container.find(".productLink").on("click", function (event) {
-    event.preventDefault();
-    $("#cantidadProducto").val(1);
-    console.log(event.currentTarget.id);
+      
+        event.preventDefault(); // Prevenir la acción predeterminada del enlace
+        $("#cantidadProducto").val(1);
+        console.log(event.currentTarget.id);
+    
+        //SE MANDA EL ID DEL PRODUCTO PARA QUE ME MANDEN LA INFO DE ESE PRODUCTO
+        const promesaInformacionProducto = getInfoProducto(event.currentTarget.id);
+    
+        //guardar el id del producto para usarlo despues//
+        sessionStorage.setItem("idproducto", event.currentTarget.id);
+    
+        promesaInformacionProducto
+          .then((res) => {
+            console.log(res.ok);
+            res.json();
+          })
+          .then((data) => {
+            console.log(data);
+    
+            generateInfoProducto(data);
+    
+            show("popup");
+          })
+          .catch(() => {
+            console.log("error");
+          });
 
-    //SE MANDA EL ID DEL PRODUCTO PARA QUE ME MANDEN LA INFO DE ESE PRODUCTO
-    const promesaInformacionProducto = getInfoProducto(event.currentTarget.id);
-
-    //guardar el id del producto para usarlo despues//
-    sessionStorage.setItem("idproducto", event.currentTarget.id);
-
-    promesaInformacionProducto
-      .then((res) => {
-        console.log(res.ok);
-        res.json();
-      })
-      .then((data) => {
-        console.log(data);
-
-        generateInfoProducto(data);
-
-        show("popup");
-      })
-      .catch(() => {
-        console.log("error");
-      });
-  });
+    });
+  
 }
 
 //PONER LA INFO EN EL POPUP DEL PRODUCTO
@@ -233,104 +339,6 @@ function generateInfoProducto(data) {
   ); // toFixed(2) asegura que se muestren solo dos decimales
 }
 
-//ANADIR AL CARRITO
-//aqui se hace el proceso de anadir lo pedido en memoria dependiendo del boton
-document.addEventListener("DOMContentLoaded", function () {
-  // Asegurarte de que el DOM esté cargado
-  const BAgregarEirPagar = document.getElementById("BAgregarEirPagar"); // Selecciona el botón por su ID
-  const BAgregarSeguirComprando = document.getElementById(
-    "BAgregarSeguirComprando"
-  ); // Selecciona el botón por su ID
-  const cantidadInput = document.getElementById("cantidadProducto"); // Selecciona el input por su ID
-
-  //si selecciona este
-  //se debe anadir la info a la memoria e ir a la pantalla de realizar compra
-  BAgregarEirPagar.addEventListener("click", function (event) {
-    var cantidad = cantidadInput.value;
-
-    if (isNaN(cantidad) || cantidad.trim() === "") {
-      alert("Por favor, introduce un número válido en la cantidad.");
-      event.preventDefault(); // Evita que se ejecute cualquier otro comportamiento del botón.
-    } else {
-      //se hace el proceso de guardar el info del pedido
-      //se anade el producto con su informacion de id cantidad y precio
-      //se suma guarda el valor total
-
-      // Obtener el pedido actual del sessionStorage
-      let pedidoActual = JSON.parse(sessionStorage.getItem("pedido")) || pedido;
-
-      /* constructor(idProducto, idTienda, cantidad, precio)*/
-      var idproducto = sessionStorage.getItem("idproducto");
-      var idtienda = $('input[name="TiendaSeleccion"]:checked').val();
-      var cant = parseInt($("#cantidadProducto").val(), 10);
-      var precio = parseInt($("#precioText").val(), 10);
-
-      // Crear un nuevo producto
-      let nuevoProducto = new ProductosPedidos(
-        idproducto,
-        idtienda,
-        cant,
-        precio
-      );
-
-      // Añadir el nuevo producto a la lista de productos
-      pedidoActual.productos.push(nuevoProducto);
-
-      // Actualizar el total (por ejemplo, sumando la cantidad * precio del nuevo producto)
-      pedidoActual.total += nuevoProducto.cantidad * nuevoProducto.precio;
-
-      // Guardar el pedido actualizado de vuelta en el sessionStorage
-      sessionStorage.setItem("pedido", JSON.stringify(pedidoActual));
-
-      //TOCA CAMBIARLO
-      window.location.href = "../html/pago.html";
-    }
-  });
-
-  //si selecciona este
-  //se anade a la memoria de pedido
-  //se cierra el pop up
-  BAgregarSeguirComprando.addEventListener("click", function (event) {
-    var cantidad = cantidadInput.value;
-
-    if (isNaN(cantidad) || cantidad.trim() === "") {
-      alert("Por favor, introduce un número válido en la cantidad.");
-      event.preventDefault(); // Evita que se ejecute cualquier otro comportamiento del botón.
-    } else {
-      //se hace el proceso de guardar el info del pedido
-      //se anade el producto con su informacion de id cantidad y precio
-      //se suma guarda el valor total
-
-      // Obtener el pedido actual del sessionStorage
-      let pedidoActual = JSON.parse(sessionStorage.getItem("pedido")) || pedido;
-
-      /* constructor(idProducto, idTienda, cantidad, precio)*/
-      var idproducto = sessionStorage.getItem("idproducto");
-      var idtienda = $('input[name="TiendaSeleccion"]:checked').val();
-      var cant = parseInt($("#cantidadProducto").val(), 10);
-      var precio = parseInt($("#precioText").val(), 10);
-
-      // Crear un nuevo producto
-      let nuevoProducto = new ProductosPedidos(
-        idproducto,
-        idtienda,
-        cant,
-        precio
-      );
-
-      // Añadir el nuevo producto a la lista de productos
-      pedidoActual.productos.push(nuevoProducto);
-
-      // Actualizar el total (por ejemplo, sumando la cantidad * precio del nuevo producto)
-      pedidoActual.total += nuevoProducto.cantidad * nuevoProducto.precio;
-
-      // Guardar el pedido actualizado de vuelta en el sessionStorage
-      sessionStorage.setItem("pedido", JSON.stringify(pedidoActual));
-
-      hide("popup");
-    }
-  });
-});
 
 //PROCESO PARA OBTENER TIENDAS MINIS
 async function getTiendas() {
@@ -345,6 +353,7 @@ const promesaTiendas = getTiendas();
 promesaTiendas
   .then((res) => {
     console.log(res.ok);
+    return res.json(); 
   })
   .then((data) => {
     console.log(data);
@@ -358,17 +367,17 @@ promesaTiendas
 //generar cada tienda
 function generateTiendaList(data) {
   var container = $(".scrollBoxTienda");
-  for (var i = 0; i < data.size; i++) {
+  for (var i = 0; i < data.length; i++) {
     var tiendaBlock = `
       <div class="minitienda">
           <div class="circuloTIENDA">
-            <a href="#" class="tiendaLink" id="${data[i].ID}">
+            <a href="#" class="tiendaLink" id="${data[i].id}">
                 <img class="fotominiTIENDA" src=${data[i].foto.foto} alt="foto Tienda">
             </a>
           </div>
           
           <p class="nombreminiTIENDA">
-            ${data[i].NombreTienda}
+            ${data[i].nombretienda}
           </p>
       </div>
       `;
@@ -382,87 +391,13 @@ function generateTiendaList(data) {
     event.preventDefault(); // Prevenir la acción predeterminada del enlace
     sessionStorage.setItem("idTienda", event.currentTarget.id); // Guardar el ID de la tienda en sessionStorage
     //ESTO SE DEBE EDITAR
-    window.location.href = "ruta_de_tu_nueva_pagina.html"; // Redirigir a la nueva página
+    window.location.href = "../html/plantilla.html"; // Redirigir a la nueva página
   });
 }
 
 //PONER AQUI EL PROCESO PARA LO DEL CARRITO
 
-//ESTO SE QUITA
-function Ver() {
-  var container = $("#RadioOptions");
 
-  for (var i = 0; i < 3; i++) {
-    var tiendaBlock = `
-                        <div id="RadioOptions1">
-                              <input type="radio" id="tienda" name="TiendaSeleccion" value="C">
-                              <label id="labelt" for="B">Tienda ${i}</label>
-                        </div>
-                        `;
-
-    container.append(tiendaBlock);
-  }
-}
-//ESTO SE QUITA
-function generateTiendas(containerSelector) {
-  var container = $(containerSelector);
-
-  for (var i = 0; i < 8; i++) {
-    var tiendaBlock = `
-                          <div class="minitienda">
-                              <div class="circuloTIENDA">
-                                  <a href="#" class="tiendaLink" id="${i}">
-                                      <img class="fotominiTIENDA" src="../imagenes/LaCentral.png" alt="foto Tienda">
-                                  </a>
-                              </div>
-                              
-                              <p class="nombreminiTIENDA">
-                                La central
-                              </p>
-                          </div>
-                          `;
-
-    container.append(tiendaBlock);
-  }
-
-  container.find(".tiendaLink").on("click", function (event) {
-    event.preventDefault(); // Prevenir la acción predeterminada del enlace
-    sessionStorage.setItem("idTienda", event.currentTarget.id); // Guardar el ID de la tienda en sessionStorage
-    //ESTO SE DEBE EDITAR
-    console.log(event.currentTarget.id);
-    window.location.href = "../html/plantilla.html"; // Redirigir a la nueva página
-  });
-}
-
-//ESTO SE QUITA
-function generateProducts(containerSelector) {
-  var container = $(containerSelector);
-
-  for (var i = 0; i < 8; i++) {
-    var productBlock = `
-                              <div class="producto">
-                                  <div class="circuloproducto">
-                                      <a href="#" class="productLink" id="${i}">
-                                          <img class="fotominipRODUCTO" src="../imagenes/PRODUCTOIMG.png" alt="foto Producto">
-                                      </a>
-                                  </div>
-                                  <p class="nombreminiProducto">
-                                      torta de chocolate
-                                  </p>
-                              </div>
-                          `;
-
-    container.append(productBlock);
-  }
-
-  // Es importante hacer el evento click DESPUÉS de agregar los productos al contenedor
-  container.find(".productLink").on("click", function (event) {
-    event.preventDefault();
-    show("popup");
-    $("#cantidadProducto").val(1);
-    console.log(event.currentTarget.id);
-  });
-}
 
 //todo lo relacionado con la modificacion de la cantidad de producto
 //tambien hara la labor de main
@@ -472,13 +407,6 @@ $(document).ready(function () {
 
   //asignar la foto del usuario
   asignarFoto();
-
-  //ESTO SE QUITA
-  Ver();
-  //ESTO SE QUITA
-  generateProducts(".scrollBoxProducto", "popup");
-  //ESTO SE QUITA
-  generateTiendas(".scrollBoxTienda");
 
   $("#basura").on("click", function () {
     $("#cantidadProducto").val("1");

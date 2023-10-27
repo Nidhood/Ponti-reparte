@@ -181,6 +181,7 @@ a {
     padding: 0px 20px; /* Esto añade un padding (relleno) superior e inferior de 10px a cada producto */
     display: inline-block;
     vertical-align: top;  /* Asegura que se alineen por la parte superior */
+    z-index: 2000;
 }
 .circuloproducto 
 {   
@@ -251,7 +252,7 @@ a {
     top: 2%;
     margin-top: 5px;
     height: 600px;
-    z-index: 200;
+    z-index: 20000;
     padding: 10px;
     width: 92%;
     left: 2%;
