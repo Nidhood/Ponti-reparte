@@ -309,6 +309,7 @@ body.overlayActive {
 .scrollBoxinner {
     left: 42%;
     max-height: 425px; /* Puedes ajustar este valor según tus necesidades */
+    height: 425px;
     overflow-y: auto;
     position: relative;
     max-width: 58%; 
