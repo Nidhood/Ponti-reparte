@@ -8,6 +8,9 @@ import javax.persistence.OneToOne;
 import  javax.persistence.JoinColumn;
 import java.util.UUID;
 
+
+@Entity
+@Table( name ="productos")
 public class Producto {
 
     @Id

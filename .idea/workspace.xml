@@ -5,19 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ff1f0eab-d4ac-48b5-8707-7752c3779c3b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/PontireparteApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/PontireparteApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/controller/UsuarioController.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/controller/UsuarioController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/entities/Combo.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/entities/Combo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/entities/Foto.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/entities/Foto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/entities/InformacionPago.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/entities/InformacionPago.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/entities/Pedido.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/entities/Pedido.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/entities/Producto.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/entities/Producto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/entities/Tienda.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/entities/Tienda.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/entities/Ubicacion.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/entities/Ubicacion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/entities/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/entities/Usuario.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/entities/ingrediente.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/entities/ingrediente.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/repositories/UsuarioRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/repositories/UsuarioRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/services/UsuarioService.class" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/classes/javeriana/pontireparte/project/services/UsuarioService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/main/java/javeriana/pontireparte/project/PontireparteApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/javeriana/pontireparte/project/PontireparteApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/classes/static/js/infoCuenta.js" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/classes/static/js/infoCuenta.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/classes/static/js/inicioSesion.js" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/classes/static/js/inicioSesion.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,13 +32,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.importing"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.importing&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
