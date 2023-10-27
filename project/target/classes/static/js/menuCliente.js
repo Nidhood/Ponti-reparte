@@ -152,7 +152,7 @@ function generateProductList(data) {
 //PONER LA INFO EN EL POPUP DEL PRODUCTO
 //se pide la informacion del producto
 async function getInfoProducto(idproducto) {
-  return await fetch("http://localhost:3000/producto/" + idproducto, {
+  return await fetch("http://localhost:8080/producto/" + idproducto, {
     headers: {
       "Content-Type": "application/json",
     },
@@ -334,7 +334,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //PROCESO PARA OBTENER TIENDAS MINIS
 async function getTiendas() {
-  return await fetch("http://localhost:3000/tiendas/limit/8", {
+  return await fetch("http://localhost:8080/tiendas/limit/8", {
     headers: {
       "Content-Type": "application/json",
     },
@@ -467,7 +467,7 @@ function generateProducts(containerSelector) {
 //todo lo relacionado con la modificacion de la cantidad de producto
 //tambien hara la labor de main
 $(document).ready(function () {
-  //EvaluarIngresoDeSesion();
+  EvaluarIngresoDeSesion();
   InicializarPedido();
 
   //asignar la foto del usuario

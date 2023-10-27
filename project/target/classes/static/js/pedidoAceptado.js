@@ -35,11 +35,7 @@ function asignarFoto() {
 }
 
 async function getInfoPedido() {
-<<<<<<< Updated upstream
-  return await fetch("http://localhost:8080/pedido/"+ sessionStorage.getItem("IDpedido"), {
-=======
   return await fetch("http://localhost:8080/pedido/"+ sessionStorage.getItem("IDpedido")+"/domiciliario", {
->>>>>>> Stashed changes
     headers: {
       "Content-Type": "application/json",
     },
@@ -71,11 +67,9 @@ function generateInfoPedido(data)
 
 async function main()
 {
-  //EvaluarIngresoDeSesion();
+  EvaluarIngresoDeSesion();
   asignarFoto();
 }
-<<<<<<< Updated upstream
-=======
 
 window.addEventListener('DOMContentLoaded', (event) => {
 
@@ -93,4 +87,3 @@ window.addEventListener('DOMContentLoaded', (event) => {
 });
 
 
->>>>>>> Stashed changes

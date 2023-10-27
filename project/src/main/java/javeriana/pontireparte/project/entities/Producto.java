@@ -15,18 +15,17 @@ public class Producto {
 
     @Id
     @GeneratedValue
-    private UUID id;
+        private UUID id;
 
-    // Cambiado de UUID fotoid a Foto foto
-    @OneToOne
-    @JoinColumn(name = "fotoid")
-    private Foto foto;
-    private String nombreproducto;
-    private Float preciodinero;
-    private Float preciopuntos;
-    private String descripcion;
-    private Float promocion;
-    private String disponibleconpuntos;
+        @OneToOne
+        @JoinColumn(name = "fotoid")
+        private Foto foto;
+        private String nombreproducto;
+        private Float preciodinero;
+        private Float preciopuntos;
+        private String descripcion;
+        private Float promocion;
+        private String disponibleconpuntos;
 
     // Getters & setters:
 

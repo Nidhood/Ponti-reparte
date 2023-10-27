@@ -25,5 +25,9 @@ public class ProductoService {
 
         return productoRepository.findAll();
     }
+    public Producto infoWithProducto(UUID productoId) {
 
+        Producto storedUserDetails = productoRepository.findById(productoId);
+        return storedUserDetails;
+    }
 }

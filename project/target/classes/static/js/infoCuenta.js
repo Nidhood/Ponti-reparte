@@ -131,6 +131,8 @@ function changeProfileImage(imgSrc, id) {
 
 $(document).ready(function () {
 
+  EvaluarIngresoDeSesion();
+  
   // Evento al hacer clic en el botón Cancelar
   $("#cancelar").click(function () {
     var campos = [
@@ -196,7 +198,7 @@ $(document).ready(function () {
       .then((res) => {
         console.log(res.ok);
         window.location.href =
-          "/Users/sophiaaristizabal/Documents/GitHub/Desarrollo_fundamentos/index.html";
+          "../index.html";
       })
       .catch(() => {
         console.log("error");
