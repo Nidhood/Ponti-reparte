@@ -90,7 +90,6 @@ promesaProductos
   })
   .then((data) => {
     console.log(data);
-
     //ingresarlo al local storage la lista de ids de productos
     //y hacer el proceso de ingresar las fotos
     generateProductList(data);
@@ -388,81 +387,7 @@ function generateTiendaList(data) {
 
 //PONER AQUI EL PROCESO PARA LO DEL CARRITO
 
-//ESTO SE QUITA
-function Ver() {
-  var container = $("#RadioOptions");
 
-  for (var i = 0; i < 3; i++) {
-    var tiendaBlock = `
-                        <div id="RadioOptions1">
-                              <input type="radio" id="tienda" name="TiendaSeleccion" value="C">
-                              <label id="labelt" for="B">Tienda ${i}</label>
-                        </div>
-                        `;
-
-    container.append(tiendaBlock);
-  }
-}
-//ESTO SE QUITA
-function generateTiendas(containerSelector) {
-  var container = $(containerSelector);
-
-  for (var i = 0; i < 8; i++) {
-    var tiendaBlock = `
-                          <div class="minitienda">
-                              <div class="circuloTIENDA">
-                                  <a href="#" class="tiendaLink" id="${i}">
-                                      <img class="fotominiTIENDA" src="../imagenes/LaCentral.png" alt="foto Tienda">
-                                  </a>
-                              </div>
-                              
-                              <p class="nombreminiTIENDA">
-                                La central
-                              </p>
-                          </div>
-                          `;
-
-    container.append(tiendaBlock);
-  }
-
-  container.find(".tiendaLink").on("click", function (event) {
-    event.preventDefault(); // Prevenir la acción predeterminada del enlace
-    sessionStorage.setItem("idTienda", event.currentTarget.id); // Guardar el ID de la tienda en sessionStorage
-    //ESTO SE DEBE EDITAR
-    console.log(event.currentTarget.id);
-    window.location.href = "../html/plantilla.html"; // Redirigir a la nueva página
-  });
-}
-
-//ESTO SE QUITA
-function generateProducts(containerSelector) {
-  var container = $(containerSelector);
-
-  for (var i = 0; i < 8; i++) {
-    var productBlock = `
-                              <div class="producto">
-                                  <div class="circuloproducto">
-                                      <a href="#" class="productLink" id="${i}">
-                                          <img class="fotominipRODUCTO" src="../imagenes/PRODUCTOIMG.png" alt="foto Producto">
-                                      </a>
-                                  </div>
-                                  <p class="nombreminiProducto">
-                                      torta de chocolate
-                                  </p>
-                              </div>
-                          `;
-
-    container.append(productBlock);
-  }
-
-  // Es importante hacer el evento click DESPUÉS de agregar los productos al contenedor
-  container.find(".productLink").on("click", function (event) {
-    event.preventDefault();
-    show("popup");
-    $("#cantidadProducto").val(1);
-    console.log(event.currentTarget.id);
-  });
-}
 
 //todo lo relacionado con la modificacion de la cantidad de producto
 //tambien hara la labor de main
@@ -475,10 +400,6 @@ $(document).ready(function () {
 
   //ESTO SE QUITA
   Ver();
-  //ESTO SE QUITA
-  generateProducts(".scrollBoxProducto", "popup");
-  //ESTO SE QUITA
-  generateTiendas(".scrollBoxTienda");
 
   $("#basura").on("click", function () {
     $("#cantidadProducto").val("1");
