@@ -194,7 +194,6 @@ a {
     height: 135px;
     top: 12.5%;
     overflow: hidden; 
-    z-index: 2000;
 }
 
 .fotominipRODUCTO
@@ -204,7 +203,6 @@ a {
     height: 100%;
     object-fit: cover;
     object-position: center; /* Centra la imagen */
-    z-index: 2000;
 }
 
 .nombreminiProducto
@@ -254,7 +252,7 @@ a {
     top: 2%;
     margin-top: 5px;
     height: 600px;
-    z-index: 200;
+    z-index: 20000;
     padding: 10px;
     width: 92%;
     left: 2%;
@@ -311,6 +309,7 @@ body.overlayActive {
 .scrollBoxinner {
     left: 42%;
     max-height: 425px; /* Puedes ajustar este valor según tus necesidades */
+    height: 425px;
     overflow-y: auto;
     position: relative;
     max-width: 58%; 

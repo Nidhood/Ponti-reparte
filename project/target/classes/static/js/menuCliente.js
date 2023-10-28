@@ -74,7 +74,7 @@ var hide = function (id) {
 
 //ANADIR AL CARRITO
 //aqui se hace el proceso de anadir lo pedido en memoria dependiendo del boton
-/*document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
   // Asegurarte de que el DOM esté cargado
   const BAgregarEirPagar = document.getElementById("BAgregarEirPagar"); // Selecciona el botón por su ID
   const BAgregarSeguirComprando = document.getElementById(
@@ -98,7 +98,7 @@ var hide = function (id) {
       // Obtener el pedido actual del sessionStorage
       let pedidoActual = JSON.parse(sessionStorage.getItem("pedido")) || pedido;
 
-      /* constructor(idProducto, idTienda, cantidad, precio)
+      /* constructor(idProducto, idTienda, cantidad, precio)*/
       var idproducto = sessionStorage.getItem("idproducto");
       var idtienda = $('input[name="TiendaSeleccion"]:checked').val();
       var cant = parseInt($("#cantidadProducto").val(), 10);
@@ -143,7 +143,7 @@ var hide = function (id) {
       // Obtener el pedido actual del sessionStorage
       let pedidoActual = JSON.parse(sessionStorage.getItem("pedido")) || pedido;
 
-      /* constructor(idProducto, idTienda, cantidad, precio)
+      /* constructor(idProducto, idTienda, cantidad, precio)*/
       var idproducto = sessionStorage.getItem("idproducto");
       var idtienda = $('input[name="TiendaSeleccion"]:checked').val();
       var cant = parseInt($("#cantidadProducto").val(), 10);
@@ -169,7 +169,7 @@ var hide = function (id) {
       hide("popup");
     }
   });
-});*/
+});
 
 //OBTENER LOS PRODUCTOS
 // peticion
@@ -201,16 +201,12 @@ promesaProductos
 function generateProductList(data) {
   var container = $(".scrollBoxProducto");
 
-  for (var i = 0; i < data.length; i++) {
-    console.log(data[i].id);
-    console.log(data[i].foto.foto);
+  for (var i = 0; i < 8; i++) {
     var productBlock = `
-    <a href="#" class="productLink" id="${data[i].id}">
+      <a href="#" class="productLink" id="${data[i].id}">
         <div class="producto">
             <div class="circuloproducto">
-                
-                    <img class="fotominipRODUCTO" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpvZ9eeenLIKseXfTl1ReQ6APmZi8nnJfjeJI59MUt&s" alt="foto Producto">
-           
+                    <img class="fotominipRODUCTO" src="${data[i].foto.foto}" alt="foto Producto">
             </div>
             <p class="nombreminiProducto">
                 ${data[i].nombreproducto}
@@ -228,6 +224,7 @@ function generateProductList(data) {
         event.preventDefault(); // Prevenir la acción predeterminada del enlace
         $("#cantidadProducto").val(1);
         console.log(event.currentTarget.id);
+        //show("popup");//ESTO SE QUITA
     
         //SE MANDA EL ID DEL PRODUCTO PARA QUE ME MANDEN LA INFO DE ESE PRODUCTO
         const promesaInformacionProducto = getInfoProducto(event.currentTarget.id);
@@ -238,7 +235,7 @@ function generateProductList(data) {
         promesaInformacionProducto
           .then((res) => {
             console.log(res.ok);
-            res.json();
+            return res.json();
           })
           .then((data) => {
             console.log(data);
@@ -258,7 +255,7 @@ function generateProductList(data) {
 //PONER LA INFO EN EL POPUP DEL PRODUCTO
 //se pide la informacion del producto
 async function getInfoProducto(idproducto) {
-  return await fetch("http://localhost:8080/producto/" + idproducto, {
+  return await fetch("http://localhost:8080/productos/" + idproducto, {
     headers: {
       "Content-Type": "application/json",
     },
@@ -268,26 +265,26 @@ async function getInfoProducto(idproducto) {
 //genera la informacion del producto en el pop up conforme a la info mandada
 function generateInfoProducto(data) {
   //titulo grande del producto
-  $("#tituloProducto").text(data.nombreProducto);
+  $("#tituloProducto").text(data.nombreproducto);
 
   //foto del producto
   $("#fotopRODUCTO").attr("src", data.foto.foto);
 
   //calcula el precio actual con base en si tiene promocion o no
-  const precioTot = data.PrecioDinero - data.PrecioDinero * data.Promocion;
+  const precioTot = data.preciodinero - data.preciodinero * data.promocion;
   $("#precioText").text(precioTot.toFixed(2));
 
   //si no tiene descuento no se muestra la info de promocion
-  if (data.Promocion == 0) {
+  if (data.promocion == 0) {
     $("#DescText").hide();
     $("#porcentajePopUp").hide();
     $("#DescText2").hide();
   } else {
     //si si hay
     //se muestra la promocion
-    $("#DescText2").text(data.Promocion * 100 + "%");
+    $("#DescText2").text(data.promocion * 100 + "%");
     //se muestra el precio anterior tachado
-    $("#DescText").text(data.PrecioDinero);
+    $("#DescText").text(data.preciodinero);
     $("#DescText").css("text-decoration", "line-through");
   }
 
@@ -298,7 +295,7 @@ function generateInfoProducto(data) {
   }
 
   //descripcion del producto
-  $("#textoDescrip").text(data.Descripcion);
+  $("#textoDescrip").text(data.descripcion);
 
   //ingredientes del producto
   const ingredientesList = data.ingredientes;
@@ -313,7 +310,7 @@ function generateInfoProducto(data) {
 
   var container = $("#RadioOptions");
 
-  for (var i = 0; i < tiendasList.size; i++) {
+  for (var i = 0; i < tiendasList.length; i++) {
     //mirar como saber cual tienda es
     //en este caso se mandan las tiendas donde esta disponible el producto
     //en radio se pone en value el valor que se enviara al servidor (que es el id de la tienda)
