@@ -27,6 +27,7 @@ public class Producto {
     private Float promocion;
     private String disponibleconpuntos;
 
+
     @OneToMany(mappedBy = "producto")
     private List<IngredienteProducto> ingredientes;
 

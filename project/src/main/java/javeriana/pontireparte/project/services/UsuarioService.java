@@ -2,6 +2,7 @@ package javeriana.pontireparte.project.services;
 
 import javeriana.pontireparte.project.entities.Foto;
 import javeriana.pontireparte.project.entities.Usuario;
+import javeriana.pontireparte.project.repositories.FotoRepository;
 import javeriana.pontireparte.project.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,9 +13,12 @@ import java.util.UUID;
 @Service
 
 public class UsuarioService {
+
+    private final FotoRepository fotoRepository;
     private final UsuarioRepository usuarioRepository;
     @Autowired
-    public UsuarioService(UsuarioRepository usuarioRepository) {
+    public UsuarioService(FotoRepository fotoRepository, UsuarioRepository usuarioRepository) {
+        this.fotoRepository = fotoRepository;
         this.usuarioRepository = usuarioRepository;
     }
 
@@ -24,53 +28,40 @@ public class UsuarioService {
 
     //Nuevo
     public void addNewUsuario(Usuario usuario) {
-        Foto foto = new Foto();
-
-        foto.setId(UUID.randomUUID());
-        foto.setTipofoto("Ni idea que va aca");
-        foto.setNombre("Foto Por Defecto");
-        foto.setDescripcion("No se nisiquiera para que esta este atributo");
-        foto.setFoto("https://raw.githubusercontent.com/juanzulu/Desarrollo_fundamentos/main/imagenes/predeterminado.png");
-        usuario.setFoto(foto);
-        String EstadoSesion = "Activa";
-        usuario.setEstadosesion(EstadoSesion);
-        String Disponibilidad = "??";
-        usuario.setDisponibilidad(Disponibilidad);
+        if (usuario.getFoto() == null) {
+            UUID fotoPorDefectoId = UUID.fromString("aacde9fd-2feb-44ec-82fa-9c745eb85a9f");
+            Foto fotoPorDefecto = fotoRepository.findFotoById(fotoPorDefectoId);
+            usuario.setFoto(fotoPorDefecto);
+        }
+        usuario.setEstadosesion("Conectada");
+        usuario.setDisponibilidad("Disponible");
         System.out.println(usuario);
         usuarioRepository.save(usuario);
     }
     public Usuario loginWithUsuario(Usuario usuario) {
         String TipoPorDefecto = "cliente";
         Usuario storedUserDetails = usuarioRepository.findByNombreusuario(usuario.getNombreusuario());
-        Usuario storedUserDetails2 = usuarioRepository.findByContrasena(usuario.getContrasena());
         if(storedUserDetails == null) throw new RuntimeException("Usuario No existe");
-        else
-        if(storedUserDetails2.getContrasena() == null) throw new RuntimeException("Clave incorrecta");
-        else
-        /*if(!storedUserDetails.equals(TipoPorDefecto)) throw new RuntimeException("Tipo Usuario distinto a cliente");
-        else*/
+        if(storedUserDetails.getContrasena() == null) throw new RuntimeException("Clave incorrecta");
+        if(!storedUserDetails.getTipousuario().equals("Comprador") || !storedUserDetails.getTipousuario().equals("Repartidor") ) throw new RuntimeException("Tipo usuario no disponible!");
         System.out.println(usuario);
         System.out.println("Nombre de usuario: " + storedUserDetails.getNombreusuario());
         System.out.println("Contrasena: " + storedUserDetails.getContrasena());
         System.out.println("Tipo Usuario: " + storedUserDetails.getTipousuario());
-
         return storedUserDetails;
     }
     public void updateWithID(Usuario usuario){
-
-        Usuario storedUserDetails = usuarioRepository.findById(usuario.getId());
+        Usuario storedUserDetails = usuarioRepository.findUsuarioById(usuario.getId());
         if(storedUserDetails == null) throw new RuntimeException("ID invalido");
         usuarioRepository.save(usuario);
     }
     public void deleteWithID(UUID usuarioId){
-
-        Usuario storedUserDetails = usuarioRepository.findById(usuarioId);
+        Usuario storedUserDetails = usuarioRepository.findUsuarioById(usuarioId);
         usuarioRepository.delete(storedUserDetails);
-
     }
     public Usuario infoWithUsuario(UUID usuarioId) {
 
-        Usuario storedUserDetails = usuarioRepository.findById(usuarioId);
+        Usuario storedUserDetails = usuarioRepository.findUsuarioById(usuarioId);
         return storedUserDetails;
     }
 }

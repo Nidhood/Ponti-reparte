@@ -217,6 +217,7 @@ CREATE TABLE IF NOT EXISTS productospedidos
 (
     pedidoid UUID NOT NULL,
     productoid UUID NOT NULL,
+    cantidad INT NOT NULL DEFAULT 0,
     CONSTRAINT fk_productsorders_order  FOREIGN KEY (pedidoid) REFERENCES pedidos (id) ON DELETE CASCADE,
     CONSTRAINT fk_productsorders_product  FOREIGN KEY (productoid) REFERENCES productos (id) ON DELETE CASCADE
     )
