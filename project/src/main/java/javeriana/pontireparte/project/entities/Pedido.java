@@ -1,10 +1,12 @@
 package javeriana.pontireparte.project.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javeriana.pontireparte.project.dto.ProductoDTO;
+
+import javax.persistence.*;
+import java.util.Collections;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name ="pedidos")
@@ -20,6 +22,19 @@ public class Pedido {
     private UUID ubicacionid;
     private  String tipopedido;
     private Float valortotal;
+    @OneToMany(mappedBy = "pedido")
+    private List<ProductoPedido> productos;
+
+    // Getters & setters:
+    public List<ProductoDTO> getProductos() {
+        if (productos != null) {
+            return productos.stream()
+                    .map(ProductoPedido::toDTO)
+                    .collect(Collectors.toList());
+        } else {
+            return Collections.emptyList(); // o retorna null, dependiendo de tu lógica
+        }
+    }
 
     // Getters & setters:
 

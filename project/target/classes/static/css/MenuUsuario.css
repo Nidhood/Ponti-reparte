@@ -202,14 +202,20 @@ a {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center; /* Centra la imagen */
+    left: 50%; /* Mover el elemento a la mitad de su contenedor */
+    transform: translateX(-50%); /* Desplazar el elemento a la izquierda en un 50% de su propio ancho */
+}
+
+.productLink
+{
+    text-align: center;
 }
 
 .nombreminiProducto
 {
     position: relative;
     top: 34%;
-    left: 5.5%;
+    left: 5%;
     overflow: hidden;
     color: #7B7972; 
 }
@@ -715,6 +721,16 @@ body.overlayActive {
   margin-top: 88%;
 }
 
+.minitienda {
+    padding: 0px 20px; /* Esto añade un padding (relleno) superior e inferior de 10px a cada producto */
+    display: inline-block;
+    vertical-align: top;  /* Asegura que se alineen por la parte superior */
+
+}
+.tiendaLink
+{
+    text-align: center;
+}
 .circuloTIENDA
 {   
     aspect-ratio: 1/1;
@@ -735,14 +751,14 @@ body.overlayActive {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center; /* Centra la imagen */
+    left: 50%; /* Mover el elemento a la mitad de su contenedor */
+  transform: translateX(-50%); /* Desplazar el elemento a la izquierda en un 50% de su propio ancho */
 }
 
 .nombreminiTIENDA
 {
     position: relative;
     top: 2%;
-    left: 30%;
     overflow: hidden;
     color: #7B7972; 
 }
@@ -754,7 +770,7 @@ body.overlayActive {
    overflow-y: hidden; /* Desactiva el desplazamiento vertical */
     max-width: 100%; 
     width:  100%;  /* o el valor que desees */
-    height: 200px;
+    height: 210px;
     position: absolute;
     white-space: nowrap;
  
@@ -777,12 +793,6 @@ body.overlayActive {
 /* En IE y Edge */
 .scrollBoxTienda {
     -ms-overflow-style: none;  /* Esconde la barra de desplazamiento en IE y Edge */
-}
-
-.minitienda {
-    padding: 0px 20px; /* Esto añade un padding (relleno) superior e inferior de 10px a cada producto */
-    display: inline-block;
-    vertical-align: top;  /* Asegura que se alineen por la parte superior */
 }
 
 @media screen and (max-width: 653px) 

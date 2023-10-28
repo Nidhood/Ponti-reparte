@@ -7,8 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface TiendaRepository
-        extends JpaRepository<Tienda, Integer> {
-
+public interface TiendaRepository extends JpaRepository<Tienda, Integer> {
+    Tienda findById(UUID id);
 }
 

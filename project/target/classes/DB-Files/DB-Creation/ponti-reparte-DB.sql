@@ -170,7 +170,8 @@ CREATE TABLE IF NOT EXISTS ingredientesproductos
     productoid UUID NOT NULL,
     cantidad INT NOT NULL DEFAULT 0,
     CONSTRAINT fk_ingredientsproduct_ingredient  FOREIGN KEY (ingredienteid) REFERENCES ingredientes (id) ON DELETE CASCADE,
-    CONSTRAINT fk_ingredientsproduct_producs  FOREIGN KEY (productoid) REFERENCES productos (id) ON DELETE CASCADE
+    CONSTRAINT fk_ingredientsproduct_producs  FOREIGN KEY (productoid) REFERENCES productos (id) ON DELETE CASCADE,
+    CONSTRAINT uk_ingredientesproductos UNIQUE (ingredienteid, productoid)
     )
 ;
 
@@ -182,7 +183,8 @@ CREATE TABLE IF NOT EXISTS tiendasproductos
     productoid UUID NOT NULL,
     cantidaddisponible INT NOT NULL DEFAULT 0,
     CONSTRAINT fk_storeproducts_store  FOREIGN KEY (tiendaid) REFERENCES tiendas (id) ON DELETE CASCADE,
-    CONSTRAINT fk_storeproducts_product FOREIGN KEY (productoid) REFERENCES productos (id) ON DELETE CASCADE
+    CONSTRAINT fk_storeproducts_product FOREIGN KEY (productoid) REFERENCES productos (id) ON DELETE CASCADE,
+    CONSTRAINT uk_tiendasproductos UNIQUE (tiendaid, productoid)
     )
 ;
 
@@ -215,6 +217,7 @@ CREATE TABLE IF NOT EXISTS productospedidos
 (
     pedidoid UUID NOT NULL,
     productoid UUID NOT NULL,
+    cantidad INT NOT NULL DEFAULT 0,
     CONSTRAINT fk_productsorders_order  FOREIGN KEY (pedidoid) REFERENCES pedidos (id) ON DELETE CASCADE,
     CONSTRAINT fk_productsorders_product  FOREIGN KEY (productoid) REFERENCES productos (id) ON DELETE CASCADE
     )
