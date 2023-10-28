@@ -1,3 +1,9 @@
+import { EvaluarIngresoDeSesion,asignarFoto,implementarBuscar} from './helpers/general.js';
+import { generateTiendaList,getElem, show, hide,funcionalidadBotonesProductoCarrito,generateProductList,inicializarEventosProducto} from './helpers/infoProducto.js';
+window.getElem = getElem;
+window.show = show;
+window.hide = hide;
+
 // En tu archivo principal
 class ProductosPedidos {
   constructor(idProducto, cantidad, precio, link, nombre) {
@@ -28,16 +34,16 @@ function InicializarPedido() {
 
 //evalua si el usuario puede acceder a esta pagina directaente porque
 //ya habia ingresado sesion previamente
-function EvaluarIngresoDeSesion() {
+/*function EvaluarIngresoDeSesion() {
   if (!sessionStorage.getItem("idUsuario")) {
     window.location.href = "../index.html";
   }
-}
+}*/
 
 //ESTO SE CAMBIA
 //por ahora es asi porque no tengo el servidor
 //pero siempre hay sessionStorage.getItem('fotoPerfil')
-function asignarFoto() {
+/*function asignarFoto() {
   if (sessionStorage.getItem("fotoPerfil")) {
     document.getElementById("userimg").src =
       sessionStorage.getItem("fotoPerfil");
@@ -45,25 +51,27 @@ function asignarFoto() {
     document.getElementById("userimg").src =
       "https://us.123rf.com/450wm/thesomeday123/thesomeday1231709/thesomeday123170900021/85622928-icono-de-perfil-de-avatar-predeterminado-marcador-de-posición-de-foto-gris-vectores-de.jpg";
   }
-}
+}*/
 
 //LAS SIGUIENTES FUNCIONES SE INVOCAN FUERA DEL MAIN
 
 //esto es para la barra de busqueda
 //si hay elementos escritos y se pone enter
 //se busca conforme a lo escrito
-const input = document.getElementById("barrabusqueda");
+/*const input = document.getElementById("barrabusqueda");
 input.addEventListener("keydown", function (event) {
   if (event.key === "Enter" && input.value.trim() !== "") {
     // Redireccionar a la nueva pantalla
     sessionStorage.setItem("palabrasClave", input.value);
     window.location.href = "../html/Busqueda.html";
   }
-});
+});*/
+implementarBuscar();
+
 
 //PARA HACER EL POP UP
 // Definición de funciones y variables
-var getElem = function (id) {
+/*var getElem = function (id) {
   return document.getElementById(id);
 };
 var show = function (id) {
@@ -73,15 +81,15 @@ var show = function (id) {
 var hide = function (id) {
   getElem(id).style.display = "none";
   document.body.classList.remove("overlayActive");
-};
+};*/
 
-function  AnadirProductoAPedido(cantidad)
+/*function  AnadirProductoAPedido(cantidad)
 {
 
       // Obtener el pedido actual del sessionStorage
       var pedidoActual = JSON.parse(sessionStorage.getItem("pedido")) || pedido;
 
-      /* constructor(idProducto, idTienda, cantidad, precio)*/
+      constructor(idProducto, idTienda, cantidad, precio)
       var idproducto = sessionStorage.getItem("idproducto");
       var idtienda = $('input[name="TiendaSeleccion"]:checked').val();
       var precio = parseInt($("#precioText").text(), 10);
@@ -111,11 +119,13 @@ function  AnadirProductoAPedido(cantidad)
 
       // Guardar el pedido actualizado de vuelta en el sessionStorage
       sessionStorage.setItem("pedido", JSON.stringify(pedidoActual));
-}
+}*/
+
+funcionalidadBotonesProductoCarrito();
 
 //ANADIR AL CARRITO
 //aqui se hace el proceso de anadir lo pedido en memoria dependiendo del boton
-document.addEventListener("DOMContentLoaded", function () {
+/*document.addEventListener("DOMContentLoaded", function () {
   // Asegurarte de que el DOM esté cargado
   const BAgregarEirPagar = document.getElementById("BAgregarEirPagar"); // Selecciona el botón por su ID
   const BAgregarSeguirComprando = document.getElementById("BAgregarSeguirComprando"); // Selecciona el botón por su ID
@@ -249,10 +259,10 @@ document.addEventListener("DOMContentLoaded", function () {
   IrApagar.addEventListener("click", function(event) {
     event.preventDefault();
     window.location.href = "../html/plantilla.html"; // Redirigir a la nueva página
-  });*/
+  });
 
 
-});
+});*/
 
 
 //////////////////////////////////////////////////REVISAR PROPUESTA////////////////////////////////////////////
@@ -391,6 +401,7 @@ promesaProductos
     console.log("error");
   });
 
+/*
 //se generan los productos para poner
 function generateProductList(data) {
   var container = $(".scrollBoxProducto");
@@ -442,19 +453,19 @@ function generateProductList(data) {
 
     });
   
-}
+}*/
 
 ////////////////////////////////PONER LA INFO EN EL POPUP DEL PRODUCTO/////////////////////
 //se pide la informacion del producto
-async function getInfoProducto(idproducto) {
+/*async function getInfoProducto(idproducto) {
   return await fetch("http://localhost:8080/productos/" + idproducto, {
     headers: {
       "Content-Type": "application/json",
     },
   });
 }
-
-function getCantidadPorProductoId(pedido, idProductoBuscado) {
+*/
+/*function getCantidadPorProductoId(pedido, idProductoBuscado) {
   // Busca el producto en el pedido
   const producto = pedido.productos.find(producto => producto.idProducto === idProductoBuscado);
   
@@ -594,7 +605,7 @@ function generateInfoProducto(data) {
   if (data.CantidadDisponible == 0) {
     $("#disponible").text("Agotado");
     $("#disponible").css("background-color", "#f17e7e"); // Cambia el color a rojo
-  }*/
+  }
 
   //descripcion del producto
   $("#textoDescrip").text(data.descripcion);
@@ -611,8 +622,8 @@ function generateInfoProducto(data) {
   //una lista de tiendas
   /*const tiendasList = data.tiendas;
 
-  AgregarRadioButtons(tiendasList, pedidoActual);*/
-}
+  AgregarRadioButtons(tiendasList, pedidoActual);
+}*/
 
 //PROCESO PARA OBTENER TIENDAS MINIS
 async function getTiendas() {
@@ -639,7 +650,7 @@ promesaTiendas
     console.log("error");
   });
 //generar cada tienda
-function generateTiendaList(data) {
+/*function generateTiendaList(data) {
   var container = $(".scrollBoxTienda");
   for (var i = 0; i < data.length; i++) {
     var tiendaBlock = `
@@ -669,7 +680,7 @@ function generateTiendaList(data) {
     //ESTO SE DEBE EDITAR
     window.location.href = "../html/plantilla.html"; // Redirigir a la nueva página
   });
-}
+}*/
 
 //todo lo relacionado con la modificacion de la cantidad de producto
 //tambien hara la labor de main
@@ -680,7 +691,9 @@ $(document).ready(function () {
   //asignar la foto del usuario
   asignarFoto();
 
-  $("#basura").on("click", function () {
+  inicializarEventosProducto();
+
+  /*$("#basura").on("click", function () {
     $("#cantidadProducto").val("1");
     //se obtiene la cantidad del producto
     //se obtiene el precio actual del prodcuto
@@ -758,7 +771,7 @@ $(document).ready(function () {
         "Agregar e ir a pagar " + totalPropuesto.toFixed(0)
       );
     }
-  });
+  });*/
 
   //ESTO ES PARA LA BUSQUEDA RAPIDA
   $("#promo").on("click", function () {
