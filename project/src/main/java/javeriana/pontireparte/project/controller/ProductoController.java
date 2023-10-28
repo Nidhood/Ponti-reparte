@@ -1,8 +1,10 @@
 package javeriana.pontireparte.project.controller;
+
 import javeriana.pontireparte.project.entities.Producto;
 import javeriana.pontireparte.project.services.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -19,15 +21,12 @@ public class ProductoController {
 
     @GetMapping
     public List<Producto> getProducto(){
-
         return productoService.getProducto();
     }
 
-
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Producto getInfoProducto(@PathVariable (value = "id") UUID id){
-    Producto producto = productoService.infoWithProducto(id);
-
+        Producto producto = productoService.infoWithProducto(id);
         return producto;
     }
 }

@@ -61,13 +61,22 @@ promesaInformacionPedido
 
 function generateInfoPedido(data)
 {
-  $("#NombreDomiciliario").text("El domiciliario se llama: "+data.nombre);
-  $("#NumeroTel").text("El domiciliario se llama: "+data.telefono);
+  if(data.tipo=="domicilio")
+  {
+    $("#NombreDomiciliario").text("El domiciliario se llama: "+data.nombre);
+    $("#NumeroTel").text("El domiciliario se llama: "+data.telefono);
+  }
+  //si es cogio recoger en el establecimiento
+  else
+  {
+    $("#NombreDomiciliario").text("Trámite finalizado");
+    $("#NumeroTel").text("En 30 minutos vaya al establecimiento");
+  }
 }
 
 async function main()
 {
-  EvaluarIngresoDeSesion();
+    EvaluarIngresoDeSesion();
   asignarFoto();
 }
 

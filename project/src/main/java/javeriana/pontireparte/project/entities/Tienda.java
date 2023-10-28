@@ -1,13 +1,13 @@
 package javeriana.pontireparte.project.entities;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.OneToOne;
-import  javax.persistence.JoinColumn;
+import javeriana.pontireparte.project.dto.ProductoDTO;
+
+import javax.persistence.*;
+import java.util.Collections;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name ="tiendas")
@@ -24,7 +24,19 @@ public class Tienda {
     private Foto foto;
     private String estadotienda;
 
+    @OneToMany(mappedBy = "tienda")
+    private List<TiendaProducto> productos;
+
     // Getters & setters:
+    public List<ProductoDTO> getProductos() {
+        if (productos != null) {
+            return productos.stream()
+                    .map(TiendaProducto::toDTO)
+                    .collect(Collectors.toList());
+        } else {
+            return Collections.emptyList(); // o retorna null, dependiendo de tu lógica
+        }
+    }
 
     public UUID getId() {
         return id;
@@ -66,6 +78,10 @@ public class Tienda {
         this.estadotienda = estadotienda;
     }
 
+    public void setProductos(List<TiendaProducto> productos) {
+        this.productos = productos;
+    }
+
     // ToString:
     @Override
     public String toString() {
@@ -75,6 +91,7 @@ public class Tienda {
                 ", ubicacionid=" + ubicacionid +
                 ", foto=" + foto +
                 ", estadotienda='" + estadotienda + '\'' +
+                ", productos=" + productos +
                 '}';
     }
 }

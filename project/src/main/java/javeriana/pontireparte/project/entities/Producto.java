@@ -1,12 +1,12 @@
 package javeriana.pontireparte.project.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.OneToOne;
-import  javax.persistence.JoinColumn;
+import javeriana.pontireparte.project.dto.IngredienteDTO;
+
+import javax.persistence.*;
+import java.util.Collections;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 
 @Entity
@@ -15,17 +15,30 @@ public class Producto {
 
     @Id
     @GeneratedValue
-        private UUID id;
+    private UUID id;
 
-        @OneToOne
-        @JoinColumn(name = "fotoid")
-        private Foto foto;
-        private String nombreproducto;
-        private Float preciodinero;
-        private Float preciopuntos;
-        private String descripcion;
-        private Float promocion;
-        private String disponibleconpuntos;
+    @OneToOne
+    @JoinColumn(name = "fotoid")
+    private Foto foto;
+    private String nombreproducto;
+    private Float preciodinero;
+    private Float preciopuntos;
+    private String descripcion;
+    private Float promocion;
+    private String disponibleconpuntos;
+
+    @OneToMany(mappedBy = "producto")
+    private List<IngredienteProducto> ingredientes;
+
+    public List<IngredienteDTO> getIngredientes() {
+        if (ingredientes != null) {
+            return ingredientes.stream()
+                    .map(IngredienteProducto::toDTO)
+                    .collect(Collectors.toList());
+        } else {
+            return Collections.emptyList(); // o retorna null, dependiendo de tu lógica
+        }
+    }
 
     // Getters & setters:
 
@@ -93,7 +106,10 @@ public class Producto {
         this.disponibleconpuntos = disponibleconpuntos;
     }
 
-    // ToString:
+    public void setIngredientes(List<IngredienteProducto> ingredientesProductos) {
+        this.ingredientes = ingredientesProductos;
+    }
+
     @Override
     public String toString() {
         return "Producto{" +

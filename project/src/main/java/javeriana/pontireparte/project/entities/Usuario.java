@@ -1,11 +1,6 @@
 package javeriana.pontireparte.project.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.OneToOne;
-import  javax.persistence.JoinColumn;
+import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
