@@ -27,7 +27,7 @@ public class TiendaController {
 
     @RequestMapping(value = "/limit/8", method = RequestMethod.GET)
     public List<Tienda> registerNewUsuario(){
-        return tiendaService.getTienda();
+        return tiendaService.getTodasLasTiendasConProductos();
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)

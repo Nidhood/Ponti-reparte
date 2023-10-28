@@ -29,8 +29,16 @@ public class TiendaService {
         return tiendaRepository.findAll();
     }
 
+    public List<Tienda> getTodasLasTiendasConProductos() {
+        List<Tienda> todasLasTiendas = tiendaRepository.findAll();
+        todasLasTiendas.forEach(tienda -> {
+            tienda.setProductos(mapToTiendasProducto(tiendaProductoRepository.findProductosByTiendaId(tienda.getId())));
+        });
+        return todasLasTiendas;
+    }
+
     public Tienda infoWithTienda(UUID productoId) {
-        Tienda tienda = tiendaRepository.findById(productoId);
+        Tienda tienda = tiendaRepository.findTiendaById(productoId);
         tienda.setProductos(mapToTiendasProducto(tiendaProductoRepository.findProductosByTiendaId(productoId)));
         return tienda;
     }
