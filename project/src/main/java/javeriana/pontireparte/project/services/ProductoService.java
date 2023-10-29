@@ -25,8 +25,15 @@ public class ProductoService {
     }
 
     public List<Producto> getProducto(){
-
         return productoRepository.findAll();
+    }
+
+    public List<Producto> getTodosLosProductosConIngredientes() {
+        List<Producto> todosLosProductos = productoRepository.findAll();
+        todosLosProductos.forEach(producto -> {
+            producto.setIngredientes(mapToIngredientesConCantidad(ingredienteProductoRepository.findIngredientesByProductoId(producto.getId())));
+        });
+        return todosLosProductos;
     }
 
     public Producto infoWithProducto(UUID productoId) {

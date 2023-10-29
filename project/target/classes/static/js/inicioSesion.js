@@ -5,7 +5,9 @@ async function get(nombreUsuario, contrasena, tipousuario) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-     
+      contrasena: contrasena,
+      nombreusuario: nombreUsuario,
+      tipousuario: tipousuario
     }),
   });
 }

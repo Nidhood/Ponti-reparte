@@ -21,7 +21,7 @@ public class ProductoController {
 
     @GetMapping
     public List<Producto> getProducto(){
-        return productoService.getProducto();
+        return productoService.getTodosLosProductosConIngredientes();
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
