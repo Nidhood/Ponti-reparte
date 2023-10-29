@@ -17,6 +17,7 @@ javeriana/pontireparte/project/services/UsuarioService.class
 javeriana/pontireparte/project/entities/Producto.class
 javeriana/pontireparte/project/entities/InformacionPago.class
 javeriana/pontireparte/project/entities/Ingrediente.class
+javeriana/pontireparte/project/controllers/BuscarController.class
 javeriana/pontireparte/project/exceptions/NotFoundUserException.class
 javeriana/pontireparte/project/entities/IngredienteProducto.class
 javeriana/pontireparte/project/repositories/TiendaRepository.class

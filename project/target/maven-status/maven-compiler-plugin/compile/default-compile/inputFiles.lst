@@ -13,6 +13,7 @@
 /Users/nidhood/Desktop/Proyecto-local/SIU/Ponti-reparte/project/src/main/java/javeriana/pontireparte/project/entities/Usuario.java
 /Users/nidhood/Desktop/Proyecto-local/SIU/Ponti-reparte/project/src/main/java/javeriana/pontireparte/project/dto/PedidoRequestDTO.java
 /Users/nidhood/Desktop/Proyecto-local/SIU/Ponti-reparte/project/src/main/java/javeriana/pontireparte/project/repositories/TiendaRepository.java
+/Users/nidhood/Desktop/Proyecto-local/SIU/Ponti-reparte/project/src/main/java/javeriana/pontireparte/project/controllers/BuscarController.java
 /Users/nidhood/Desktop/Proyecto-local/SIU/Ponti-reparte/project/src/main/java/javeriana/pontireparte/project/services/UsuarioService.java
 /Users/nidhood/Desktop/Proyecto-local/SIU/Ponti-reparte/project/src/main/java/javeriana/pontireparte/project/entities/InformacionPago.java
 /Users/nidhood/Desktop/Proyecto-local/SIU/Ponti-reparte/project/src/main/java/javeriana/pontireparte/project/entities/Ingrediente.java

@@ -56,4 +56,12 @@ public class TiendaService {
                 })
                 .collect(Collectors.toList());
     }
+
+    public List<Tienda> buscarTiendasPorPalabraClave(String palabraclave) {
+        List<Tienda> productosEncontrados = tiendaRepository.findByKeyword(palabraclave);
+        productosEncontrados.forEach(tienda -> {
+            tienda.setProductos(mapToTiendasProducto(tiendaProductoRepository.findProductosByTiendaId(tienda.getId())));
+        });
+        return productosEncontrados;
+    }
 }

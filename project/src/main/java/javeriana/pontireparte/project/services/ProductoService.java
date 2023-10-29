@@ -37,7 +37,7 @@ public class ProductoService {
     }
 
     public Producto infoWithProducto(UUID productoId) {
-        Producto producto = productoRepository.findById(productoId);
+        Producto producto = productoRepository.findProductoById(productoId);
         producto.setIngredientes(ProductoService.mapToIngredientesConCantidad(ingredienteProductoRepository.findIngredientesByProductoId(productoId)));
         return producto;
     }
@@ -53,5 +53,13 @@ public class ProductoService {
                     return ingredienteProducto;
                 })
                 .collect(Collectors.toList());
+    }
+
+    public List<Producto> buscarProductosPorPalabraClave(String palabraclave) {
+        List<Producto> productosEncontrados = productoRepository.findByKeyword(palabraclave);
+        productosEncontrados.forEach(producto -> {
+            producto.setIngredientes(mapToIngredientesConCantidad(ingredienteProductoRepository.findIngredientesByProductoId(producto.getId())));
+        });
+        return productosEncontrados;
     }
 }
