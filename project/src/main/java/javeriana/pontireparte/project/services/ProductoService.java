@@ -56,10 +56,19 @@ public class ProductoService {
     }
 
     public List<Producto> buscarProductosPorPalabraClave(String palabraclave) {
-        List<Producto> productosEncontrados = productoRepository.findByKeyword(palabraclave);
-        productosEncontrados.forEach(producto -> {
-            producto.setIngredientes(mapToIngredientesConCantidad(ingredienteProductoRepository.findIngredientesByProductoId(producto.getId())));
-        });
-        return productosEncontrados;
+        if(palabraclave.equalsIgnoreCase("promociones")){
+            System.out.println("entro a promociones");
+            List<Producto> productosEncontrados = productoRepository.findByKeywordByPromocion(palabraclave);
+            productosEncontrados.forEach(producto -> {
+                producto.setIngredientes(mapToIngredientesConCantidad(ingredienteProductoRepository.findIngredientesByProductoId(producto.getId())));
+            });
+            return productosEncontrados;
+        } else {
+            List<Producto> productosEncontrados = productoRepository.findByKeyword(palabraclave);
+            productosEncontrados.forEach(producto -> {
+                producto.setIngredientes(mapToIngredientesConCantidad(ingredienteProductoRepository.findIngredientesByProductoId(producto.getId())));
+            });
+            return productosEncontrados;
+        }
     }
 }

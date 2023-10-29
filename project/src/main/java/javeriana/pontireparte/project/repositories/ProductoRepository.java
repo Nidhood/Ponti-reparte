@@ -15,5 +15,8 @@ public interface ProductoRepository extends JpaRepository<Producto, UUID> {
 
     @Query("SELECT p FROM Producto p WHERE LOWER(p.nombreproducto) LIKE %:palabraclave%")
     List<Producto> findByKeyword(@Param("palabraclave") String palabraclave);
+
+    @Query("SELECT p FROM Producto p WHERE  p.promocion > 0.0")
+    List<Producto> findByKeywordByPromocion(@Param("palabraclave") String palabraclave);
 }
 

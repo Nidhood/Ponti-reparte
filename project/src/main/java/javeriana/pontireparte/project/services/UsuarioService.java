@@ -43,7 +43,7 @@ public class UsuarioService {
         Usuario storedUserDetails = usuarioRepository.findByNombreusuario(usuario.getNombreusuario());
         if(storedUserDetails == null) throw new RuntimeException("Usuario No existe");
         if(storedUserDetails.getContrasena() == null) throw new RuntimeException("Clave incorrecta");
-        if(!storedUserDetails.getTipousuario().equals("Comprador") || !storedUserDetails.getTipousuario().equals("Repartidor") ) throw new RuntimeException("Tipo usuario no disponible!");
+        if(!storedUserDetails.getTipousuario().equals("Comprador") && !storedUserDetails.getTipousuario().equals("Repartidor") ) throw new RuntimeException("Tipo usuario no disponible!");
         System.out.println(usuario);
         System.out.println("Nombre de usuario: " + storedUserDetails.getNombreusuario());
         System.out.println("Contrasena: " + storedUserDetails.getContrasena());
