@@ -1,5 +1,5 @@
 import { EvaluarIngresoDeSesion,asignarFoto,implementarBuscar} from './helpers/general.js';
-import { generateTiendaList,getElem, show, hide,funcionalidadBotonesProductoCarrito,generateProductList,inicializarEventosProducto} from './helpers/infoProducto.js';
+import { generateTiendaList,getElem, show, hide,funcionalidadBotonesProductoCarrito,generateProductListBuscador,inicializarEventosProducto} from './helpers/infoProducto.js';
 window.getElem = getElem;
 window.show = show;
 window.hide = hide;
@@ -22,14 +22,13 @@ var promesaProductos = getProductos()
 
 promesaProductos
   .then((res) => {
-    console.log(res+"hola");
     return res.json(); 
   })
   .then((data) => {
     console.log(data);
     //ingresarlo al local storage la lista de ids de productos
     //y hacer el proceso de ingresar las fotos
-    generateProductList(data);
+    generateProductListBuscador(data);
   })
   .catch(() => {
     console.log("error");

@@ -148,69 +148,127 @@ position: absolute;
   font-size: x-small;
 }
 
+
+#idJText,#NUText,#CText,#NText,#AText,#TelText,#CorreroText
+{
+  font-weight: bold;
+  position: absolute;
+  font-size: calc(1em - 3px);
+}
+
+.divSecciones
+{
+  position: absolute;
+  display: flex;
+  flex-direction: column; 
+  white-space: nowrap;
+}
+
+#divID
+{
+  position: absolute;
+  top: 240px;
+  left: 23%; /* Mover el elemento a la mitad de su contenedor */
+  transform: translateX(-50%);
+}
+
 #ID
 {
+  top: 35px;
   position: absolute;
-  top: 270px;
   width: 210px;
-  left: 50%; /* Mover el elemento a la mitad de su contenedor */
-  transform: translateX(-155%);
 }
 
-#Nombreusuario
+#divNOMBRE
 {
   position: absolute;
-  top: 270px;
-  width: 210px;
-  left: 50%; /* Mover el elemento a la mitad de su contenedor */
-  transform: translateX(30%);
-  background-color: transparent;
-}
-
-#contrasena
-{
-  position: absolute;
-  top: 330px;
-  width: 210px;
-  left: 50%; /* Mover el elemento a la mitad de su contenedor */
-  transform: translateX(-155%);
-}
-
-#correo
-{
-  position: absolute;
-  top: 330px;
-  width: 210px;
-  left: 50%; /* Mover el elemento a la mitad de su contenedor */
-  transform: translateX(30%);
-  background-color: transparent;
+  top: 240px;
+  left: 55%; /* Mover el elemento a la mitad de su contenedor */
+  transform: translateX(-50%);
 }
 
 #nombre
 {
+  top: 35px;
   position: absolute;
-  top: 390px;
   width: 210px;
-  left: 50%; /* Mover el elemento a la mitad de su contenedor */
-  transform: translateX(-155%);
+  background-color: transparent;
+}
+
+#divNU
+{
+  position: absolute;
+  top: 300px;
+  left: 23%; /* Mover el elemento a la mitad de su contenedor */
+  transform: translateX(-50%);
+}
+
+#Nombreusuario
+{
+  top: 35px;
+  position: absolute;
+  width: 210px;
+}
+
+#divAPELLIDO
+{
+  position: absolute;
+  top: 300px;
+  left: 55%; /* Mover el elemento a la mitad de su contenedor */
+  transform: translateX(-50%);
 }
 
 #apellido
 {
+  top: 35px;
   position: absolute;
-  top: 390px;
   width: 210px;
-  left: 50%; /* Mover el elemento a la mitad de su contenedor */
-  transform: translateX(30%);
+  background-color: transparent;
+}
+
+#divCONTRASENA
+{
+  position: absolute;
+  top: 360px;
+  left: 23%; /* Mover el elemento a la mitad de su contenedor */
+  transform: translateX(-50%);
+}
+
+#contrasena
+{
+  top: 35px;
+  position: absolute;
+  width: 210px;
+}
+
+#divCORREO
+{
+  position: absolute;
+  top: 360px;
+  left: 55%; /* Mover el elemento a la mitad de su contenedor */
+  transform: translateX(-50%);
+}
+
+#correo
+{
+  top: 35px;
+  position: absolute;
+  width: 210px;
+}
+
+#divTELEFONO
+{
+  position: absolute;
+  top: 420px;
+  left: 23%; /* Mover el elemento a la mitad de su contenedor */
+  transform: translateX(-50%);
 }
 
 #telefono
 {
+  top: 35px;
   position: absolute;
-  top: 450px;
   width: 210px;
-  left: 50%; /* Mover el elemento a la mitad de su contenedor */
-  transform: translateX(-155%);
 }
 
 #fecha
