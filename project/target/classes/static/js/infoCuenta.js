@@ -78,7 +78,8 @@ function initializeSessionStorage() {
 //para editar la informacion del usuario
 async function postInfoUsuario(
   inputNombreusuario,
-  inputfoto,
+  inputfotoNombre,
+  inputLink,
   inputnombre,
   inputapellido,
   inputtelefono
@@ -95,7 +96,10 @@ async function postInfoUsuario(
       nombre: inputnombre,
       apellido: inputapellido,
       telefono: inputtelefono,
-      foto: inputfoto
+      foto: {
+         nombre: inputfotoNombre,
+         foto: inputLink
+      }
     }),
   });
 }
@@ -117,8 +121,10 @@ async function EliminarUsuario() {
 
 //esta funcion cambia la foto de perfil seleccionada
 //esta funcion se invoca desde el html
-function changeProfileImage(imgSrc, id) {
+function changeProfileImage(imgSrc, id, alt) {
   document.getElementById("foto").src = imgSrc;
+  document.getElementById("foto").alt= alt;
+
 
   var element = document.getElementById(id);
   if (element) {
@@ -147,6 +153,7 @@ $(document).ready(function () {
     });
 
     document.getElementById("foto").src = sessionStorage.getItem("fotoPerfil");
+
   });
 
   //mostrar notificacion
@@ -215,6 +222,7 @@ $(document).ready(function () {
       var isValid = true;
       var inputNombreusuario = $("#Nombreusuario").val().trim();
       var imgSrc = document.getElementById("foto").getAttribute("src");
+      var altNombreBDD = document.getElementById("foto").getAttribute("alt");
       var inputtelefono = $("#telefono").val().trim();
 
       if (inputNombreusuario === "") {
@@ -234,6 +242,7 @@ $(document).ready(function () {
       if (isValid) {
         const promesaUpdateInformacionUsuario = postInfoUsuario(
           inputNombreusuario,
+          altNombreBDD,
           imgSrc,
           $("#nombre").val().trim(),
           $("#apellido").val().trim(),
