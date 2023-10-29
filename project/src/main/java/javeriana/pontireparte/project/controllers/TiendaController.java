@@ -22,7 +22,7 @@ public class TiendaController {
 
     @GetMapping
     public List<Tienda> getTienda(){
-        return tiendaService.getTienda();
+        return tiendaService.getTodasLasTiendasConProductos();
     }
 
     @RequestMapping(value = "/limit/8", method = RequestMethod.GET)

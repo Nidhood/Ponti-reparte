@@ -615,7 +615,6 @@ body.overlayActive {
     justify-content: center;
     align-items: center;
     text-align: center; /* Esto asegura que el texto esté centrado si hay algún comportamiento no deseado */
-
 }
 
 #equismenu
