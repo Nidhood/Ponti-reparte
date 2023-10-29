@@ -9,6 +9,7 @@ javeriana/pontireparte/project/dto/IngredienteDTO.class
 javeriana/pontireparte/project/exceptions/NotFoundProductException.class
 javeriana/pontireparte/project/services/UbicacionService.class
 javeriana/pontireparte/project/dto/PedidoRequestDTO.class
+javeriana/pontireparte/project/entities/EstadoPedido.class
 javeriana/pontireparte/project/PontireparteApplication.class
 javeriana/pontireparte/project/services/TiendaService.class
 javeriana/pontireparte/project/dto/ProductoDTO.class

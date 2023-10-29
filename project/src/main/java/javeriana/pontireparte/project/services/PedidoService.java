@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class PedidoService {
@@ -26,13 +27,17 @@ public class PedidoService {
         this.ubicacionRepository = ubicacionRepository;
     }
 
+    public Pedido infoWithPedido(UUID pedidoId) {
+        return pedidoRepository.findPedidoById(pedidoId);
+    }
+
     @Transactional
     public void insertarPedido(PedidoRequestDTO pedidoRequestDTO) {
         Pedido pedido = new Pedido();
 
         // Configurar atributos del pedido
-        pedido.setCompradorid(pedidoRequestDTO.getCompradorId());
-        pedido.setTiendaid(pedidoRequestDTO.getTiendaId());
+        // pedido.setCompradorid(pedidoRequestDTO.getCompradorId());
+        // pedido.setTiendaid(pedidoRequestDTO.getTiendaId());
         pedido.setTipopedido(pedidoRequestDTO.getTipoPedido());
         pedido.setValortotal(pedidoRequestDTO.getValorTotal());
         // Otros atributos...
@@ -40,7 +45,7 @@ public class PedidoService {
         // Configurar ubicación
         // Suponiendo que tienes un método para buscar la ubicación por ID
         Ubicacion ubicacion = ubicacionRepository.findUbicacionById(pedidoRequestDTO.getUbicacionId());
-        pedido.setUbicacionid(ubicacion.getId());
+        // pedido.setUbicacionid(ubicacion.getId());
 
         // Configurar productos
         List<ProductoDTO> productosDTO = pedidoRequestDTO.getProductos();

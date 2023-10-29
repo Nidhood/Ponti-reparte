@@ -18,6 +18,7 @@
 /Users/nidhood/Desktop/Proyecto-local/SIU/Ponti-reparte/project/src/main/java/javeriana/pontireparte/project/entities/InformacionPago.java
 /Users/nidhood/Desktop/Proyecto-local/SIU/Ponti-reparte/project/src/main/java/javeriana/pontireparte/project/entities/Ingrediente.java
 /Users/nidhood/Desktop/Proyecto-local/SIU/Ponti-reparte/project/src/main/java/javeriana/pontireparte/project/services/UbicacionService.java
+/Users/nidhood/Desktop/Proyecto-local/SIU/Ponti-reparte/project/src/main/java/javeriana/pontireparte/project/entities/EstadoPedido.java
 /Users/nidhood/Desktop/Proyecto-local/SIU/Ponti-reparte/project/src/main/java/javeriana/pontireparte/project/entities/ProductoPedido.java
 /Users/nidhood/Desktop/Proyecto-local/SIU/Ponti-reparte/project/src/main/java/javeriana/pontireparte/project/repositories/UbicacionRepository.java
 /Users/nidhood/Desktop/Proyecto-local/SIU/Ponti-reparte/project/src/main/java/javeriana/pontireparte/project/services/ProductoService.java

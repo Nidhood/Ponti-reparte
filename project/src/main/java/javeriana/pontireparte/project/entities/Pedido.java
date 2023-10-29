@@ -15,11 +15,26 @@ public class Pedido {
     @GeneratedValue
     private UUID id;
     private  String numeropedido;
-    private UUID compradorid;
-    private UUID repartidorid;
-    private UUID tiendaid;
-    private UUID estadopedidoid;
-    private UUID ubicacionid;
+
+    @OneToOne
+    @JoinColumn(name = "compradorid")
+    private Usuario compradorid;
+
+    @OneToOne
+    @JoinColumn(name = "repartidorid")
+    private Usuario repartidorid;
+
+    @OneToOne
+    @JoinColumn(name = "tiendaid")
+    private Tienda tiendaid;
+
+    @OneToOne
+    @JoinColumn(name = "estadopedidoid")
+    private EstadoPedido estadopedidoid;
+
+    @OneToOne
+    @JoinColumn(name = "ubicacionid")
+    private Ubicacion ubicacionid;
     private  String tipopedido;
     private Float valortotal;
     @OneToMany(mappedBy = "pedido")
@@ -54,44 +69,48 @@ public class Pedido {
         this.numeropedido = numeropedido;
     }
 
-    public UUID getCompradorid() {
+    public Usuario getCompradorid() {
         return compradorid;
     }
 
-    public void setCompradorid(UUID compradorid) {
+    public void setCompradorid(Usuario compradorid) {
         this.compradorid = compradorid;
     }
 
-    public UUID getRepartidorid() {
+    public Usuario getRepartidorid() {
         return repartidorid;
     }
 
-    public void setRepartidorid(UUID repartidorid) {
+    public void setRepartidorid(Usuario repartidorid) {
         this.repartidorid = repartidorid;
     }
 
-    public UUID getTiendaid() {
+    public Tienda getTiendaid() {
         return tiendaid;
     }
 
-    public void setTiendaid(UUID tiendaid) {
+    public void setTiendaid(Tienda tiendaid) {
         this.tiendaid = tiendaid;
     }
 
-    public UUID getEstadopedidoid() {
+    public EstadoPedido getEstadopedidoid() {
         return estadopedidoid;
     }
 
-    public void setEstadopedidoid(UUID estadopedidoid) {
+    public void setEstadopedidoid(EstadoPedido estadopedidoid) {
         this.estadopedidoid = estadopedidoid;
     }
 
-    public UUID getUbicacionid() {
+    public Ubicacion getUbicacionid() {
         return ubicacionid;
     }
 
-    public void setUbicacionid(UUID ubicacionid) {
+    public void setUbicacionid(Ubicacion ubicacionid) {
         this.ubicacionid = ubicacionid;
+    }
+
+    public void setProductos(List<ProductoPedido> productos) {
+        this.productos = productos;
     }
 
     public String getTipopedido() {
