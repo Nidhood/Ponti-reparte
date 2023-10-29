@@ -34,4 +34,9 @@ public class BuscarController {
         List<Tienda> tiendasEncontradas = tiendaService.buscarTiendasPorPalabraClave(palabraclave);
         return tiendasEncontradas;
     }
+
+    @GetMapping("/tiendas")
+    public List<Tienda> getTienda(){
+        return tiendaService.getTodasLasTiendasConProductos();
+    }
 }
