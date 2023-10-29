@@ -147,6 +147,7 @@ $(document).ready(function () {
     });
 
     document.getElementById("foto").src = sessionStorage.getItem("fotoPerfil");
+    
   });
 
   //mostrar notificacion
