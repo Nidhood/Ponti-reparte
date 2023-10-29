@@ -144,8 +144,7 @@ $(document).ready(function () {
       promesa
         .then((res) => {
           if (res.ok) {
-            $(".msg").text("Cuenta creada satisfactoriamente");
-            showAlert();
+            window.location.href = "../index.html";
           } else {
             $(".msg").text(`Existe un error en la información`);
             showAlert();
