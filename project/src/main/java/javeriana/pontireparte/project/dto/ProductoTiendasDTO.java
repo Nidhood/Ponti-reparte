@@ -15,6 +15,8 @@ public class ProductoTiendasDTO {
     private String disponibleconpuntos;
     private  List<TiendaDTO> tiendas;
 
+    private List<IngredienteDTO> ingredientes;
+
     // Gettter & Setters:
 
 
@@ -88,5 +90,13 @@ public class ProductoTiendasDTO {
 
     public void setTiendas(List<TiendaDTO> tiendas) {
         this.tiendas = tiendas;
+    }
+
+    public List<IngredienteDTO> getIngredientes() {
+        return ingredientes;
+    }
+
+    public void setIngredientes(List<IngredienteDTO> ingredientes) {
+        this.ingredientes = ingredientes;
     }
 }

@@ -94,6 +94,7 @@ function  evaluarItemsAnadir(cantidad, tipo, event)
   } 
   else if($('input[name="TiendaSeleccion"]:checked').length==0)
   {
+    //console.log("Número de botones de radio seleccionados:", $('input[name="TiendaSeleccion"]:checked').length);
     alert("Por favor, selecciona una tienda");
     event.preventDefault(); // Evita que se ejecute cualquier otro comportamiento del botón. 
   }
@@ -134,15 +135,20 @@ function  evaluarItemsAnadir(cantidad, tipo, event)
       window.location.href = "../html/pago.html";
     }
   }
+  else
+  {
+    alert("La tienda no tiene la cantidad de productos que pide");
+    event.preventDefault(); // Evita que se ejecute cualquier otro comportamiento del botón. 
+  }
 }
 
 
 function evalCantidad(cantUsuario)
 {
-  var nameValue = $('input[name^="TiendaSeleccion"]:checked').attr('name');
+  var nameValue = $('input[name="TiendaSeleccion"]:checked').attr('id');
   // Separar el valor obtenido usando el caracter '-' y obtener la cantidad
   var cantidadTienda = nameValue.split('-')[1];
-
+  
   if(cantUsuario<=parseInt(cantidadTienda))
   {
     return true;
@@ -153,7 +159,7 @@ function evalCantidad(cantUsuario)
 
 
 async function getInfoProducto(idproducto) {
-    return await fetch("http://localhost:8080/productos/" + idproducto, {
+    return await fetch("http://localhost:8080/productos/" + idproducto+"/tiendas", {
       headers: {
         "Content-Type": "application/json",
       },
@@ -184,7 +190,6 @@ export function generateProductList(data) {
             
               event.preventDefault(); // Prevenir la acción predeterminada del enlace
               console.log(event.currentTarget.id);
-              show("popup");//ESTO SE QUITA
           
               //SE MANDA EL ID DEL PRODUCTO PARA QUE ME MANDEN LA INFO DE ESE PRODUCTO
               const promesaInformacionProducto = getInfoProducto(event.currentTarget.id);
@@ -199,9 +204,8 @@ export function generateProductList(data) {
                 })
                 .then((data) => {
                   console.log(data);
-                  show("popup");
                   generateInfoProducto(data);
-          
+                  show("popup");
                 })
                 .catch(() => {
                   console.log("errorrrr");
@@ -227,7 +231,10 @@ export function getCantidadPorProductoId(pedido, idProductoBuscado) {
       
       function AgregarRadioButtons(tiendasList,pedidoActual)
       {
+
         var container = $("#RadioOptions");
+        container.empty();
+
       
         for (var i = 0; i < tiendasList.length; i++) {
           //mirar como saber cual tienda es
@@ -239,7 +246,7 @@ export function getCantidadPorProductoId(pedido, idProductoBuscado) {
           {
             var tiendaBlock = `
             <div id="RadioOptions1">
-                <input type="radio" class="tienda" id="tienda${tiendasList[i].id}" name="TiendaSeleccion-${tiendasList[i].cantidad}" value="${tiendasList[i].id}">
+                <input type="radio" class="tienda" id="tienda-${tiendasList[i].cantidad}" name="TiendaSeleccion" value="${tiendasList[i].id}">
                 <label id="labelt" for="tienda${tiendasList[i].id}">${tiendasList[i].nombreTienda}</label>
             </div>
             `;
@@ -251,7 +258,7 @@ export function getCantidadPorProductoId(pedido, idProductoBuscado) {
             {
               var tiendaBlock = `
               <div id="RadioOptions1">
-                    <input type="radio" class="tienda" id="tienda${tiendasList[i].id}" name="TiendaSeleccion-${tiendasList[i].cantidad}" value="${tiendasList[i].id}">
+                    <input type="radio" class="tienda" id="tienda-${tiendasList[i].cantidad}" name="TiendaSeleccion" value="${tiendasList[i].id}">
                     <label id="labelt" for="tienda${tiendasList[i].id}">${tiendasList[i].nombreTienda}</label>
               </div>
               `;
@@ -260,13 +267,12 @@ export function getCantidadPorProductoId(pedido, idProductoBuscado) {
             {
               var tiendaBlock = `
               <div id="RadioOptions1">
-                    <input type="radio" class="tienda" id="tienda${tiendasList[i].id}" name="TiendaSeleccion-${tiendasList[i].cantidad}" value="${tiendasList[i].id}" disabled>
+                    <input type="radio" class="tienda" id="tienda-${tiendasList[i].cantidad}" name="TiendaSeleccion" value="${tiendasList[i].id}" disabled>
                     <label id="labelt" for="tienda${tiendasList[i].id}">${tiendasList[i].nombreTienda}</label>
               </div>
               `;
             }
           }
-          //REVISAR
           container.append(tiendaBlock);
         }
       }
@@ -325,7 +331,7 @@ export function generateInfoProducto(data) {
         $("#tituloProducto").text(data.nombreproducto);
       
         //foto del producto
-        $("#fotopRODUCTO").attr("src", data.foto.foto);
+        $("#fotopRODUCTO").attr("src", data.foto);
       
         //calcula el precio actual con base en si tiene promocion o no
         const precioTot = data.preciodinero - data.preciodinero * data.promocion;
@@ -345,22 +351,24 @@ export function generateInfoProducto(data) {
           //se muestra el precio anterior tachado
           $("#DescText").text(data.preciodinero);
           $("#DescText").css("text-decoration", "line-through");
+          $("#DescText").show();
+          $("#porcentajePopUp").show();
+          $("#DescText2").show();
         }
-      
 
-        var totalCantidad = dataTiendas.reduce((sum, tiend) => sum + tiend.cantidad, 0);
-        if (totalCantidad == 0) {
+        var totalCantidad = data.tiendas.reduce((sum, tiend) => sum + tiend.cantidad, 0);
+        if (totalCantidad == 0 || data.tiendas.length==0) {
           $("#disponible").text("Agotado");
           $("#disponible").css("background-color", "#f17e7e"); // Cambia el color a rojo
         }
       
         //descripcion del producto
         $("#textoDescrip").text(data.descripcion);
-       
         
         //ingredientes del producto
         const ingredientesList = data.ingredientes;
       
+       
         //como es en una lista se concatenen con comas
        // Extraer solo el atributo nombreIngrediente de cada objeto y luego hacer join
        var ingredientesText = ingredientesList.map(ing => ing.nombreIngrediente).join(", ");
@@ -488,56 +496,3 @@ export function inicializarEventosProducto() {
   
   }
   
-
-  export function generateProductListBuscador(data) {
-  var container = $(".scrollBoxProducto");
-
-  for (var i = 0; i < data.length; i++) {
-    var productBlock = `
-      <a href="#" class="productLink" id="${data[i].id}">
-        <div class="producto">
-            <div class="circuloproducto">
-                    <img class="fotominipRODUCTO" src="${data[i].foto.foto}" alt="foto Producto">
-            </div>
-            <p class="nombreminiProducto">
-                ${data[i].nombreproducto}
-            </p>
-        </div>
-        </a>
-    `;
-    
-    container.append(productBlock);
-  }
-  // Es importante hacer el evento click DESPUÉS de agregar los productos al contenedor
-  container.find(".productLink").on("click", function (event) {
-      
-        event.preventDefault(); // Prevenir la acción predeterminada del enlace
-        console.log(event.currentTarget.id);
-        show("popup");//ESTO SE QUITA
-    
-        //SE MANDA EL ID DEL PRODUCTO PARA QUE ME MANDEN LA INFO DE ESE PRODUCTO
-        const promesaInformacionProducto = getInfoProducto(event.currentTarget.id);
-    
-        //guardar el id del producto para usarlo despues//
-        sessionStorage.setItem("idproducto", event.currentTarget.id);
-    
-        promesaInformacionProducto
-          .then((res) => {
-            console.log(res.ok);
-            return res.json();
-          })
-          .then((data) => {
-
-            
-              console.log(data);
-              show("popup");
-              generateInfoProducto(data);
-    
-          })
-          .catch(() => {
-            console.log("errorrrr");
-          });
-
-    });
-  
-}

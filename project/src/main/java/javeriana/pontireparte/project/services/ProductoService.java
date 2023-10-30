@@ -1,5 +1,6 @@
 package javeriana.pontireparte.project.services;
 
+import javeriana.pontireparte.project.dto.IngredienteDTO;
 import javeriana.pontireparte.project.dto.ProductoTiendasDTO;
 import javeriana.pontireparte.project.dto.TiendaDTO;
 import javeriana.pontireparte.project.entities.*;
@@ -58,6 +59,17 @@ public class ProductoService {
                 .collect(Collectors.toList());
     }
 
+    public static List<IngredienteDTO> mapToIngredientes(List<Object[]> ingredientesConCantidad) {
+        return ingredientesConCantidad.stream()
+                .map(obj -> {
+                    IngredienteDTO ingredienteDTO = new IngredienteDTO();
+                    ingredienteDTO.setNombreIngrediente((String) obj[0]);
+                    ingredienteDTO.setCantidad((int) obj[1]);
+                    return ingredienteDTO;
+                })
+                .collect(Collectors.toList());
+    }
+
     public List<Producto> buscarProductosPorPalabraClave(String palabraclave) {
         if(palabraclave.equalsIgnoreCase("promociones")){
             System.out.println("entro a promociones");
@@ -89,7 +101,6 @@ public class ProductoService {
                 .collect(Collectors.toList());
     }
 
-
     public ProductoTiendasDTO getTiendasPorProducto(UUID productoId) {
         Producto producto = productoRepository.findProductoById(productoId);
         ProductoTiendasDTO productoTiendasDTO = new ProductoTiendasDTO();
@@ -101,6 +112,7 @@ public class ProductoService {
         productoTiendasDTO.setDescripcion(producto.getDescripcion());
         productoTiendasDTO.setPromocion(producto.getPromocion());
         productoTiendasDTO.setTiendas(mapToProductosTiendas(tiendaProductoRepository.findTiendasByProductoId(productoId)));
+        productoTiendasDTO.setIngredientes(mapToIngredientes(ingredienteProductoRepository.findIngredientesByProductoId(productoId)));
         return productoTiendasDTO;
     }
 }
