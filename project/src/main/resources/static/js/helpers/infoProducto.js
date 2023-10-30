@@ -366,14 +366,14 @@ export function generateInfoProducto(data) {
         $("#textoDescrip").text(data.descripcion);
         
         //ingredientes del producto
-        //const ingredientesList = data.ingredientes;
+        const ingredientesList = data.ingredientes;
       
        
         //como es en una lista se concatenen con comas
        // Extraer solo el atributo nombreIngrediente de cada objeto y luego hacer join
-       //var ingredientesText = ingredientesList.map(ing => ing.nombreIngrediente).join(", ");
+       var ingredientesText = ingredientesList.map(ing => ing.nombreIngrediente).join(", ");
       
-        //$("#textoIngred").text(ingredientesText);
+        $("#textoIngred").text(ingredientesText);
       
         //una lista de tiendas
         var listaTiendas=data.tiendas;
