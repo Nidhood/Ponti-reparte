@@ -35,12 +35,9 @@ export function  AnadirProductoAPedido(cantidad)
 
       // Actualizar el total (por ejemplo, sumando la cantidad * precio del nuevo producto)
       pedidoActual.total += nuevoProducto.cantidad * nuevoProducto.precio;
-
-      console.log(pedidoActual.total+"VER")
       
       //OJO ESTO SE CAMBIA
-      //pedidoActual.idTienda=idtienda;
-      pedidoActual.idTienda=1;
+      pedidoActual.idTienda=idtienda;
 
       // Guardar el pedido actualizado de vuelta en el sessionStorage
       sessionStorage.setItem("pedido", JSON.stringify(pedidoActual));
@@ -73,38 +70,7 @@ export function funcionalidadBotonesProductoCarrito()
         //se debe anadir la info a la memoria e ir a la pantalla de realizar compra
         BAgregarEirPagar.addEventListener("click", function (event) {
           var cantidad = cantidadInput.value;
-      
-          if (isNaN(cantidad) || cantidad.trim() === "") {
-            alert("Por favor, introduce un número válido en la cantidad.");
-            event.preventDefault(); // Evita que se ejecute cualquier otro comportamiento del botón.
-          } else {
-            //se hace el proceso de guardar el info del pedido
-            //se anade el producto con su informacion de id cantidad y precio
-            //se suma guarda el valor total
-            const pedidoActual = JSON.parse(sessionStorage.getItem("pedido"));
-      
-            // Supongamos que quieres cambiar la cantidad del producto con un ID específico
-            const idProductoEspecifico = sessionStorage.getItem("idproducto");
-      
-            // Busca el producto en la lista de productos
-            const producto = pedidoActual.productos.find(p => p.idProducto === idProductoEspecifico);
-      
-            if(producto)
-            {
-               pedidoActual.total-=producto.precio*parseInt(producto.cantidad);
-               producto.cantidad = parseInt(cantidad);
-               pedidoActual.total+=producto.precio*parseInt(producto.cantidad);
-               sessionStorage.setItem("pedido", JSON.stringify(pedidoActual));
-      
-               
-            }
-            else
-            {
-              AnadirProductoAPedido(cantidad);
-            }
-      
-            window.location.href = "../html/pago.html";
-          }
+          evaluarItemsAnadir(cantidad, "BAgregarEirPagar",event);
         });
       
         //si selecciona este
@@ -113,94 +79,78 @@ export function funcionalidadBotonesProductoCarrito()
         BAgregarSeguirComprando.addEventListener("click", function (event) {
           var cantidad = cantidadInput.value;
       
-          if (isNaN(cantidad) || cantidad.trim() === "") {
-            alert("Por favor, introduce un número válido en la cantidad.");
-            event.preventDefault(); // Evita que se ejecute cualquier otro comportamiento del botón.
-          } else {
-            //se hace el proceso de guardar el info del pedido
-            //se anade el producto con su informacion de id cantidad y precio
-            //se suma guarda el valor total
-      
-            const pedidoActual = JSON.parse(sessionStorage.getItem("pedido"));
-      
-            // Supongamos que quieres cambiar la cantidad del producto con un ID específico
-            const idProductoEspecifico = sessionStorage.getItem("idproducto");
-      
-            // Busca el producto en la lista de productos
-            const producto = pedidoActual.productos.find(p => p.idProducto === idProductoEspecifico);
-      
-            console.log( producto);
-      
-            if(producto)
-            {
-               pedidoActual.total-=producto.precio*parseInt(producto.cantidad);
-               producto.cantidad = parseInt(cantidad);
-               pedidoActual.total+=producto.precio*parseInt(producto.cantidad);
-               sessionStorage.setItem("pedido", JSON.stringify(pedidoActual));
-            }
-            else
-            {
-              AnadirProductoAPedido(cantidad);
-            }
-            
-            hide("popup");
-          }
+          evaluarItemsAnadir(cantidad, "BAgregarSeguirComprando",event);
       
         });
-      
-        //-------------------------------------------FUNCION DEL CARRITO----------------------------//
-      
-      // Asegurarte de que el DOM esté completamente cargado
-        const carritoBoton = document.getElementById("Bcarrito"); // Selecciona el elemento por su ID
-      
-        carritoBoton.addEventListener("click", function(event) {
-            event.preventDefault(); // Evita que el enlace haga su comportamiento predeterminado (en este caso, no navegará a ningún lugar porque el href es "#")
-            //anadir informacion al carrito
-            const pedidoActual = JSON.parse(sessionStorage.getItem("pedido"));
-           // const divElement = document.getElementById('CarritoVacio');
-      
-            if(pedidoActual.productos.length>0)
-            {
-                //no muestra la foto de que el carrito esta vacio
-                //divElement.style.display = 'none';
-                //anadirProductosCarrito(pedidoActual.productos);
-      
-                //SUBTOTAL
-                //$("subtotal").text(pedidoActual.total);
-      
-                //mostrar el carrito
-                //show('popUpCarrito');
-            }
-            else
-            {
-                //poner la imagen porque el carrito esta vacio
-                //divElement.style.display = 'block';  // o 'inline', 'inline-block', etc., dependiendo de lo que necesites
-            }
-             
-        });
-      
-         /* const VaciarCarrito=document.getElementById("vaciarCarrito");
-      
-        VaciarCarrito.addEventListener("click", function(event) {
-          event.preventDefault();
-          //eliminar todo 
-          vaciarContenedor("contenedorproductosCarrito");
-      
-          //poner la imagen 
-          const divElement = document.getElementById('CarritoVacio');
-          divElement.style.display = 'block';  // o 'inline', 'inline-block', etc., dependiendo de lo que necesites
-        });
-      
-        const IrApagar=document.getElementById("iraPagar");
-      
-        IrApagar.addEventListener("click", function(event) {
-          event.preventDefault();
-          window.location.href = "../html/plantilla.html"; // Redirigir a la nueva página
-        });*/
-      
       
       });
 }
+
+function  evaluarItemsAnadir(cantidad, tipo, event)
+{
+  if (isNaN(cantidad) || cantidad.trim() === "") {
+    alert("Por favor, introduce un número válido en la cantidad.");
+    event.preventDefault(); // Evita que se ejecute cualquier otro comportamiento del botón.
+  } 
+  else if($('input[name="TiendaSeleccion"]:checked').length==0)
+  {
+    alert("Por favor, selecciona una tienda");
+    event.preventDefault(); // Evita que se ejecute cualquier otro comportamiento del botón. 
+  }
+  else if(evalCantidad(cantidad))
+  {
+    //se hace el proceso de guardar el info del pedido
+    //se anade el producto con su informacion de id cantidad y precio
+    //se suma guarda el valor total
+
+    const pedidoActual = JSON.parse(sessionStorage.getItem("pedido"));
+
+    // Supongamos que quieres cambiar la cantidad del producto con un ID específico
+    const idProductoEspecifico = sessionStorage.getItem("idproducto");
+
+    // Busca el producto en la lista de productos
+    const producto = pedidoActual.productos.find(p => p.idProducto === idProductoEspecifico);
+
+    console.log( producto);
+
+    if(producto)
+    {
+       pedidoActual.total-=producto.precio*parseInt(producto.cantidad);
+       producto.cantidad = parseInt(cantidad);
+       pedidoActual.total+=producto.precio*parseInt(producto.cantidad);
+       sessionStorage.setItem("pedido", JSON.stringify(pedidoActual));
+    }
+    else
+    {
+      AnadirProductoAPedido(cantidad);
+    }
+    
+    if(tipo=="BAgregarSeguirComprando")
+    {
+      hide("popup");
+    }
+    else
+    {
+      window.location.href = "../html/pago.html";
+    }
+  }
+}
+
+
+function evalCantidad(cantUsuario)
+{
+  var nameValue = $('input[name^="TiendaSeleccion"]:checked').attr('name');
+  // Separar el valor obtenido usando el caracter '-' y obtener la cantidad
+  var cantidadTienda = nameValue.split('-')[1];
+
+  if(cantUsuario<=parseInt(cantidadTienda))
+  {
+    return true;
+  }
+
+  return false;
+}
+
 
 async function getInfoProducto(idproducto) {
     return await fetch("http://localhost:8080/productos/" + idproducto, {
@@ -285,33 +235,33 @@ export function getCantidadPorProductoId(pedido, idProductoBuscado) {
           //en radio se pone en value el valor que se enviara al servidor (que es el id de la tienda)
       
           //si todavia no ha pedido otros productos y por ende no ha seleccionado la tienda
-          if(pedidoActual.idTienda==null)
+          if(pedidoActual.idTienda==null && tiendasList[i].cantidad>0)
           {
             var tiendaBlock = `
             <div id="RadioOptions1">
-                  <input type="radio" class="tienda" id="tienda${tiendasList[i].id}" name="TiendaSeleccion" value="${tiendasList[i].id}">
-                  <label id="labelt" for="tienda${tiendasList[i].ID}">${tiendasList[i].nombretienda}</label>
+                <input type="radio" class="tienda" id="tienda${tiendasList[i].id}" name="TiendaSeleccion-${tiendasList[i].cantidad}" value="${tiendasList[i].id}">
+                <label id="labelt" for="tienda${tiendasList[i].id}">${tiendasList[i].nombreTienda}</label>
             </div>
             `;
           }
           else
           {
             //si ya selecciono un producto de una tienda, solo puede pedir productos de dicha tienda
-            if(tiendasList[i].id==pedidoActual.idTienda)
+            if(tiendasList[i].id==pedidoActual.idTienda && tiendasList[i].cantidad>0)
             {
               var tiendaBlock = `
               <div id="RadioOptions1">
-                    <input type="radio" class="tienda" id="tienda${tiendasList[i].id}" name="TiendaSeleccion" value="${tiendasList[i].id}">
-                    <label id="labelt" for="tienda${tiendasList[i].ID}">${tiendasList[i].nombretienda}</label>
+                    <input type="radio" class="tienda" id="tienda${tiendasList[i].id}" name="TiendaSeleccion-${tiendasList[i].cantidad}" value="${tiendasList[i].id}">
+                    <label id="labelt" for="tienda${tiendasList[i].id}">${tiendasList[i].nombreTienda}</label>
               </div>
               `;
             }
-            else
+            else if(tiendasList[i].cantidad>0)
             {
               var tiendaBlock = `
               <div id="RadioOptions1">
-                    <input type="radio" class="tienda" id="tienda${tiendasList[i].id}" name="TiendaSeleccion" value="${tiendasList[i].id}" disabled>
-                    <label id="labelt" for="tienda${tiendasList[i].ID}">${tiendasList[i].nombretienda}</label>
+                    <input type="radio" class="tienda" id="tienda${tiendasList[i].id}" name="TiendaSeleccion-${tiendasList[i].cantidad}" value="${tiendasList[i].id}" disabled>
+                    <label id="labelt" for="tienda${tiendasList[i].id}">${tiendasList[i].nombreTienda}</label>
               </div>
               `;
             }
@@ -397,12 +347,12 @@ export function generateInfoProducto(data) {
           $("#DescText").css("text-decoration", "line-through");
         }
       
-        /*
-        //si la cantidad esta en cero es porque no hay
-        if (data.CantidadDisponible == 0) {
+
+        var totalCantidad = dataTiendas.reduce((sum, tiend) => sum + tiend.cantidad, 0);
+        if (totalCantidad == 0) {
           $("#disponible").text("Agotado");
           $("#disponible").css("background-color", "#f17e7e"); // Cambia el color a rojo
-        }*/
+        }
       
         //descripcion del producto
         $("#textoDescrip").text(data.descripcion);
@@ -418,9 +368,9 @@ export function generateInfoProducto(data) {
         $("#textoIngred").text(ingredientesText);
       
         //una lista de tiendas
-        /*const tiendasList = data.tiendas;
+        var listaTiendas=data.tiendas;
       
-        AgregarRadioButtons(tiendasList, pedidoActual);*/
+        AgregarRadioButtons(listaTiendas,pedidoActual);
       }
 
 export function generateTiendaList(data) {
@@ -577,9 +527,11 @@ export function inicializarEventosProducto() {
             return res.json();
           })
           .then((data) => {
-            console.log(data);
-            show("popup");
-            generateInfoProducto(data);
+
+            
+              console.log(data);
+              show("popup");
+              generateInfoProducto(data);
     
           })
           .catch(() => {
