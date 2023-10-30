@@ -35,26 +35,56 @@ public class UsuarioService {
         }
         usuario.setEstadosesion("Conectada");
         usuario.setDisponibilidad("Disponible");
-        System.out.println(usuario);
+        // System.out.println(usuario);
         usuarioRepository.save(usuario);
     }
     public Usuario loginWithUsuario(Usuario usuario) {
-        String TipoPorDefecto = "cliente";
         Usuario storedUserDetails = usuarioRepository.findByNombreusuario(usuario.getNombreusuario());
         if(storedUserDetails == null) throw new RuntimeException("Usuario No existe");
         if(storedUserDetails.getContrasena() == null) throw new RuntimeException("Clave incorrecta");
         if(!storedUserDetails.getTipousuario().equals("Comprador") && !storedUserDetails.getTipousuario().equals("Repartidor") ) throw new RuntimeException("Tipo usuario no disponible!");
-        System.out.println(usuario);
-        System.out.println("Nombre de usuario: " + storedUserDetails.getNombreusuario());
-        System.out.println("Contrasena: " + storedUserDetails.getContrasena());
-        System.out.println("Tipo Usuario: " + storedUserDetails.getTipousuario());
+        // System.out.println(usuario);
+        // System.out.println("Nombre de usuario: " + storedUserDetails.getNombreusuario());
+        // System.out.println("Contrasena: " + storedUserDetails.getContrasena());
+        // System.out.println("Tipo Usuario: " + storedUserDetails.getTipousuario());
         return storedUserDetails;
     }
-    public void updateWithID(Usuario usuario){
-        Usuario storedUserDetails = usuarioRepository.findUsuarioById(usuario.getId());
-        if(storedUserDetails == null) throw new RuntimeException("ID invalido");
-        usuarioRepository.save(usuario);
+    public void updateWithID(Usuario usuario) {
+        UUID usuarioId = usuario.getId();
+        String nombreFoto = usuario.getFoto().getNombre();
+        Usuario existingUsuario = usuarioRepository.findUsuarioById(usuarioId);
+        Foto existingFoto = fotoRepository.findFotoByNombre(nombreFoto);
+
+        if (usuario.getNombreusuario() != null && !usuario.getNombreusuario().isEmpty()) {
+            existingUsuario.setNombreusuario(usuario.getNombreusuario());
+        }
+
+        if (usuario.getContrasena() != null && !usuario.getContrasena().isEmpty()) {
+            existingUsuario.setContrasena(usuario.getContrasena());
+        }
+
+        if (usuario.getNombre() != null && !usuario.getNombre().isEmpty()) {
+            existingUsuario.setNombre(usuario.getNombre());
+        }
+
+        if (usuario.getCorreoinstitucional() != null && !usuario.getCorreoinstitucional().isEmpty()) {
+            existingUsuario.setCorreoinstitucional(usuario.getCorreoinstitucional());
+        }
+
+        if (usuario.getApellido() != null && !usuario.getApellido().isEmpty()) {
+            existingUsuario.setApellido(usuario.getApellido());
+        }
+
+        if (usuario.getTelefono() != null && !usuario.getTelefono().isEmpty()) {
+            existingUsuario.setTelefono(usuario.getTelefono());
+        }
+
+        if (existingFoto != null) {
+            existingUsuario.setFoto(existingFoto);
+        }
+        usuarioRepository.save(existingUsuario);
     }
+
     public void deleteWithID(UUID usuarioId){
         Usuario storedUserDetails = usuarioRepository.findUsuarioById(usuarioId);
         usuarioRepository.delete(storedUserDetails);

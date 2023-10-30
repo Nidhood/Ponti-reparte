@@ -1,5 +1,7 @@
 package javeriana.pontireparte.project.controllers;
 
+import javeriana.pontireparte.project.dto.ProductoDTO;
+import javeriana.pontireparte.project.dto.ProductoTiendasDTO;
 import javeriana.pontireparte.project.entities.Producto;
 import javeriana.pontireparte.project.services.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +30,11 @@ public class ProductoController {
     public Producto getInfoProducto(@PathVariable (value = "id") UUID id){
         Producto producto = productoService.infoWithProducto(id);
         return producto;
+    }
+
+    @RequestMapping(value = "/{id}/tiendas", method = RequestMethod.GET)
+    public ProductoTiendasDTO getTiendasPorProducto(@PathVariable (value = "id") UUID id){
+        ProductoTiendasDTO productoConTiendas = productoService.getTiendasPorProducto(id);
+        return productoConTiendas;
     }
 }

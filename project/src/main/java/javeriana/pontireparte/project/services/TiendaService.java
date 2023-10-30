@@ -45,13 +45,13 @@ public class TiendaService {
 
     private List<TiendaProducto> mapToTiendasProducto(List<Object[]> tiendasProductoConCantidad) {
         return tiendasProductoConCantidad.stream()
-                .map(obj -> {
+                .map(tienda -> {
                     TiendaProducto tiendaProducto = new TiendaProducto();
                     Producto producto = new Producto();
-                    producto.setNombreproducto((String) obj[0]);
-                    producto.setFoto((Foto) obj[2]);
+                    producto.setNombreproducto((String) tienda[0]);
+                    producto.setFoto((Foto) tienda[2]);
                     tiendaProducto.setProducto(producto);
-                    tiendaProducto.setCantidaddisponible((int) obj[1]);
+                    tiendaProducto.setCantidaddisponible((int) tienda[1]);
                     return tiendaProducto;
                 })
                 .collect(Collectors.toList());

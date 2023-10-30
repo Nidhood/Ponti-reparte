@@ -29,7 +29,7 @@ public class UbicacionService {
     private UbicacionDTO mapToUbicacionDTO(Ubicacion ubicacion) {
         UbicacionDTO ubicacionDTO = new UbicacionDTO();
         ubicacionDTO.setId(ubicacion.getId());
-        ubicacionDTO.setNombre(ubicacion.getEdificio()); // Ajusta según la estructura de tu Ubicacion
+        ubicacionDTO.setNombre(ubicacion.getEdificio());
         return ubicacionDTO;
     }
 }

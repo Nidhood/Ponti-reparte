@@ -35,9 +35,11 @@
 /Users/nidhood/Desktop/Proyecto-local/AHORASI/Ponti-reparte/project/src/main/java/javeriana/pontireparte/project/entities/Ingrediente.java
 /Users/nidhood/Desktop/Proyecto-local/AHORASI/Ponti-reparte/project/src/main/java/javeriana/pontireparte/project/dto/PedidoRequestDTO.java
 /Users/nidhood/Desktop/Proyecto-local/AHORASI/Ponti-reparte/project/src/main/java/javeriana/pontireparte/project/repositories/TiendaProductoRepository.java
+/Users/nidhood/Desktop/Proyecto-local/AHORASI/Ponti-reparte/project/src/main/java/javeriana/pontireparte/project/dto/ProductoTiendasDTO.java
 /Users/nidhood/Desktop/Proyecto-local/AHORASI/Ponti-reparte/project/src/main/java/javeriana/pontireparte/project/controllers/UbicacionController.java
 /Users/nidhood/Desktop/Proyecto-local/AHORASI/Ponti-reparte/project/src/main/java/javeriana/pontireparte/project/PontireparteApplication.java
 /Users/nidhood/Desktop/Proyecto-local/AHORASI/Ponti-reparte/project/src/main/java/javeriana/pontireparte/project/entities/Pedido.java
 /Users/nidhood/Desktop/Proyecto-local/AHORASI/Ponti-reparte/project/src/main/java/javeriana/pontireparte/project/repositories/TiendaRepository.java
 /Users/nidhood/Desktop/Proyecto-local/AHORASI/Ponti-reparte/project/src/main/java/javeriana/pontireparte/project/exceptions/OrderAlreadyExistsException.java
+/Users/nidhood/Desktop/Proyecto-local/AHORASI/Ponti-reparte/project/src/main/java/javeriana/pontireparte/project/dto/TiendaDTO.java
 /Users/nidhood/Desktop/Proyecto-local/AHORASI/Ponti-reparte/project/src/main/java/javeriana/pontireparte/project/exceptions/NotFoundUserException.java

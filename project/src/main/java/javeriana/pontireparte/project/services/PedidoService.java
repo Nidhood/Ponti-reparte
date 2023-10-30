@@ -40,10 +40,6 @@ public class PedidoService {
         // pedido.setTiendaid(pedidoRequestDTO.getTiendaId());
         pedido.setTipopedido(pedidoRequestDTO.getTipoPedido());
         pedido.setValortotal(pedidoRequestDTO.getValorTotal());
-        // Otros atributos...
-
-        // Configurar ubicación
-        // Suponiendo que tienes un método para buscar la ubicación por ID
         Ubicacion ubicacion = ubicacionRepository.findUbicacionById(pedidoRequestDTO.getUbicacionId());
         // pedido.setUbicacionid(ubicacion.getId());
 
@@ -52,19 +48,14 @@ public class PedidoService {
         if (productosDTO != null) {
             for (ProductoDTO productoDTO : productosDTO) {
                 Producto producto = new Producto();
-                producto.setId(producto.getId()); // Suponiendo que tienes un método para buscar el producto por ID
-                // Configurar otros atributos del producto si es necesario
-                // ...
-
+                producto.setId(producto.getId());
                 ProductoPedido productosPedidos = new ProductoPedido();
                 productosPedidos.setProducto(producto);
                 productosPedidos.setPedido(pedido);
                 productosPedidos.setCantidad(productoDTO.getCantidad());
-
                 pedido.getProductos().add(productoDTO);
             }
         }
         pedidoRepository.save(pedido);
     }
-
 }
