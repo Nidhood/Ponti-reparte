@@ -2,7 +2,6 @@ package javeriana.pontireparte.project.dto;
 
 /*
  ¿Que es un DTO?
-
  -> DTO (Data Transfer Object) es un patrón de diseño que se utiliza para transferir datos entre subsistemas de un software. La idea principal es crear un objeto que transporta datos entre las capas de una aplicación en lugar de utilizar directamente los objetos de la capa de datos.
 
 ¿Características clave de un DTO?

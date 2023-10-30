@@ -12,6 +12,7 @@ javeriana/pontireparte/project/dto/PedidoRequestDTO.class
 javeriana/pontireparte/project/entities/EstadoPedido.class
 javeriana/pontireparte/project/PontireparteApplication.class
 javeriana/pontireparte/project/services/TiendaService.class
+javeriana/pontireparte/project/dto/TiendaDTO.class
 javeriana/pontireparte/project/dto/ProductoDTO.class
 javeriana/pontireparte/project/entities/ProductoPedido.class
 javeriana/pontireparte/project/services/UsuarioService.class
@@ -27,6 +28,7 @@ javeriana/pontireparte/project/controllers/PedidoController.class
 javeriana/pontireparte/project/repositories/FotoRepository.class
 javeriana/pontireparte/project/repositories/UsuarioRepository.class
 javeriana/pontireparte/project/repositories/UbicacionRepository.class
+javeriana/pontireparte/project/dto/ProductoTiendasDTO.class
 javeriana/pontireparte/project/entities/Combo.class
 javeriana/pontireparte/project/repositories/ProductoRepository.class
 javeriana/pontireparte/project/entities/Tienda.class

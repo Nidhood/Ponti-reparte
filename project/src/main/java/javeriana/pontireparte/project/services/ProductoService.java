@@ -1,10 +1,11 @@
 package javeriana.pontireparte.project.services;
 
-import javeriana.pontireparte.project.entities.Ingrediente;
-import javeriana.pontireparte.project.entities.IngredienteProducto;
-import javeriana.pontireparte.project.entities.Producto;
+import javeriana.pontireparte.project.dto.ProductoTiendasDTO;
+import javeriana.pontireparte.project.dto.TiendaDTO;
+import javeriana.pontireparte.project.entities.*;
 import javeriana.pontireparte.project.repositories.IngredienteProductoRepository;
 import javeriana.pontireparte.project.repositories.ProductoRepository;
+import javeriana.pontireparte.project.repositories.TiendaProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,12 +17,14 @@ import java.util.stream.Collectors;
 public class ProductoService {
     private final ProductoRepository productoRepository;
     private final IngredienteProductoRepository ingredienteProductoRepository;
+    private final TiendaProductoRepository tiendaProductoRepository;
 
     @Autowired
-    public ProductoService(ProductoRepository productoRepository,  IngredienteProductoRepository ingredienteProductoRepository) {
+    public ProductoService(ProductoRepository productoRepository,  IngredienteProductoRepository ingredienteProductoRepository, TiendaProductoRepository tiendaProductoRepository) {
 
         this.productoRepository = productoRepository;
         this.ingredienteProductoRepository = ingredienteProductoRepository;
+        this.tiendaProductoRepository = tiendaProductoRepository;
     }
 
     public List<Producto> getProducto(){
@@ -70,5 +73,34 @@ public class ProductoService {
             });
             return productosEncontrados;
         }
+    }
+
+    // Método para mapear a TiendaDTO
+    public List<TiendaDTO> mapToProductosTiendas(List<Object[]> tiendasConCantidad) {
+        return tiendasConCantidad.stream()
+                .map(tiendas -> {
+                    TiendaDTO tiendaDTO = new TiendaDTO();
+                    tiendaDTO.setId((UUID) tiendas[0]);
+                    tiendaDTO.setNombreTienda((String) tiendas[1]);
+                    tiendaDTO.setFoto((String) tiendas[2]);
+                    tiendaDTO.setCantidad((int) tiendas[3]);
+                    return tiendaDTO;
+                })
+                .collect(Collectors.toList());
+    }
+
+
+    public ProductoTiendasDTO getTiendasPorProducto(UUID productoId) {
+        Producto producto = productoRepository.findProductoById(productoId);
+        ProductoTiendasDTO productoTiendasDTO = new ProductoTiendasDTO();
+        productoTiendasDTO.setId(producto.getId());
+        productoTiendasDTO.setNombreproducto(producto.getNombreproducto());
+        productoTiendasDTO.setFoto(producto.getFoto().getFoto());
+        productoTiendasDTO.setPreciodinero(producto.getPreciodinero());
+        productoTiendasDTO.setPreciopuntos(producto.getPreciopuntos());
+        productoTiendasDTO.setDescripcion(producto.getDescripcion());
+        productoTiendasDTO.setPromocion(producto.getPromocion());
+        productoTiendasDTO.setTiendas(mapToProductosTiendas(tiendaProductoRepository.findTiendasByProductoId(productoId)));
+        return productoTiendasDTO;
     }
 }

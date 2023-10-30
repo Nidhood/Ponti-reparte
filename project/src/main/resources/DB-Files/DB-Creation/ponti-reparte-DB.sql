@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS usuarios
     calificacion DECIMAL(10,4),
     estadosesion STRING(20) NOT NULL,
     disponibilidad STRING(20) NOT NULL,
-    CONSTRAINT ok_user_type CHECK (tipousuario IN ('Comprador', 'Repartidor', 'Personal de tienda')),
+    CONSTRAINT ok_user_type CHECK (tipousuario IN ('Comprador', 'Repartidor', 'Personal de tiendas')),
     CONSTRAINT ok_session_state CHECK (estadosesion IN ('Conectada', 'Desconectada')),
     CONSTRAINT ok_availability CHECK (disponibilidad IN ('Disponible', 'No disponible')),
     CONSTRAINT fk_user_photo FOREIGN KEY (fotoid) REFERENCES fotos (id) ON DELETE CASCADE,

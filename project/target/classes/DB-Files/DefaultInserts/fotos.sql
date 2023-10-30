@@ -61,6 +61,6 @@ INSERT INTO fotos (tipofoto, nombre, descripcion, foto) VALUES
                                                             ('FrontEnd', 'screenshot', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/screenshot.png?raw=true'),
                                                             ('FrontEnd', 'settings', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/settings.png?raw=true'),
                                                             ('FrontEnd', 'tick', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/tick.png?raw=true'),
-                                                            ('FrontEnd', 'tienda', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/tienda.png?raw=true'),
+                                                            ('FrontEnd', 'tiendas', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/tiendas.png?raw=true'),
                                                             ('FrontEnd', 'trash', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/trash.png?raw=true'),
                                                             ('FrontEnd', 'mapaUniversidad', NULL, 'https://github.com/juanzulu/Desarrollo_fundamentos/blob/main/imagenes/mapaUniversidad.png?raw=true');

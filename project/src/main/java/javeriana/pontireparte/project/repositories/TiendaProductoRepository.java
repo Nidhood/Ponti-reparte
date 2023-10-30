@@ -11,4 +11,8 @@ import java.util.UUID;
 public interface TiendaProductoRepository extends JpaRepository<TiendaProducto, UUID> {
     @Query("SELECT tp.producto.nombreproducto, tp.cantidaddisponible, tp.producto.foto FROM TiendaProducto tp WHERE tp.tienda.id = :tiendaId")
     List<Object[]> findProductosByTiendaId(@Param("tiendaId") UUID tiendaId);
+
+    @Query("SELECT tp.tienda.id, tp.tienda.nombretienda, tp.tienda.foto.foto, tp.cantidaddisponible  FROM TiendaProducto tp WHERE tp.producto.id = :productoId")
+    List<Object[]> findTiendasByProductoId(@Param("productoId") UUID productoId);
+
 }
