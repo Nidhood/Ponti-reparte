@@ -53,7 +53,7 @@ mvn clean install
 Once you are inside the project directory, run the backend server using the following command:
 
 ```bash
-java -jar .target/ponti-reparte-2.7.1.jar
+java -jar target/ponti-reparte-2.7.1.jar
 ```
 
 And that's it! You should now have everything you need to run and develop on the Ponti Reparte project. If you have any questions or issues, feel free to reach out to us. Happy coding!
