@@ -37,7 +37,15 @@ promesaProductos
 
   //PROCESO PARA OBTENER TIENDAS MINIS
 async function getTiendas(){
-  return await fetch('http://localhost:8080/buscar/tiendas/'+sessionStorage.getItem('palabrasClave'), {
+  
+  var inicial='http://localhost:8080/buscar/tiendas';
+  
+  if(sessionStorage.getItem('palabrasClave')!="tiendas")
+  {
+    inicial=inicial+"/"+sessionStorage.getItem('palabrasClave');
+  }
+
+  return await fetch(inicial, {
   
       headers: 
       {

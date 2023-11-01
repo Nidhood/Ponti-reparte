@@ -88,7 +88,7 @@ export function funcionalidadBotonesProductoCarrito()
 
 function  evaluarItemsAnadir(cantidad, tipo, event)
 {
-  if (isNaN(cantidad) || cantidad.trim() === "") {
+  if (isNaN(cantidad) || cantidad.trim() === "" || cantidad==0) {
     alert("Por favor, introduce un número válido en la cantidad.");
     event.preventDefault(); // Evita que se ejecute cualquier otro comportamiento del botón.
   } 
@@ -473,7 +473,7 @@ export function inicializarEventosProducto() {
     var valor = $(this).val().trim(); // Eliminar espacios en blanco
 
     // Comprobar si el valor es un número y no está vacío
-    if ($.isNumeric(valor) && valor !== "") {
+    if ($.isNumeric(valor) && valor !== "" && valor!="0") {
       const pedidoActual = JSON.parse(sessionStorage.getItem("pedido"));
       //se obtiene la cantidad del producto
       //se obtiene el precio actual del prodcuto
@@ -496,3 +496,55 @@ export function inicializarEventosProducto() {
   
   }
   
+  export function generateProductListBuscador(data) {
+  var container = $(".scrollBoxProducto");
+
+  for (var i = 0; i < data.length; i++) {
+    var productBlock = `
+      <a href="#" class="productLink" id="${data[i].id}">
+        <div class="producto">
+            <div class="circuloproducto">
+                    <img class="fotominipRODUCTO" src="${data[i].foto.foto}" alt="foto Producto">
+            </div>
+            <p class="nombreminiProducto">
+                ${data[i].nombreproducto}
+            </p>
+        </div>
+        </a>
+    `;
+    
+    container.append(productBlock);
+  }
+  // Es importante hacer el evento click DESPUÉS de agregar los productos al contenedor
+  container.find(".productLink").on("click", function (event) {
+      
+        event.preventDefault(); // Prevenir la acción predeterminada del enlace
+        console.log(event.currentTarget.id);
+        show("popup");//ESTO SE QUITA
+    
+        //SE MANDA EL ID DEL PRODUCTO PARA QUE ME MANDEN LA INFO DE ESE PRODUCTO
+        const promesaInformacionProducto = getInfoProducto(event.currentTarget.id);
+    
+        //guardar el id del producto para usarlo despues//
+        sessionStorage.setItem("idproducto", event.currentTarget.id);
+    
+        promesaInformacionProducto
+          .then((res) => {
+            console.log(res.ok);
+            return res.json();
+          })
+          .then((data) => {
+
+            
+              console.log(data);
+              show("popup");
+              generateInfoProducto(data);
+    
+          })
+          .catch(() => {
+            console.log("errorrrr");
+          });
+
+    });
+  
+}

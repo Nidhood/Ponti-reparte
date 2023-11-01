@@ -690,6 +690,7 @@ a {
     flex-direction: column;
     align-items: start;
     max-height: 79vh; /* Establece la altura máxima como un porcentaje de la altura de la ventana */
+    height: 79vh;
     max-width: 100%;
     overflow-y: auto; 
     overflow-x: hidden;
