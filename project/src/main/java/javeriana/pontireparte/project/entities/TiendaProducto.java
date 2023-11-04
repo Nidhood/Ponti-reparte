@@ -8,54 +8,35 @@ import java.util.UUID;
 @Entity
 @Table(name ="tiendasproductos")
 public class TiendaProducto {
-    @Id
-    @GeneratedValue
-    private UUID id;
 
-    @ManyToOne
-    @JoinColumn(name = "tiendaid")
-    private Tienda tienda;
-
-    @ManyToOne
-    @JoinColumn(name = "productoid")
-    private Producto producto;
+    @EmbeddedId
+    private TiendaProductoId id;
 
     private int cantidaddisponible;
+
+    @ManyToOne
+    @MapsId("tienda") // Mapea la relación con la clave primaria compuesta
+    @JoinColumn(name = "tiendaid")
+    private Tienda tienda;
 
     // Methods:
     @Transient
     public ProductoDTO toDTO() {
         ProductoDTO productoDTO = new ProductoDTO();
-        productoDTO.setNombreProducto(this.producto.getNombreproducto());
-        productoDTO.setFoto(this.producto.getFoto() != null ? this.producto.getFoto().getFoto() : null);
+        productoDTO.setNombreProducto(this.id.getProducto().getNombreproducto());
+        productoDTO.setFoto(this.id.getProducto() .getFoto() != null ? this.id.getProducto().getFoto().getFoto() : null);
         productoDTO.setCantidad(this.cantidaddisponible);
         return productoDTO;
     }
 
 
     // Getters & setters:
-    public UUID getId() {
+    public TiendaProductoId getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(TiendaProductoId id) {
         this.id = id;
-    }
-
-    public Tienda getTienda() {
-        return tienda;
-    }
-
-    public void setTienda(Tienda tienda) {
-        this.tienda = tienda;
-    }
-
-    public Producto getProducto() {
-        return producto;
-    }
-
-    public void setProducto(Producto producto) {
-        this.producto = producto;
     }
 
     public int getCantidaddisponible() {
@@ -71,9 +52,7 @@ public class TiendaProducto {
     public String toString() {
         return "TiendaProducto{" +
                 "id=" + id +
-                ", tienda=" + tienda +
-                ", producto=" + producto +
-                ", cantidad=" + cantidaddisponible +
+                ", cantidaddisponible=" + cantidaddisponible +
                 '}';
     }
 }

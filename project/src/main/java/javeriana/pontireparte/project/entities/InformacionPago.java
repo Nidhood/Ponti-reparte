@@ -16,7 +16,7 @@ public class InformacionPago {
     private String nombretitular;
     private Integer pin;
     private String tipotarjeta;
-    private String tipopago;
+    private String tipodepago;
 
     // Getters & setters:
 
@@ -53,12 +53,12 @@ public class InformacionPago {
         this.tipotarjeta = tipotarjeta;
     }
 
-    public String getTipopago() {
-        return tipopago;
+    public String getTipodepago() {
+        return tipodepago;
     }
 
-    public void setTipopago(String tipopago) {
-        this.tipopago = tipopago;
+    public void setTipodepago(String tipopago) {
+        this.tipodepago = tipopago;
     }
 
     // ToString:
@@ -69,7 +69,7 @@ public class InformacionPago {
                 ", nombretitular='" + nombretitular + '\'' +
                 ", pin=" + pin +
                 ", tipotarjeta='" + tipotarjeta + '\'' +
-                ", tipopago='" + tipopago + '\'' +
+                ", tipopago='" + tipodepago + '\'' +
                 '}';
     }
 }

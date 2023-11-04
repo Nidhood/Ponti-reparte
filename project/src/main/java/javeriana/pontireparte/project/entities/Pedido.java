@@ -1,5 +1,4 @@
 package javeriana.pontireparte.project.entities;
-
 import javeriana.pontireparte.project.dto.ProductoDTO;
 
 import javax.persistence.*;
@@ -14,45 +13,30 @@ public class Pedido {
     @Id
     @GeneratedValue
     private UUID id;
-    private  String numeropedido;
-
+    private  Integer numeropedido;
     @OneToOne
     @JoinColumn(name = "compradorid")
-    private Usuario compradorid;
+    private Usuario comprador;
 
     @OneToOne
     @JoinColumn(name = "repartidorid")
-    private Usuario repartidorid;
+    private Usuario repartidor;
 
     @OneToOne
     @JoinColumn(name = "tiendaid")
-    private Tienda tiendaid;
+    private Tienda tienda;
 
     @OneToOne
     @JoinColumn(name = "estadopedidoid")
-    private EstadoPedido estadopedidoid;
+    private EstadoPedido estadopedido;
 
     @OneToOne
     @JoinColumn(name = "ubicacionid")
-    private Ubicacion ubicacionid;
+    private Ubicacion ubicacion;
     private  String tipopedido;
     private Float valortotal;
-    @OneToMany(mappedBy = "pedido")
-    private List<ProductoPedido> productos;
 
     // Getters & setters:
-    public List<ProductoDTO> getProductos() {
-        if (productos != null) {
-            return productos.stream()
-                    .map(ProductoPedido::toDTO)
-                    .collect(Collectors.toList());
-        } else {
-            return Collections.emptyList(); // o retorna null, dependiendo de tu lógica
-        }
-    }
-
-    // Getters & setters:
-
     public UUID getId() {
         return id;
     }
@@ -61,56 +45,52 @@ public class Pedido {
         this.id = id;
     }
 
-    public String getNumeropedido() {
+    public Integer getNumeropedido() {
         return numeropedido;
     }
 
-    public void setNumeropedido(String numeropedido) {
+    public void setNumeropedido(Integer numeropedido) {
         this.numeropedido = numeropedido;
     }
 
-    public Usuario getCompradorid() {
-        return compradorid;
+    public Usuario getComprador() {
+        return comprador;
     }
 
-    public void setCompradorid(Usuario compradorid) {
-        this.compradorid = compradorid;
+    public void setComprador(Usuario compradorid) {
+        this.comprador = compradorid;
     }
 
-    public Usuario getRepartidorid() {
-        return repartidorid;
+    public Usuario getRepartidor() {
+        return repartidor;
     }
 
-    public void setRepartidorid(Usuario repartidorid) {
-        this.repartidorid = repartidorid;
+    public void setRepartidor(Usuario repartidorid) {
+        this.repartidor = repartidorid;
     }
 
-    public Tienda getTiendaid() {
-        return tiendaid;
+    public Tienda getTienda() {
+        return tienda;
     }
 
-    public void setTiendaid(Tienda tiendaid) {
-        this.tiendaid = tiendaid;
+    public void setTienda(Tienda tiendaid) {
+        this.tienda = tiendaid;
     }
 
-    public EstadoPedido getEstadopedidoid() {
-        return estadopedidoid;
+    public EstadoPedido getEstadopedido() {
+        return estadopedido;
     }
 
-    public void setEstadopedidoid(EstadoPedido estadopedidoid) {
-        this.estadopedidoid = estadopedidoid;
+    public void setEstadopedido(EstadoPedido estadopedidoid) {
+        this.estadopedido = estadopedidoid;
     }
 
-    public Ubicacion getUbicacionid() {
-        return ubicacionid;
+    public Ubicacion getUbicacion() {
+        return ubicacion;
     }
 
-    public void setUbicacionid(Ubicacion ubicacionid) {
-        this.ubicacionid = ubicacionid;
-    }
-
-    public void setProductos(List<ProductoPedido> productos) {
-        this.productos = productos;
+    public void setUbicacion(Ubicacion ubicacionid) {
+        this.ubicacion = ubicacionid;
     }
 
     public String getTipopedido() {
@@ -129,17 +109,18 @@ public class Pedido {
         this.valortotal = valortotal;
     }
 
+
     // ToString:
     @Override
     public String toString() {
         return "Pedido{" +
                 "id=" + id +
-                ", numeropedido='" + numeropedido + '\'' +
-                ", compradorid=" + compradorid +
-                ", repartidorid=" + repartidorid +
-                ", tiendaid=" + tiendaid +
-                ", estadopedidoid=" + estadopedidoid +
-                ", ubicacionid=" + ubicacionid +
+                ", numeropedido=" + numeropedido +
+                ", comprador=" + comprador +
+                ", repartidor=" + repartidor +
+                ", tienda=" + tienda +
+                ", estadopedido=" + estadopedido +
+                ", ubicacion=" + ubicacion +
                 ", tipopedido='" + tipopedido + '\'' +
                 ", valortotal=" + valortotal +
                 '}';

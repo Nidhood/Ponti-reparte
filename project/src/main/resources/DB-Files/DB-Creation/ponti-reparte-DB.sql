@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS informacionpagos
     tipotarjeta STRING(20),
     tipodepago STRING(20) NOT NULL,
     CONSTRAINT ok_card_type CHECK (tipotarjeta IN ('Debito', 'Credito')),
-    CONSTRAINT ok_payment_type CHECK (tipodepago IN ('Efectivo', 'Tarjeta', 'PonitPuntos')),
+    CONSTRAINT ok_payment_type CHECK (tipodepago IN ('Efectivo', 'Tarjeta', 'PontiPuntos')),
     UNIQUE (nombretitular, pin)
     )
 ;
@@ -195,7 +195,7 @@ CREATE TABLE IF NOT EXISTS pedidos
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     numeropedido INT NOT NULL,
     compradorid UUID NOT NULL,
-    repartidorid UUID NOT NULL,
+    repartidorid UUID,
     tiendaid UUID NOT NULL,
     estadopedidoid UUID NOT NULL,
     ubicacionid UUID NOT NULL,

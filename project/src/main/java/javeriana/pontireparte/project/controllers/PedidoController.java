@@ -3,7 +3,10 @@ package javeriana.pontireparte.project.controllers;
 import javeriana.pontireparte.project.dto.PedidoRequestDTO;
 import javeriana.pontireparte.project.entities.Pedido;
 import javeriana.pontireparte.project.entities.Usuario;
+import javeriana.pontireparte.project.services.PedidoInformacionPagoService;
 import javeriana.pontireparte.project.services.PedidoService;
+import javeriana.pontireparte.project.services.ProductoPedidoService;
+import javeriana.pontireparte.project.services.TiendaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,27 +21,31 @@ public class PedidoController {
 
     private final PedidoService pedidoService;
     private final UsuarioController usuarioService;
+    private final PedidoInformacionPagoService pedidoInformacionPagoService;
+    private final ProductoPedidoService productoPedidoService;
+    private final TiendaService tiendaService;
 
     @Autowired
-    public PedidoController(PedidoService pedidoService, UsuarioController usuarioService) {
+    public PedidoController(PedidoService pedidoService, UsuarioController usuarioService, PedidoInformacionPagoService pedidoInformacionPagoService, ProductoPedidoService productoPedidoService, TiendaService tiendaService) {
         this.pedidoService = pedidoService;
         this.usuarioService = usuarioService;
+        this.pedidoInformacionPagoService = pedidoInformacionPagoService;
+        this.productoPedidoService = productoPedidoService;
+        this.tiendaService = tiendaService;
     }
 
-    @PostMapping("/crear")
-    public ResponseEntity<?> crearPedido(@RequestBody PedidoRequestDTO pedidoRequestDTO) {
-        try {
-            pedidoService.insertarPedido(pedidoRequestDTO);
-            return ResponseEntity.ok("Pedido creado exitosamente");
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al crear el pedido: " + e.getMessage());
-        }
+    @RequestMapping(value = "/crear", method = RequestMethod.POST)
+    public UUID crearPedido(@RequestBody PedidoRequestDTO pedidoRequestDTO) {
+        UUID pedidoCreateId = pedidoService.insertarPedido(pedidoRequestDTO);
+        pedidoInformacionPagoService.insertarPedidoInformacionPago(pedidoCreateId, pedidoRequestDTO);
+        productoPedidoService.insertarProductosPedido(pedidoCreateId, pedidoRequestDTO);
+        tiendaService.actualizarInventario(pedidoRequestDTO);
+        return pedidoCreateId;
     }
 
     @RequestMapping(value = "/{pedidoId}/domiciliario", method = RequestMethod.GET)
     public Usuario infoDomiciliarioDelPedido(@PathVariable (value = "pedidoId") UUID id){
         Pedido pedido = pedidoService.infoWithPedido(id);
-        Usuario domciliarioInfo =  usuarioService.infoUsuario(pedido.getCompradorid().getId());
-        return domciliarioInfo;
+        return usuarioService.infoUsuario(pedido.getRepartidor().getId());
     }
 }

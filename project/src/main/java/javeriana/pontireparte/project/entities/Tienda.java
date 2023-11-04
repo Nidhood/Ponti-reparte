@@ -24,7 +24,7 @@ public class Tienda {
     private Foto foto;
     private String estadotienda;
 
-    @OneToMany(mappedBy = "tienda")
+    @OneToMany(mappedBy = "id.tienda")
     private List<TiendaProducto> productos;
 
     // Getters & setters:
@@ -83,6 +83,7 @@ public class Tienda {
     }
 
     // ToString:
+
     @Override
     public String toString() {
         return "Tienda{" +

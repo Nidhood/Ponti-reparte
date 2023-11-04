@@ -88,7 +88,7 @@ export function funcionalidadBotonesProductoCarrito()
 
 function  evaluarItemsAnadir(cantidad, tipo, event)
 {
-  if (isNaN(cantidad) || cantidad.trim() === "") {
+  if (isNaN(cantidad) || cantidad.trim() === "" || cantidad==0) {
     alert("Por favor, introduce un número válido en la cantidad.");
     event.preventDefault(); // Evita que se ejecute cualquier otro comportamiento del botón.
   } 
@@ -473,7 +473,7 @@ export function inicializarEventosProducto() {
     var valor = $(this).val().trim(); // Eliminar espacios en blanco
 
     // Comprobar si el valor es un número y no está vacío
-    if ($.isNumeric(valor) && valor !== "") {
+    if ($.isNumeric(valor) && valor !== "" && valor!="0") {
       const pedidoActual = JSON.parse(sessionStorage.getItem("pedido"));
       //se obtiene la cantidad del producto
       //se obtiene el precio actual del prodcuto

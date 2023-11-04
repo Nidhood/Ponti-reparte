@@ -204,6 +204,8 @@ $(document).ready(function () {
     promesaEliminar
       .then((res) => {
         console.log(res.ok);
+        // Para borrar todo el contenido en sessionStorage
+        sessionStorage.clear();
         window.location.href =
           "../index.html";
       })

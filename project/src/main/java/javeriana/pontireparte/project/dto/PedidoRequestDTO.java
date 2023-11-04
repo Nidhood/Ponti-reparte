@@ -4,49 +4,49 @@ import java.util.List;
 import java.util.UUID;
 
 public class PedidoRequestDTO {
-    private UUID compradorId;
-    private UUID tiendaId;
-    private String tipoPedido;
-    private Float valorTotal;
+    private UUID compradorid;
+    private UUID tiendaid;
+    private String tipopedido;
+    private Float valortotal;
     private String aclaraciones;
     private Float propina;
-    private String tipoPago;
-    private String tipoTarjeta;
-    private UUID ubicacionId;
-    private List<ProductoDTO> productos;
+    private String tipopago;
+    private String tipotarjeta;
+    private List<ProductoRequestDTO> productos;
+    private UUID ubicacionid;
 
 
     // Getters & setters:
-    public UUID getCompradorId() {
-        return compradorId;
+    public UUID getCompradorid() {
+        return compradorid;
     }
 
-    public void setCompradorId(UUID compradorId) {
-        this.compradorId = compradorId;
+    public void setCompradorid(UUID compradorid) {
+        this.compradorid = compradorid;
     }
 
-    public UUID getTiendaId() {
-        return tiendaId;
+    public UUID getTiendaid() {
+        return tiendaid;
     }
 
-    public void setTiendaId(UUID tiendaId) {
-        this.tiendaId = tiendaId;
+    public void setTiendaid(UUID tiendaid) {
+        this.tiendaid = tiendaid;
     }
 
-    public String getTipoPedido() {
-        return tipoPedido;
+    public String getTipopedido() {
+        return tipopedido;
     }
 
-    public void setTipoPedido(String tipoPedido) {
-        this.tipoPedido = tipoPedido;
+    public void setTipopedido(String tipopedido) {
+        this.tipopedido = tipopedido;
     }
 
-    public Float getValorTotal() {
-        return valorTotal;
+    public Float getValortotal() {
+        return valortotal;
     }
 
-    public void setValorTotal(Float valorTotal) {
-        this.valorTotal = valorTotal;
+    public void setValortotal(Float valortotal) {
+        this.valortotal = valortotal;
     }
 
     public String getAclaraciones() {
@@ -65,35 +65,52 @@ public class PedidoRequestDTO {
         this.propina = propina;
     }
 
-    public String getTipoPago() {
-        return tipoPago;
+    public String getTipopago() {
+        return tipopago;
     }
 
-    public void setTipoPago(String tipoPago) {
-        this.tipoPago = tipoPago;
+    public void setTipopago(String tipopago) {
+        this.tipopago = tipopago;
     }
 
-    public String getTipoTarjeta() {
-        return tipoTarjeta;
+    public String getTipotarjeta() {
+        return tipotarjeta;
     }
 
-    public void setTipoTarjeta(String tipoTarjeta) {
-        this.tipoTarjeta = tipoTarjeta;
+    public void setTipotarjeta(String tipotarjeta) {
+        this.tipotarjeta = tipotarjeta;
     }
 
-    public UUID getUbicacionId() {
-        return ubicacionId;
+    public UUID getUbicacionid() {
+        return ubicacionid;
     }
 
-    public void setUbicacionId(UUID ubicacionId) {
-        this.ubicacionId = ubicacionId;
+    public void setUbicacionid(UUID ubicacionid) {
+        this.ubicacionid = ubicacionid;
     }
 
-    public List<ProductoDTO> getProductos() {
+    public List<ProductoRequestDTO> getProductos() {
         return productos;
     }
 
-    public void setProductos(List<ProductoDTO> productos) {
+    public void setProductos(List<ProductoRequestDTO> productos) {
         this.productos = productos;
+    }
+
+    // ToString:
+    @Override
+    public String toString() {
+        return "PedidoRequestDTO{" +
+                "compradorid=" + compradorid +
+                ", tiendaid=" + tiendaid +
+                ", tipopedido='" + tipopedido + '\'' +
+                ", valortotal=" + valortotal +
+                ", aclaraciones='" + aclaraciones + '\'' +
+                ", propina=" + propina +
+                ", tipopago='" + tipopago + '\'' +
+                ", tipotarjeta='" + tipotarjeta + '\'' +
+                ", productos=" + productos +
+                ", ubicacionid=" + ubicacionid +
+                '}';
     }
 }

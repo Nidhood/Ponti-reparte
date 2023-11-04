@@ -12,7 +12,7 @@ VALUES
     ('00020445222', 'am_martinez', 'aacde9fd-2feb-44ec-82fa-9c745eb85a9f', 'Personal de tiendas', 'AmM@Jav2023', 'am_martinez@javeriana.edu.co', 'Amelia', 'Martinez', 23, '31563957574', 0, 4.2, 'Desconectada', 'Disponible'),
     ('00020445444', 'av_robinson', 'aacde9fd-2feb-44ec-82fa-9c745eb85a9f', 'Personal de tiendas', 'AvR@Jav2023', 'av_robinson@javeriana.edu.co', 'Ava', 'Robinson', 23, '31563957575', 0, 4.2, 'Desconectada', 'Disponible');
 
--- Insertar 10 hombres personal de tiendas (foto predeterminada con el id = 'aacde9fd-2feb-44ec-82fa-9c745eb85a9f ' ):
+-- Insertar 10 hombres personal de tiendas (foto predeterminada con el id = 'aacde9fd-2feb-44ec-82fa-9c745eb85a9f' ):
 INSERT INTO usuarios (idjaveriana, nombreusuario, fotoid, tipousuario, contrasena, correoinstitucional, nombre, apellido, edad, telefono, puntos, calificacion, estadosesion, disponibilidad)
 VALUES
     ('00020445888', 'js_smiths', 'aacde9fd-2feb-44ec-82fa-9c745eb85a9f', 'Personal de tiendas', 'JsS@Jav2023', 'js_smiths@javeriana.edu.co', 'John', 'Smith', 25, '31563957556', 0, 4.2, 'Desconectada', 'Disponible'),
@@ -25,3 +25,8 @@ VALUES
     ('00020445999', 'ca_andersonn', 'aacde9fd-2feb-44ec-82fa-9c745eb85a9f', 'Personal de tiendas', 'CaA@Jav2023', 'ca_andersonN@javeriana.edu.co', 'Christopher', 'Anderson', 25, '31563957563', 0, 4.2, 'Desconectada', 'Disponible'),
     ('00020445301', 'km_martinezm', 'aacde9fd-2feb-44ec-82fa-9c745eb85a9f', 'Personal de tiendas', 'KmM@Jav2023', 'km_martinezM@javeriana.edu.co', 'Kevin', 'Martinez', 25, '31563957564', 0, 4.2, 'Desconectada', 'Disponible'),
     ('00020445987', 'dr_robinsonr', 'aacde9fd-2feb-44ec-82fa-9c745eb85a9f', 'Personal de tiendas', 'DrR@Jav2023', 'dr_robinsonr@javeriana.edu.co', 'David', 'Robinson', 25, '31563957565', 0, 4.2, 'Desconectada', 'Disponible');
+
+-- Insertar repartidor de prueba (foto predeterminada con el id = 'aacde9fd-2feb-44ec-82fa-9c745eb85a9f'):
+INSERT INTO usuarios (idjaveriana, nombreusuario, fotoid, tipousuario, contrasena, correoinstitucional, nombre, apellido, edad, telefono, puntos, calificacion, estadosesion, disponibilidad)
+VALUES
+    ('00020445889', 'rp_jones', 'aacde9fd-2feb-44ec-82fa-9c745eb85a9f', 'Repartidor', 'RpJ@Jav2023', 'rp_jones@javeriana.edu.co', 'Robert', 'Jones', 28, '31563957777', 0, 4.5, 'Conectada', 'Disponible');

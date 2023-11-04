@@ -38,7 +38,7 @@ $(document).ready(function () {
     var inputTipo;
 
     if ($("#Tipo").is(":checked")) {
-      inputTipo = "Cliente";
+      inputTipo = "Repartidor";
     } else {
       inputTipo = "Comprador";
     }
@@ -54,10 +54,18 @@ $(document).ready(function () {
             res.json().then((data) => {
               console.log(data.id);
               console.log(data.foto.foto);
+              sessionStorage.clear(); 
               sessionStorage.setItem("idUsuario", data.id); //GUARDAR EL ID DEL USUARIO EN EL LOCAL STORAGE
               sessionStorage.setItem("fotoPerfil", data.foto.foto); //PEDIR EL AVATAR Y GUARDARLO EN EL LOCAL STORAGE
               // Desvincula el evento 'submit' y luego envía el formulario
-              window.location.href = "../html/MenuUsuario.html";
+              if(inputTipo == "Comprador")
+              {
+                window.location.href = "../html/MenuUsuario.html";
+              }
+              else
+              {
+                window.location.href = "../html/Menudomiciliario";
+              }
             });
           } else {
             $(".msg").text(`Existe un error en la información`);

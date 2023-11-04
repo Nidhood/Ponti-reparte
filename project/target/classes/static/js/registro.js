@@ -81,7 +81,7 @@ $(document).ready(function () {
     var tipo;
 
     if ($("#Tipo").is(":checked")) {
-      tipo = "Cliente";
+      tipo = "Repartidor";
     } else {
       tipo = "Comprador";
     }

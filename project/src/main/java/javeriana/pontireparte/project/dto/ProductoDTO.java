@@ -30,4 +30,14 @@ public class ProductoDTO {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
+
+    // To String:
+    @Override
+    public String toString() {
+        return "ProductoDTO{" +
+                "nombreProducto='" + nombreProducto + '\'' +
+                ", foto='" + foto + '\'' +
+                ", cantidad=" + cantidad +
+                '}';
+    }
 }

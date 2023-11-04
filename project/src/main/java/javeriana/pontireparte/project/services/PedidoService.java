@@ -1,61 +1,55 @@
 package javeriana.pontireparte.project.services;
 
 import javeriana.pontireparte.project.dto.PedidoRequestDTO;
-import javeriana.pontireparte.project.dto.ProductoDTO;
-import javeriana.pontireparte.project.entities.Pedido;
-import javeriana.pontireparte.project.entities.Producto;
-import javeriana.pontireparte.project.entities.ProductoPedido;
-import javeriana.pontireparte.project.entities.Ubicacion;
-import javeriana.pontireparte.project.repositories.PedidoRepository;
-import javeriana.pontireparte.project.repositories.UbicacionRepository;
+import javeriana.pontireparte.project.entities.*;
+import javeriana.pontireparte.project.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.UUID;
 
 @Service
 public class PedidoService {
 
     private final PedidoRepository pedidoRepository;
+    private final UsuarioRepository usuarioRepository;
+    private final EstadoPedidoRepository estadoPedidoRepository;
     private final UbicacionRepository ubicacionRepository;
-
+    private final InformacionPagoRepository informacionPagoRepository;
+    private final TiendaService tiendaService;
     @Autowired
-    public PedidoService(PedidoRepository pedidoRepository, UbicacionRepository ubicacionRepository) {
+    public PedidoService(PedidoRepository pedidoRepository, UsuarioRepository usuarioRepository, EstadoPedidoRepository estadoPedidoRepository, UbicacionRepository ubicacionRepository, InformacionPagoRepository informacionPagoRepository, TiendaService tiendaService) {
         this.pedidoRepository = pedidoRepository;
+        this.usuarioRepository = usuarioRepository;
+        this.estadoPedidoRepository = estadoPedidoRepository;
         this.ubicacionRepository = ubicacionRepository;
+        this.informacionPagoRepository = informacionPagoRepository;
+        this.tiendaService = tiendaService;
     }
 
     public Pedido infoWithPedido(UUID pedidoId) {
         return pedidoRepository.findPedidoById(pedidoId);
     }
 
-    @Transactional
-    public void insertarPedido(PedidoRequestDTO pedidoRequestDTO) {
+    public UUID insertarPedido(PedidoRequestDTO pedidoRequestDTO) {
         Pedido pedido = new Pedido();
+        pedido.setNumeropedido(generarNumeroPedidoUnico()); // Generar un número de pedido único de 5 cifras
+        pedido.setComprador(usuarioRepository.findUsuarioById(pedidoRequestDTO.getCompradorid()));
+        pedido.setRepartidor(usuarioRepository.findByNombreusuario("rp_jones")); // Repartidor por defecto.
+        pedido.setTienda(tiendaService.infoWithTienda(pedidoRequestDTO.getTiendaid()));
+        pedido.setEstadopedido(estadoPedidoRepository.findEstadoPedidoById(UUID.fromString("70b455c2-470e-4fec-a590-44c48978abcb"))); // Estado por defecto.
+        pedido.setUbicacion(ubicacionRepository.findUbicacionById(pedidoRequestDTO.getUbicacionid()));
+        pedido.setTipopedido(pedidoRequestDTO.getTipopedido());
+        pedido.setValortotal(pedidoRequestDTO.getValortotal());
+        Pedido pedidoGuardado = pedidoRepository.save(pedido);
+        return pedidoGuardado.getId();
+    }
 
-        // Configurar atributos del pedido
-        // pedido.setCompradorid(pedidoRequestDTO.getCompradorId());
-        // pedido.setTiendaid(pedidoRequestDTO.getTiendaId());
-        pedido.setTipopedido(pedidoRequestDTO.getTipoPedido());
-        pedido.setValortotal(pedidoRequestDTO.getValorTotal());
-        Ubicacion ubicacion = ubicacionRepository.findUbicacionById(pedidoRequestDTO.getUbicacionId());
-        // pedido.setUbicacionid(ubicacion.getId());
-
-        // Configurar productos
-        List<ProductoDTO> productosDTO = pedidoRequestDTO.getProductos();
-        if (productosDTO != null) {
-            for (ProductoDTO productoDTO : productosDTO) {
-                Producto producto = new Producto();
-                producto.setId(producto.getId());
-                ProductoPedido productosPedidos = new ProductoPedido();
-                productosPedidos.setProducto(producto);
-                productosPedidos.setPedido(pedido);
-                productosPedidos.setCantidad(productoDTO.getCantidad());
-                pedido.getProductos().add(productoDTO);
-            }
-        }
-        pedidoRepository.save(pedido);
+    private int generarNumeroPedidoUnico() {
+        int nuevoNumeroPedido;
+        do {
+            nuevoNumeroPedido = (int) (Math.random() * 90000) + 10000;
+        } while (pedidoRepository.existsByNumeropedido(nuevoNumeroPedido));
+        return nuevoNumeroPedido;
     }
 }
