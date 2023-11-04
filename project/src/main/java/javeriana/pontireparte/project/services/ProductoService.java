@@ -72,7 +72,6 @@ public class ProductoService {
 
     public List<Producto> buscarProductosPorPalabraClave(String palabraclave) {
         if(palabraclave.equalsIgnoreCase("promociones")){
-            System.out.println("entro a promociones");
             List<Producto> productosEncontrados = productoRepository.findByKeywordByPromocion(palabraclave);
             productosEncontrados.forEach(producto -> {
                 producto.setIngredientes(mapToIngredientesConCantidad(ingredienteProductoRepository.findIngredientesByProductoId(producto.getId())));

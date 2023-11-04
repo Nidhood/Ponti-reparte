@@ -2,8 +2,6 @@ package javeriana.pontireparte.project.services;
 
 import javeriana.pontireparte.project.dto.PedidoRequestDTO;
 import javeriana.pontireparte.project.dto.ProductoRequestDTO;
-import javeriana.pontireparte.project.entities.Pedido;
-import javeriana.pontireparte.project.entities.Producto;
 import javeriana.pontireparte.project.entities.ProductoPedido;
 import javeriana.pontireparte.project.entities.ProductoPedidoId;
 import javeriana.pontireparte.project.repositories.ProductoPedidoRepository;
