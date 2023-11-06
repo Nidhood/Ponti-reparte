@@ -7,6 +7,7 @@ import java.io.Serializable;
 
 @Embeddable
 public class PedidoInformacionPagoId implements Serializable {
+
     @OneToOne
     @JoinColumn(name = "pedidoid")
     private Pedido pedido;
