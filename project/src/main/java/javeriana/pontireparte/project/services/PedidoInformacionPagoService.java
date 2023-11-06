@@ -11,6 +11,7 @@ import java.util.UUID;
 
 @Service
 public class PedidoInformacionPagoService {
+    // Funciona
     private final PedidoInformacionPagoRepository pedidoInformacionPagoRepository;
     private final PedidoService pedidoService;
     private final InformacionPagoRepository informacionPagoRepository;
