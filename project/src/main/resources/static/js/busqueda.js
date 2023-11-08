@@ -74,7 +74,8 @@ async function getTiendas(){
    funcionalidadBotonesProductoCarrito();
 
   $(document).ready(function() {
-    //EvaluarIngresoDeSesion();
+    
+    EvaluarIngresoDeSesion();
     asignarFoto();
     implementarBuscar();
     inicializarEventosProducto();

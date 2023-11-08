@@ -27,7 +27,7 @@ var hide = function (id) {
 async function getInfoPedido() {
 
   //"http://localhost:8080/pedidos/"+ sessionStorage.getItem("IDpedido")
-  return await fetch("http://localhost:8080/pedidos/4177f0f6-83f8-41fe-ac73-796f6953eda5", {
+  return await fetch("http://localhost:8080/pedidos/"+ sessionStorage.getItem("IDpedido"), {
     headers: {
       "Content-Type": "application/json",
     },
@@ -38,15 +38,13 @@ const promesaInformacionPedido = getInfoPedido()
 
 promesaInformacionPedido
 .then((res) => {
-  console.log(res.ok);
-  res.json();
+  console.log(res.ok +" info pedido correcta");
+  return res.json();
 })
 .then((data) => {
   console.log(data);
 
   generateInfoPedido(data);
-
-  //show("popup");
 })
 .catch(() => {
   console.log("error");
@@ -55,7 +53,7 @@ promesaInformacionPedido
 async function getInfoDomiciliario() {
 
   //"http://localhost:8080/pedidos/"+ sessionStorage.getItem("IDpedido")+"/domiciliario"
-  return await fetch("http://localhost:8080/pedidos/4177f0f6-83f8-41fe-ac73-796f6953eda5/domiciliario", {
+  return await fetch("http://localhost:8080/pedidos/"+ sessionStorage.getItem("IDpedido")+"/domiciliario", {
     headers: {
       "Content-Type": "application/json",
     },
@@ -64,21 +62,19 @@ async function getInfoDomiciliario() {
 
 function generateInfoPedido(data)
 {
-  if(data.tipopedido=="domicilio")
+  if(data.tipopedido=="Domicilio")
   {
     const promesaInformacionDomiciliario=getInfoDomiciliario();
 
     promesaInformacionDomiciliario
     .then((res) => {
       console.log(res.ok);
-      res.json();
+      return res.json();
     })
     .then((data) => {
       console.log(data);
       $("#NombreDomiciliario").text("El domiciliario se llama: "+data.nombre);
       $("#NumeroTel").text("El domiciliario se llama: "+data.telefono);
-
-      show("popup");
     })
     .catch(() => {
       console.log("error");
@@ -95,7 +91,7 @@ function generateInfoPedido(data)
 
 async function main()
 {
-  //EvaluarIngresoDeSesion();
+ // EvaluarIngresoDeSesion();
 }
 
 window.addEventListener('DOMContentLoaded', (event) => {
@@ -121,5 +117,17 @@ window.addEventListener('DOMContentLoaded', (event) => {
   setInterval(cambiarTexto, 3000);
 });
 
+// Agrega un controlador de eventos para el evento "popstate"
+window.addEventListener('popstate', function(event) {
+  // Verifica si la URL actual coincide con la URL de destino
+  if (window.location.href === '../html/MenuUsuario.html') {
+    // Redirige a la pantalla de destino
+    window.location.href = '../html/MenuUsuario.html';
+  }
+});
+
+// Crea un nuevo estado en el historial del navegador con la URL actual
+var currentState = window.location.href;
+window.history.pushState({ url: currentState }, '', currentState);
 
 
