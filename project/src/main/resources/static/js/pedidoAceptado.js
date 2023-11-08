@@ -24,23 +24,16 @@ var hide = function (id) {
 };
 
 
-function asignarFoto() {
-  if (sessionStorage.getItem("fotoPerfil")) {
-    document.getElementById("userimg").src =
-      sessionStorage.getItem("fotoPerfil");
-  } else {
-    document.getElementById("userimg").src =
-      "https://us.123rf.com/450wm/thesomeday123/thesomeday1231709/thesomeday123170900021/85622928-icono-de-perfil-de-avatar-predeterminado-marcador-de-posición-de-foto-gris-vectores-de.jpg";
-  }
-}
-
 async function getInfoPedido() {
-  return await fetch("http://localhost:8080/pedido/"+ sessionStorage.getItem("IDpedido")+"/domiciliario", {
+
+  //"http://localhost:8080/pedidos/"+ sessionStorage.getItem("IDpedido")
+  return await fetch("http://localhost:8080/pedidos/4177f0f6-83f8-41fe-ac73-796f6953eda5", {
     headers: {
       "Content-Type": "application/json",
     },
   });
 }
+
 const promesaInformacionPedido = getInfoPedido()
 
 promesaInformacionPedido
@@ -53,20 +46,46 @@ promesaInformacionPedido
 
   generateInfoPedido(data);
 
-  show("popup");
+  //show("popup");
 })
 .catch(() => {
   console.log("error");
 });
 
+async function getInfoDomiciliario() {
+
+  //"http://localhost:8080/pedidos/"+ sessionStorage.getItem("IDpedido")+"/domiciliario"
+  return await fetch("http://localhost:8080/pedidos/4177f0f6-83f8-41fe-ac73-796f6953eda5/domiciliario", {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+}
+
 function generateInfoPedido(data)
 {
-  if(data.tipo=="domicilio")
+  if(data.tipopedido=="domicilio")
   {
-    $("#NombreDomiciliario").text("El domiciliario se llama: "+data.nombre);
-    $("#NumeroTel").text("El domiciliario se llama: "+data.telefono);
+    const promesaInformacionDomiciliario=getInfoDomiciliario();
+
+    promesaInformacionDomiciliario
+    .then((res) => {
+      console.log(res.ok);
+      res.json();
+    })
+    .then((data) => {
+      console.log(data);
+      $("#NombreDomiciliario").text("El domiciliario se llama: "+data.nombre);
+      $("#NumeroTel").text("El domiciliario se llama: "+data.telefono);
+
+      show("popup");
+    })
+    .catch(() => {
+      console.log("error");
+    });
+
   }
-  //si es cogio recoger en el establecimiento
+  //si escogio recoger en el establecimiento
   else
   {
     $("#NombreDomiciliario").text("Trámite finalizado");
@@ -77,22 +96,30 @@ function generateInfoPedido(data)
 async function main()
 {
   //EvaluarIngresoDeSesion();
-  asignarFoto();
 }
 
 window.addEventListener('DOMContentLoaded', (event) => {
 
-  setTimeout(() => {
-      // Cambia el texto después de 4 segundos
-      document.getElementById('cargaText').textContent = 'Terminando términos del domicilio';
-  }, 3000);
+  // Inicializa un contador para rastrear el tiempo
+  let segundosTranscurridos = 0;
 
-  setTimeout(() => {
-      // Oculta y muestra los elementos después de 9 segundos
+  // Función para cambiar el texto cada 3 segundos
+  function cambiarTexto() {
+    const textos = ['Buscando domiciliario', 'Enviando información a la tienda', 'Finalizando terminos del domicilio']; // Agrega los textos que desees
+
+    document.getElementById('cargaText').textContent = textos[segundosTranscurridos];
+    segundosTranscurridos += 1;
+
+    // Verifica si han pasado 9 segundos y muestra/oculta elementos
+    if (segundosTranscurridos >= 4) {
       document.getElementById('Carga').style.display = 'none';
       document.getElementById('Resultado').style.display = 'block';
-  }, 9000);
+    }
+  }
 
+  // Llama a la función para cambiar el texto cada 3 segundos
+  setInterval(cambiarTexto, 3000);
 });
+
 
 

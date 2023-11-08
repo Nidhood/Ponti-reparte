@@ -64,7 +64,7 @@ a {
     font-size: x-large;
     position: absolute;
     left: 200px;
-    top: 0%;
+    top: 27%;
 }
 
 .btnTop
@@ -87,7 +87,8 @@ a {
     top: 0%;
     -webkit-box-shadow: 0px 0px 0px 9900px rgba(255, 248, 196, 0.5);
     box-shadow: 0px 0px 0px 9900px rgba(230, 179, 69, 0.381);
-    pointer-events: auto;  /* Esto asegura que el popup siga siendo interactivo */
+    pointer-events: auto; 
+    left: 0px; /* Esto asegura que el popup siga siendo interactivo */
 }
 
 #pestanadelmenu:after {
@@ -293,35 +294,6 @@ a {
     text-align: center;
 }
 
-
-/*para la carga del pedido*/
-.loader {
-    border: 7px solid #7f7f7f;
-    border-radius: 50%;
-    border-top: 7px solid #3498db;
-    width: 30px;
-    height: 30px;
-    -webqkit-animation: spin 1s linear infinite; /* Safari */
-    animation: spin 0.7s linear infinite;
-    position: absolute;
-    top: 250px;
-    position: absolute;
-    left: 48%; /* Mover el elemento a la mitad de su contenedor */
-    transform: translateX(-60%); /* Desplazar el elemento a la izquierda en un 50% de su propio ancho */
-    text-align: center;
-  }
-  
-  /* Safari */
-  @-webkit-keyframes spin {
-    0% { -webkit-transform: rotate(0deg); }
-    100% { -webkit-transform: rotate(360deg); }
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  
 #Resultado
 {
     display: none;
@@ -330,7 +302,7 @@ a {
 #cargaText
 {
     position: absolute;
-    top: 45%;
+    top: 60%;
     left: 50%; /* Mover el elemento a la mitad de su contenedor */
     transform: translateX(-50%); /* Desplazar el elemento a la izquierda en un 50% de su propio ancho */
     text-align: center;
@@ -340,3 +312,93 @@ a {
 {
     display: block;
 }
+
+/*loader 2*/
+
+ *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  section{
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .loader{
+    left: 50%; /* Mover el elemento a la mitad de su contenedor */
+    transform: translateX(-50%); /* Desplazar el elemento a la izquierda en un 50% de su propio ancho */
+    height: 25px;
+    width: 25px;
+    position: relative;
+    animation: rotate 5s  infinite;
+  }
+
+  .ball{
+    position: absolute;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .upper{
+    left: 0;
+    top: -22px;
+    background: #7ab2e1;
+    animation: upper 1s linear infinite;
+  }
+  @keyframes upper {
+    50%{
+      top: 22px;
+    }
+    100%{
+      top: 22px;
+    }
+  }
+  .right{
+    right: -22px;
+    top: 0;
+    background: #ef9ab8;
+    animation: right 1s linear infinite;
+  }
+  @keyframes right {
+    50%{
+      right: 22px;
+    }
+    100%{
+      right: 22px;
+    }
+  }
+  .lower{
+    bottom: -22px;
+    left: 0;
+    background: #f3e8a7;
+    animation: lower 1s linear infinite;
+  }
+  @keyframes lower {
+    50%{
+      bottom: 22px;
+    }
+    100%{
+      bottom: 22px;
+    }
+  }
+  .left{
+    left: -22px;
+    top: 0;
+    background: #aef1ae;
+    animation: left 1s linear infinite;
+  }
+  @keyframes left {
+    50%{
+      left: 22px;
+    }
+    100%{
+      left: 22px;
+    }
+  }
