@@ -48,4 +48,9 @@ public class PedidoController {
         Pedido pedido = pedidoService.infoWithPedido(id);
         return usuarioService.infoUsuario(pedido.getRepartidor().getId());
     }
+
+    @RequestMapping(value = "/{pedidoId}", method = RequestMethod.GET)
+    public Pedido infoUsuario(@PathVariable (value = "pedidoId") UUID id){
+        return pedidoService.infoWithPedido(id);
+    }
 }

@@ -1,4 +1,5 @@
 package javeriana.pontireparte.project.entities;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javeriana.pontireparte.project.dto.ProductoDTO;
 
 import javax.persistence.*;
@@ -24,6 +25,7 @@ public class Pedido {
 
     @OneToOne
     @JoinColumn(name = "tiendaid")
+    @JsonIgnoreProperties("productos")
     private Tienda tienda;
 
     @OneToOne
