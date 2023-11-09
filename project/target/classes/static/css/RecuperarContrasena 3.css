@@ -1,0 +1,119 @@
+#fondoSesion
+{
+    width: 100%; 
+    height: 100%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    z-index: -50;
+}
+
+section
+{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body
+{
+  padding-bottom: 30px;
+}
+
+#logo
+{
+  height: 70px;
+  margin: 10px;
+  position: fixed;
+}
+
+#IngresarTitle
+{
+position: absolute;
+right: 550px;
+top: 15%;
+}
+
+#B1
+{
+position: absolute;
+right: 510px;
+top: 23%;
+color: #919596;
+}
+
+#correo
+{
+top: 35%;
+}
+
+#contrasena1
+{
+top: 54%;
+}
+
+#contrasena2
+{
+top: 62%;
+}
+
+.texto
+{
+width: 25%;
+right: 500px;
+position: absolute;
+border: none;
+border-bottom: 1.5px solid #362d2f; /* Define un borde inferior de 2px de grosor y color gris */
+outline: none; /* Elimina el resaltado al enfocar */
+background-color: transparent;
+}
+
+input[type="text"]::-webkit-input-placeholder , input[type="password"]::-webkit-input-placeholder {
+color: #a19c9c;
+}
+
+#enviar
+{
+border: none;
+border-radius: 34px;
+background-color: #6ba1ed;
+width: 15%;
+padding: 5px 20px;    
+font-size: larger; 
+display: flex;
+align-items: center;   /* Centra los ítems verticalmente */
+justify-content: center; /* Centra los ítems horizontalmente */  
+position: absolute;
+top: 43%;
+right: 43.7%;
+
+}
+
+#cambiar
+{
+border: none;
+border-radius: 34px;
+background-color: #6ba1ed;
+width: 15%;
+padding: 5px 20px;    
+font-size: larger; 
+display: flex;
+align-items: center;   /* Centra los ítems verticalmente */
+justify-content: center; /* Centra los ítems horizontalmente */  
+position: absolute;
+top: 72%;
+right: 43.7%;
+
+}
+
+#flecha
+{
+  height: 28px;
+  margin-right: 20px;
+}
+
+#final
+{
+position: absolute;
+top: 120%;
+}
+

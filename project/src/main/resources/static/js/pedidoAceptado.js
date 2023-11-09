@@ -39,14 +39,16 @@ const promesaInformacionPedido = getInfoPedido()
 promesaInformacionPedido
 .then((res) => {
   console.log(res.ok +" info pedido correcta");
+  console.log(sessionStorage.getItem("IDpedido"))
   return res.json();
 })
 .then((data) => {
   console.log(data);
-
+  console.log(sessionStorage.getItem("IDpedido"))
   generateInfoPedido(data);
 })
 .catch(() => {
+  console.log(sessionStorage.getItem("IDpedido"))
   console.log("error");
 });
 

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Manjari:wght@400;700&family=Shantell+Sans&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Manjari:wght@400;700&family=Nunito:wght@200;600&family=Shantell+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/pedidoAceptado.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido Aceptado</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+</head>
+<body>
+  <header>
+    <img id="logo" src="../imagenes/logo.png" alt="es el logo">
+
+    <h1 id="slogan1">
+      PONTIREPARTE
+    </h1>
+
+    <a class="btnTop" id="menu" href="#" onclick="show('pestanadelmenu')">
+      <img id="opciones" src="../imagenes/menu.png" alt="menu">
+    </a>
+    
+  </header>
+
+  <section>
+
+    <div id="Carga">
+      <div class="loader">
+        <div class="upper ball"></div>
+        <div class="right ball"></div>
+        <div class="lower ball"></div>
+        <div class="left ball"></div>
+      </div>
+      <h3 id="cargaText">Buscando domiciliario</h3>
+    </div>
+
+
+    <div id="Resultado">
+      <img  id="tick" src="../imagenes/tick.png" alt="tick azul" >
+
+      <h1 id="Aceptado">Tu pedido fue aceptado</h1>
+      <h3 id="NombreDomiciliario">El domiciliario se llama: </h2>
+      <h3 id="NumeroTel">Su numero de telefono es:</h3>
+      <h4 id="Duracion">El pedido durará 15 minutos en llegar a tu destino</h4>
+    </div>
+
+    <div id="pestanadelmenu" class="pestanamenu">
+
+      <img id="logomenu" src="../imagenes/logo.png" alt="es el logo">
+
+      <a id="equismenu" href="#" onclick="hide('pestanadelmenu')">
+        <img id="equis" src="../imagenes/equis.png" alt="equis">
+      </a>
+
+      <a id="cerrasesion" class="botonazul" href="../index.html">
+        cerrar sesion
+      </a>
+      <button id="ayuda" class="botonazul">
+        ayuda
+      </button>
+
+      <hr id="hr1menu" >
+
+      <div class="sec">
+        <h2 id="secciones">
+            secciones
+        </h2>
+        
+        <div class="containerbotones">
+          <a id="mapa" class="botonmenu" href="../html/MapaUniversidadComida.html">
+            <span class="textoBotonm">Mapa de tiendas</span>
+            <img id="arrow" src="../imagenes/arrowmenu.png" alt="flecha">
+          </a> 
+          <button id="Productos" class="botonmenu">
+            <span class="textoBotonp">Productos</span>
+            <img id="arrow" src="../imagenes/arrowmenu.png" alt="flecha">
+          </button> 
+          <button id="tiendas" class="botonmenu">
+            <span class="textoBotont">Tiendas</span>
+            <img id="arrow" src="../imagenes/arrowmenu.png" alt="flecha">
+          </button> 
+          <button id="Historial" class="botonmenu">
+            <span class="textoBotonh">Historial de pedidos</span>
+            <img id="arrow" src="../imagenes/arrowmenu.png" alt="flecha">
+          </button> 
+          <button id="estado" class="botonmenu">
+            <span class="textoBotone">Estado del pedido</span>
+            <img id="arrow" src="../imagenes/arrowmenu.png" alt="flecha">
+          </button> 
+        </div>
+      </div>
+      
+      <hr id="hr2menu">
+      <div class="sec">
+        <h2 id="cuenta">
+          cuenta
+        </h2>
+        <div class="containerbotones">
+          <a id="infocuenta" class="botonmenu" href="../html/InfoCuenta.html">
+            <span class="textoBotoni">Información de cuenta</span>
+            <img id="arrow" src="../imagenes/arrowmenu.png" alt="flecha">
+          </a>
+          <butto class="botonmenu" id="conf">
+            <span class="textoBotonb">Configuraciones</span>
+            <img id="arrow" src="../imagenes/arrowmenu.png" alt="flecha">
+          </button>
+        </div> 
+      </div>
+    </div>
+   </section>
+   <script src="../js/pedidoAceptado.js"></script>
+   
+</body>
+</html> 
