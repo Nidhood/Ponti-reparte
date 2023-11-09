@@ -80,25 +80,16 @@ promesaUbicaciones
         },
 
         body: JSON.stringify({
-          compradorid : "6dfda066-af0c-495a-b243-6ff13e936424", 
-          tiendaid:"04411fa5-8adc-4341-a93f-51db9724eb76",
-          tipopedido: "Domicilio",
+          compradorid : tiendaid, 
+          tiendaid: tipopedido,
+          tipopedido: valortotal,
           valortotal: 7000,
-          aclaraciones: null,
-          propina: 0,
-          tipopago: "Efectivo",
-          tipotarjeta: null,
-          productos: [
-              {
-                      "id" : "2796978b-293a-4065-9af5-26ea1cddf676",
-                      "cantidad": 3
-                  },
-                  {
-                      "id" : "3c1f0f42-0514-45c2-995f-277916eefbd4",
-                      "cantidad": 4
-                  }
-          ],
-          ubicacionid: "0b1436d4-6da0-4452-b957-a44af9edf8c1"
+          aclaraciones: aclaraciones,
+          propina: propina,
+          tipopago: tipopago,
+          tipotarjeta: tipotarjeta,
+          productos: productos,
+          ubicacionid: ubicacionid
       }),
     })
   }
@@ -117,6 +108,7 @@ promesaUbicaciones
    var aclaraciones = $("#inp2").val();
    var tipopago = null;
    var tipotarjeta = null;
+   //VOLVER A AHCER LA LISTA 
    var productos = pedido.productos;
    
    // Obtén el elemento <select> por su ID
