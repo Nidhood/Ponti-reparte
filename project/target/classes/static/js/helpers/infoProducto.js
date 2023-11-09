@@ -178,9 +178,17 @@ container.on("click", ".minibasura", function (event) {
     // Filtrar la lista de productos para excluir el producto con el ID específico
     pedidoActual.productos = pedidoActual.productos.filter(producto => producto.idProducto !== productId);
 
+    if(pedidoActual.productos.length==0)
+    {
+      pedidoActual.idTienda=null;
+    }
     // Actualizar el sessionStorage con la nueva lista de productos y el total modificado
     sessionStorage.setItem("pedido", JSON.stringify(pedidoActual));
+
+    
   }
+
+  document.getElementById('count').innerHTML = pedidoActual.productos.length;
 
 });
 

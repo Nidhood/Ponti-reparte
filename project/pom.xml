@@ -51,15 +51,31 @@
    			<groupId>org.springframework.boot</groupId>
    			<artifactId>spring-boot-loader</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
+
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<excludes>
+					<exclude>static/selenium-js/**</exclude>
+				</excludes>
+			</resource>
+		</resources>
+
 	</build>
 
 </project>

@@ -1,5 +1,6 @@
 package javeriana.pontireparte.project.controllers;
 
+import javeriana.pontireparte.project.dto.OrderIdSendDTO;
 import javeriana.pontireparte.project.dto.PedidoRequestDTO;
 import javeriana.pontireparte.project.entities.Pedido;
 import javeriana.pontireparte.project.entities.Usuario;
@@ -35,12 +36,13 @@ public class PedidoController {
     }
 
     @RequestMapping(value = "/crear", method = RequestMethod.POST)
-    public UUID crearPedido(@RequestBody PedidoRequestDTO pedidoRequestDTO) {
+    public OrderIdSendDTO crearPedido(@RequestBody PedidoRequestDTO pedidoRequestDTO) {
         UUID pedidoCreateId = pedidoService.insertarPedido(pedidoRequestDTO);
+        OrderIdSendDTO orderIdSendDTO = new OrderIdSendDTO(pedidoCreateId);
         pedidoInformacionPagoService.insertarPedidoInformacionPago(pedidoCreateId, pedidoRequestDTO);
         productoPedidoService.insertarProductosPedido(pedidoCreateId, pedidoRequestDTO);
         tiendaService.actualizarInventario(pedidoRequestDTO);
-        return pedidoCreateId;
+        return orderIdSendDTO;
     }
 
     @RequestMapping(value = "/{pedidoId}/domiciliario", method = RequestMethod.GET)
