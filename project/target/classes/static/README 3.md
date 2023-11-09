@@ -1,2 +1,0 @@
-# Desarrollo_fundamentos
-PontiReparte

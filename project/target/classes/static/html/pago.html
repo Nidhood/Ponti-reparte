@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html lang="es">
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Manjari:wght@400;700&family=Shantell+Sans&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../css/Pago.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <title>Pago</title>
+    </head>
+
+    <body>
+        <header>
+          <img id="logo" src="../imagenes/logo.png" alt="es el logo">
+      
+          <h1 id="slogan1">
+            PONTIREPARTE
+          </h1>
+        </header>
+
+    <div class="todocontenido" id="contenidoid">
+
+        <div class="part1" id="parte1">
+            <div class="atras" id="vuelta">
+                <a id= "botonvolver"  href="../html/MenuUsuario.html">
+                    Volver al menú
+                </a>
+        </div>
+
+
+        <div class="contenido1" id="contiene1">
+            <div class="lado1" id="lad1">
+                <div class="ubicacion" id="ubica">
+                    <div class="entrega">Direccion de entrega</div>
+                    <div class="cambiar">Cambiar</div>
+                </div>
+
+                <hr id="hr1">
+                <label for="Nombre-tiendas">Seleccione una ubicación:</label>
+                <select name="Nombre-tiendas" id="Nombre-tiendas">
+                </select>
+                <input id="inp2" type="text" placeholder="Estare en el piso M">
+                <div class="Productos">Aqui va lo de los productos</div>
+                <hr id="hr2">
+                <div class="estimacion">
+                    <div>Entrega estimada</div>
+                    <div class="tiempo">30 - 50 min</div>
+                </div>
+                
+                <div class="pagos">
+                    <div class="metodop">
+                        <div class="sign"><i class="btnTop"></i><p id="signo">!</p></div>
+                        <div class="metodopaguito">Metodo de pago</div>
+                        <div class="campobli">Obligatorio</div>
+                    </div>
+                    <hr>
+                    <div class="metodispo">
+                        <div class="disponible">Agregar método de pago</div>
+                        <div>
+                            <input id="inpago" type="search" placeholder="Agregar tarjeta de crédito o débito">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="nodispo">
+                        <div class="metno">Métodos no disponibles</div>
+                        <div>
+                            <input id="cash" type="search"  placeholder="Efectivo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+        <div class="contenido2" id="contiene2">
+            <div class="lado2" id="lad2">
+                <div class="ubicacion" id="ubica">
+                    <div class="pontip">Pontipuntos</div>
+                    <div class="agrega">Agregar</div>
+                </div>
+
+                <div id="RadioOptions1">
+                    <input type="radio" class="modalidad" id="mod1" name="ModDomi" value="Domicilio">
+                    <label id="labelt" for="yo1">Domicilio</label>
+                </div>
+
+                <div id="RadioOptions2">
+                    <input type="radio" class="modalidad" id="mod2" name="ModDomi" value="Reservar">
+                    <label id="labelt" for="yo2">Entrega Inmediata</label>
+                </div>
+                <div class="resumen_mayor">
+                    <div class="resumenmini">
+                        <div>
+                            <p id="presu1">Resumen</p>
+                        </div>
+                        <div>
+                            <p id="presu2">^</p>
+                        </div>
+                    </div>
+                    <hr id="hresum1">
+
+
+                    <div class="costos">
+                        <div class="productcost">Costo de producto</div>
+                        <div class="totalfinal">$</div>
+                    </div>
+                    <div class="tarifas">
+                        <div class="tariserv">Tarifa de servicios</div>
+                        <div>$0.00</div>
+                    </div>
+                    <div class="envios">
+                        <div class="costosenvi">Costo de envios</div>
+                        <div class="totalfinal">$2.000</div>
+                    </div>
+                    <div class="total">
+                        <div class="totalito">Total</div>
+                        <div class="totaldetodo">$</div>
+                    </div>
+                    <p id="detalle">Ver detalles</p>
+                    <div class="hacerpedido">
+                        <button id="hacepedido">Hacer pedido</button>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <script type="module" src="../js/pago.js"></script>
+    </body>
+</html>
+      

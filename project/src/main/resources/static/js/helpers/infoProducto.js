@@ -34,9 +34,6 @@ if (pedidoOpcional && pedidoOpcional.productos && pedidoOpcional.productos.lengt
   anadirProductosCarrito(pedidoActual);
 }
 
-
-
-
 export function  AnadirProductoAPedido(cantidad)
 {
 
@@ -74,176 +71,130 @@ export function  AnadirProductoAPedido(cantidad)
     anadirProductosCarrito(pedidoActual);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-//////////////////////////////////////////////////REVISAR PROPUESTA////////////////////////////////////////////
-export function anadirProductosCarrito(productos)
+function llenarProductosCarrito(guarda, container)
 {
+  let muestra = "";
+  //se vuelve a llenar
+  for(let i=0; i<guarda.productos.length; i++)
+  {
+    muestra = `
+        <div class="producto" id="${guarda.productos[i].idProducto}">
+            <div class="circuloproducto">
+                    <img class="fotominipRODUCTO" src="${guarda.productos[i].link}" alt="foto Producto">
+            </div>
+            <p class="nombreminiProducto">
+                ${guarda.productos[i].nombre}
+            </p>
+            <p class="preciominiProducto">
+                ${guarda.productos[i].precio}
+            </p>
+            <p class="cantminiProducto">
+                ${guarda.productos[i].cantidad}
+            </p>
+            <div id="miniCantidades">
+              <button class="minibasura" id="basura-${guarda.productos[i].idProducto}">
+                <img class="sumatoria" id="minibasura" src="../imagenes/trash.png" alt="basura">
+              </button>
+            </div>
+        </div>
+    `;
 
-//se vacia el contenedor y se vuelven a anadir los productos
-vaciarContenedor("contenedorproductosCarrito");
-
-var container = $("#contenedorproductosCarrito");
-
-document.getElementById('contenedorproductosCarrito').innerHTML = JSON.parse(sessionStorage.getItem("pedido"));
-console.log(JSON.parse(sessionStorage.getItem("pedido")))
-
-let guarda = JSON.parse(sessionStorage.getItem("pedido"));
-console.log(guarda.productos)
-
-let muestra = "";
-
-document.getElementById('count').innerHTML = guarda.productos.length;
-
-//se vuelve a llenar
-for(let i=0; i<guarda.productos.length; i++)
-{
-  muestra = `
-      <div class="producto" id="${guarda.productos[i].idProducto}">
-          <div class="circuloproducto">
-                  <img class="fotominipRODUCTO" src="${guarda.productos[i].link}" alt="foto Producto">
-          </div>
-          <p class="nombreminiProducto">
-              ${guarda.productos[i].nombre}
-          </p>
-          <p class="preciominiProducto">
-              ${guarda.productos[i].precio}
-          </p>
-          <p class="cantminiProducto">
-              ${guarda.productos[i].cantidad}
-          </p>
-          <div id="miniCantidades">
-            <button class="minibasura" id="basura-${guarda.productos[i].idProducto}">
-              <img class="sumatoria" src="../imagenes/trash.png" alt="basura">
-            </button>
-          </div>
-      </div>
-  `;
-  
-  container.append(muestra);
-  
-  //container.append(productBlock);
-}
-
-muestra = `
-
-<a id="comienza_compra" class="boto" href="../html/pago.html">
-  <span class="botonfunci">Ir a pagar</span>
-</a>
-
-`;
-
-container.append(muestra);
-
-document.getElementById("caneca").style.display = "block";
-
-document.getElementById("carrito_contiene").style.display = "none";
-document.getElementById("contenedorproductosCarrito").style.display = "flex";
-
-
-// Asignar el evento click al contenedor padre que existe en el DOM
-container.on("click", ".minibasura", function (event) {
-  event.preventDefault(); // Prevenir la acción predeterminada del enlace
-
-  // Aquí puedes usar el ID del producto que está en el atributo 'id' del botón
-  const productId = event.currentTarget.id.replace("basura-", "");
-  console.log(productId);
-
-  // Seleccionar el div del producto usando el ID y eliminarlo del contenedor
-  container.find(`.producto[id="${productId}"]`).remove();
-
-  //eliminar producto de la memoria
-  // Obtener los productos actuales del sessionStorage
-  const pedidoActual = JSON.parse(sessionStorage.getItem("pedido"));
-
-
-  // Buscar el producto que se va a eliminar por su ID
-  const productoAEliminar = pedidoActual.productos.find(producto => producto.idProducto === productId);
-
-  if (productoAEliminar) {
-    // Restar el precio del producto por la cantidad que se había pedido del total
-    pedidoActual.total -= (productoAEliminar.precio * productoAEliminar.cantidad);
-
-    // Filtrar la lista de productos para excluir el producto con el ID específico
-    pedidoActual.productos = pedidoActual.productos.filter(producto => producto.idProducto !== productId);
-
-    // Actualizar el sessionStorage con la nueva lista de productos y el total modificado
-    sessionStorage.setItem("pedido", JSON.stringify(pedidoActual));
+    container.append(muestra);
+    
+    //container.append(productBlock);
   }
 
-});
+  muestra = `
 
+  <a id="comienza_compra" class="boto" href="../html/pago.html">
+    <span class="botonfunci">Ir a pagar</span>
+  </a>
+
+  `;
+  container.append(muestra);
+}
+
+export function anadirProductosCarrito()
+{
+
+  //se vacia el contenedor y se vuelven a anadir los productos
+  vaciarContenedor("contenedorproductosCarrito");
+
+  var container = $("#contenedorproductosCarrito");
+
+  document.getElementById('contenedorproductosCarrito').innerHTML = JSON.parse(sessionStorage.getItem("pedido"));
+  console.log(JSON.parse(sessionStorage.getItem("pedido")))
+
+  let guarda = JSON.parse(sessionStorage.getItem("pedido"));
+  console.log(guarda.productos)
+
+  document.getElementById('count').innerHTML = guarda.productos.length;
+
+  llenarProductosCarrito(guarda, container);
+
+  document.getElementById("caneca").style.display = "block";
+  document.getElementById("carrito_contiene").style.display = "none";
+  document.getElementById("contenedorproductosCarrito").style.display = "flex";
+
+
+  // Asignar el evento click al contenedor padre que existe en el DOM
+  container.on("click", ".minibasura", function (event) {
+    event.preventDefault(); // Prevenir la acción predeterminada del enlace
+
+    // Aquí puedes usar el ID del producto que está en el atributo 'id' del botón
+    const productId = event.currentTarget.id.replace("basura-", "");
+    console.log(productId);
+
+    // Seleccionar el div del producto usando el ID y eliminarlo del contenedor
+    container.find(`.producto[id="${productId}"]`).remove();
+
+    //eliminar producto de la memoria
+    // Obtener los productos actuales del sessionStorage
+    const pedidoActual = JSON.parse(sessionStorage.getItem("pedido"));
+
+
+    // Buscar el producto que se va a eliminar por su ID
+    const productoAEliminar = pedidoActual.productos.find(producto => producto.idProducto === productId);
+
+    if (productoAEliminar) {
+      // Restar el precio del producto por la cantidad que se había pedido del total
+      pedidoActual.total -= (productoAEliminar.precio * productoAEliminar.cantidad);
+
+      // Filtrar la lista de productos para excluir el producto con el ID específico
+      pedidoActual.productos = pedidoActual.productos.filter(producto => producto.idProducto !== productId);
+
+      // Actualizar el sessionStorage con la nueva lista de productos y el total modificado
+      sessionStorage.setItem("pedido", JSON.stringify(pedidoActual));
+    }
+
+  });
 
 }
 
-
-
-
-
-function vaciarContenedor() {
-const container = $("#contenedorproductosCarrito"); // Cambia 'ID_DEL_CONTENEDOR' por el ID real del contenedor
-container.empty();
-
+function vaciarContenedor() 
+{
+  const container = $("#contenedorproductosCarrito"); // Cambia 'ID_DEL_CONTENEDOR' por el ID real del contenedor
+  container.empty();
 }
-
-
-////////////////////////////////////////////AQUI TERMINA////////////////////////////////////
-
-
-
-
-
-
-
 
 // Define la función eliminarTodo
 export function eliminarTodo() {
+  var contenedor = $("#contenedorproductosCarrito");
 
-var contenedor = $("#contenedorproductosCarrito");
+    // Supongamos que quieres eliminar un elemento del sessionStorage con la clave "miElemento"
+  contenedor.empty();
 
+  var pedidoVacio= {
+    total: 0,
+    id:null,
+    idTienda:null,
+    productos: [],
+  };
+
+  document.getElementById('count').innerHTML = 0;
   // Supongamos que quieres eliminar un elemento del sessionStorage con la clave "miElemento"
-contenedor.empty();
-
-var pedidoVacio= {
-  total: 0,
-  id:null,
-  idTienda:null,
-  productos: [],
-};
-
-document.getElementById('count').innerHTML = 0;
-// Supongamos que quieres eliminar un elemento del sessionStorage con la clave "miElemento"
-sessionStorage.setItem("pedido", JSON.stringify(pedidoVacio));
-
-
+  sessionStorage.setItem("pedido", JSON.stringify(pedidoVacio));
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 export function getElem(id) {
   return document.getElementById(id);
@@ -263,8 +214,6 @@ export function funcionalidadBotonesProductoCarrito()
 {
   document.addEventListener("DOMContentLoaded", function () {
 
-    
-    
       // Obtiene una referencia al elemento con el ID "caneca"
       var caneca = document.getElementById("caneca");
     
@@ -277,9 +226,6 @@ export function funcionalidadBotonesProductoCarrito()
 
         eliminarTodo();
       });
-    
-
-
 
       // Asegurarte de que el DOM esté cargado
       const BAgregarEirPagar = document.getElementById("BAgregarEirPagar"); // Selecciona el botón por su ID
@@ -350,54 +296,15 @@ else if(evalCantidad(cantidad))
 
   var container = $("#contenedorproductosCarrito");
 
-document.getElementById('contenedorproductosCarrito').innerHTML = JSON.parse(sessionStorage.getItem("pedido"));
-console.log(JSON.parse(sessionStorage.getItem("pedido")))
+  document.getElementById('contenedorproductosCarrito').innerHTML = JSON.parse(sessionStorage.getItem("pedido"));
+  console.log(JSON.parse(sessionStorage.getItem("pedido")))
 
-let guarda = JSON.parse(sessionStorage.getItem("pedido"));
-console.log(guarda.productos)
+  let guarda = JSON.parse(sessionStorage.getItem("pedido"));
+  console.log(guarda.productos)
 
-let muestra = "";
+  document.getElementById('count').innerHTML = guarda.productos.length;
 
-document.getElementById('count').innerHTML = guarda.productos.length;
-
-//se vuelve a llenar
-for(let i=0; i<guarda.productos.length; i++)
-{
-  muestra = `
-      <div class="producto" id="${guarda.productos[i].idProducto}">
-          <div class="circuloproducto">
-                  <img class="fotominipRODUCTO" src="${guarda.productos[i].link}" alt="foto Producto">
-          </div>
-          <p class="nombreminiProducto">
-              ${guarda.productos[i].nombre}
-          </p>
-          <p class="preciominiProducto">
-              ${guarda.productos[i].precio}
-          </p>
-          <p class="cantminiProducto">
-              ${guarda.productos[i].cantidad}
-          </p>
-          <div id="miniCantidades">
-            <button class="minibasura" id="basura-${guarda.productos[i].idProducto}">
-              <img class="sumatoria" id="minibasura" src="../imagenes/trash.png" alt="basura">
-            </button>
-          </div>
-      </div>
-  `;
-
-  container.append(muestra);
-  
-  //container.append(productBlock);
-}
-
-muestra = `
-
-<a id="comienza_compra" class="boto" href="../html/pago.html">
-  <span class="botonfunci">Ir a pagar</span>
-</a>
-
-`;
-container.append(muestra);
+  llenarProductosCarrito(guarda, container);
 
   if(tipo=="BAgregarSeguirComprando")
   {

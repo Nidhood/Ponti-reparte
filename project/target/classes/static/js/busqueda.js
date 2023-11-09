@@ -31,7 +31,7 @@ promesaProductos
     generateProductListBuscador(data);
   })
   .catch(() => {
-    console.log("error");
+    console.log("errxor");
   });
 
 

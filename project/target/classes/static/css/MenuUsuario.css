@@ -876,7 +876,7 @@ body.overlayActive {
     bottom: 0;
     display: flex;
     max-height: 100%;
-  }
+}
 
 
 
@@ -963,7 +963,6 @@ body.overlayActive {
 
 
 #canasta{
-    font-family: Open sauce;
     font-size: 24px;
     line-height: 1.63;
     text-align: left;
@@ -972,11 +971,9 @@ body.overlayActive {
     margin-left: 10px;
 }
 
-
 #hrcarrito{
     margin-top: 2px;
 }
-
 
 #contenedorproductosCarrito{
     position: relative;
@@ -989,6 +986,8 @@ body.overlayActive {
 #carrito_contiene
 {
     position: relative;
+    top: 40%; /* Mover el elemento a la mitad de su contenedor */
+    transform: translateY(-80%);
     display: flex;
     flex-direction: column;
     align-items: center;

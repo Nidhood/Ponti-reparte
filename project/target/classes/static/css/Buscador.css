@@ -456,7 +456,7 @@ body.overlayActive {
 {
     display: none;
     position: absolute;
-    height: 710px;
+    height: 100%;
     width: 380px;
     z-index: 200;
     background-color: #FFF3D7;
@@ -475,7 +475,7 @@ body.overlayActive {
     bottom: 0;
     right: 0;
     display: flex;
-    max-height: 100%;
+    height: 100%;
   }
 
 #arrow
@@ -750,3 +750,299 @@ a {
     }
 
 }
+
+.pestamenu
+{
+    display: none;
+    position: absolute;
+    height: 100%;
+    width: 380px;
+    z-index: 200;
+    background-color: #FFF3D7;
+    padding: 10px;
+    top: 0%;
+    right: 0%;
+    -webkit-box-shadow: 0px 0px 0px 9900px rgba(255, 248, 196, 0.5);
+    box-shadow: 0px 0px 0px 9900px rgba(230, 179, 69, 0.381);
+    pointer-events: auto;  /* Esto asegura que el popup siga siendo interactivo */
+}
+
+#popUpCarrito:after {
+    position: fixed;
+    content: "";
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    max-height: 100%;
+  }
+
+
+
+  
+body.overlayActive {
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.cart {
+    position: absolute;
+    display: flex;
+    background-color: transparent;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 50%;
+    height: 22px;
+    width: 22px;
+    right: 36px;
+    top: 10px;
+}
+
+.cart p {
+    font-family: nunito;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: goldenrod;
+    color: white;
+    height: 22px;
+    width: 22px;
+}
+
+/* Estilos para pantallas de hasta 768px de ancho */
+@media (max-width: 768px) {
+    .cart {
+        right: 20px; /* Ajusta el espacio a la derecha para pantallas mÃ¡s pequeÃ±as */
+        top: 8px; /* Ajusta la posiciÃ³n hacia arriba para pantallas mÃ¡s pequeÃ±as */
+    }
+}
+
+/* Estilos para pantallas de hasta 480px de ancho */
+@media (max-width: 480px) {
+    .cart {
+        right: 10px; /* Ajusta el espacio a la derecha para pantallas mÃ¡s pequeÃ±as */
+        top: 6px; /* Ajusta la posiciÃ³n hacia arriba para pantallas mÃ¡s pequeÃ±as */
+    }
+}
+
+#CarritoVacio{
+    font-family: Nunito;
+    font-size: 16px;
+    line-height: 1.63;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+
+#carritobebe
+{
+    position: absolute;
+    height: 40px;
+    margin-left: 160px;
+    margin-top: -10px;
+}
+
+
+
+#ubica
+{
+    height: 30px;
+    margin-top: 2px;
+    margin-left: 10px;
+}
+
+
+#carroEmpty{
+    height: 150px;
+    position: relative;
+    top: 20px;
+}
+
+
+#canasta{
+    font-size: 24px;
+    line-height: 1.63;
+    text-align: left;
+    font-weight: bold;
+    margin-top: 6px;
+    margin-left: 10px;
+}
+
+#hrcarrito{
+    margin-top: 2px;
+}
+
+#contenedorproductosCarrito{
+    position: relative;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+#carrito_contiene
+{
+    position: relative;
+    top: 40%; /* Mover el elemento a la mitad de su contenedor */
+    transform: translateY(-80%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+
+
+#comienza_compra
+{
+    background-color: #68A8C1;
+    color: #fff;
+    border: none;
+    border-radius: 13px;
+    padding: 5px 10px;
+    text-align: center;
+    width: 180px;
+    display: hidden;
+}
+
+
+.boto #comienza_compra
+{
+    width: 100%;
+    display: flex;
+}
+
+.boto {
+    margin-top: 40px;
+    background-color: transparent; /* O el color que prefieras */
+    cursor: pointer; /* Estilo de cursor al pasar el ratÃ³n por encima */
+    z-index: 4;
+}
+
+#comienza_compra:hover {
+    background-color: green; 
+}
+
+
+  
+.container .circuloproducto {
+    /* Estilos para el contenedor del cÃ­rculo de la imagen */
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    border-radius: 200px;
+    border: 3px solid rgb(244, 109, 79);
+    position: relative;
+    left: -120%;
+    height: 100px;
+    top: 15px;
+    overflow: hidden;
+}
+    
+.container .fotominipRODUCTO {
+    /* Estilos para la imagen del producto */
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    left: 50%; /* Mover el elemento a la mitad de su contenedor */
+}
+  
+
+
+
+  .container .nombreminiProducto{
+    /* Estilos para el nombre del producto */
+    position: relative;
+    font-weight: bold;
+    margin-top: -86px;
+    left: 1px;
+    overflow: hidden;
+    color: #000000; 
+
+  }
+  
+  .container .preciominiProducto {
+    /* Estilos para el precio del producto */
+    position: relative;
+    font-weight: bold;
+    font-size: small;
+    margin-top: -10px;
+    left: 1px;
+    overflow: hidden;
+    color: #4e4e4e; 
+  }
+  
+  .container .cantminiProducto {
+    /* Estilos para la cantidad del producto */
+    position: relative;
+    font-size: small;
+    margin-top: -10px;
+    left: 6px;
+    overflow: hidden;
+    color: #000000; 
+
+  }
+
+
+  .container .sumatoria{
+    height: 16px;
+  }
+  
+
+  
+
+  #irpago
+  {
+      background-color: #68A8C1;
+      color: #fff;
+      border: none;
+      border-radius: 13px;
+      padding: 5px 10px;
+      text-align: center;
+      width: 180px;
+  }
+  
+  
+  .container #irpago
+  {
+      width: 100%;
+      display: flex;
+  }
+  
+
+  #irpago:hover {
+      background-color: green; 
+  }
+
+
+  #caneca
+  {
+    display: none;
+      left: 50%;
+      position: absolute;
+      z-index: 2000;
+      margin-right: 220px;
+      margin-top: 20px;
+      background-color: rgba(195, 84, 76, 0.793); /* Color de fondo del botón */
+      color: white; /* Color del texto del botón */
+      padding: 5px 10px; /* Espaciado interno del botón (vertical horizontal) */
+      border: none; /* Borde del botón */
+      border-radius: 5px; /* Bordes redondeados del botón */
+      cursor: pointer; /* Cambiar el cursor al pasar el ratón por encima */
+      width: 30%;
+      left: 50%; /* Mover el elemento a la mitad de su contenedor */
+    transform: translateX(-50%);
+  }
+  
+  .vaciar_basura {
+      width: 15px; /* Ancho de la imagen */
+      height: 15px; /* Altura de la imagen */
+      vertical-align: middle; /* Alinear verticalmente la imagen con el texto */
+  }
+    
+  #caneca:hover {
+      background: red; /* Cambiar el color de fondo al pasar el ratón por encima */
+    }

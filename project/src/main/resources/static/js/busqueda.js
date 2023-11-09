@@ -17,15 +17,6 @@ async function getProductos(){
   })
 }
 
-
-async function getProductos(){
-  return await fetch('http://localhost:8080/ubicaciones', {
-    headers: {
-          'Content-Type': 'application/json'
-      }
-  })
-}
-
 //se llama la peticion y se guarda en promesaProductos
 var promesaProductos = getProductos()
 
