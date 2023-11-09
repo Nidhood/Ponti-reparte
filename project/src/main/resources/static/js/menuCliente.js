@@ -1,5 +1,5 @@
 import { EvaluarIngresoDeSesion,asignarFoto,implementarBuscar} from './helpers/general.js';
-import { generateTiendaList,getElem, show, hide,funcionalidadBotonesProductoCarrito,generateProductList,inicializarEventosProducto} from './helpers/infoProducto.js';
+import {generateTiendaList,getElem, show, hide,funcionalidadBotonesProductoCarrito,generateProductList,inicializarEventosProducto} from './helpers/infoProducto.js';
 window.getElem = getElem;
 window.show = show;
 window.hide = hide;
