@@ -107,7 +107,7 @@ header
 }
 
 #lad1{
-    right: 10%;
+    right: 3%;
 }
 
 .contenido1{
@@ -154,8 +154,8 @@ header
     width: 100%; 
     border: none; 
     background: #dbdbdb; 
-    padding: 4px 10px; 
     padding: 14px 2px;
+    margin-top: 20px
 }
 
 .Productos{
@@ -352,4 +352,23 @@ header
     color: white;
     height: 22px;
     width: 22px;
+}
+
+
+
+
+#RadioOptions1{
+    margin-top: 2%;
+}
+
+/* Aumenta el tamaÃ±o de los botones de radio */
+#RadioOptions1 input[type="radio"], #RadioOptions2 input[type="radio"] {
+    transform: scale(1.1); /* Aumenta el tamaÃ±o en 2 veces (puedes ajustar este valor) */
+    margin-right: 2px;
+    margin-top: 1%;
+}
+
+
+fieldset {
+    border: none;
 }

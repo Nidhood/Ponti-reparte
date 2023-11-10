@@ -33,6 +33,7 @@ public class PedidoService {
 
     public UUID insertarPedido(PedidoRequestDTO pedidoRequestDTO) {
         Pedido pedido = new Pedido();
+        System.out.println("PedidoRequestDTO: " + pedidoRequestDTO);
         pedido.setNumeropedido(generarNumeroPedidoUnico()); // Generar un número de pedido único de 5 cifras
         pedido.setComprador(usuarioRepository.findUsuarioById(pedidoRequestDTO.getCompradorid()));
         pedido.setRepartidor(usuarioRepository.findByNombreusuario("rp_jones")); // Repartidor por defecto.

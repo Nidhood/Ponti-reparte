@@ -43,7 +43,7 @@
                 <select name="Nombre-tiendas" id="Nombre-tiendas">
                 </select>
                 <input id="inp2" type="text" placeholder="Estare en el piso M">
-                <div class="Productos">Aqui va lo de los productos</div>
+                <div class="Productos"></div>
                 <hr id="hr2">
                 <div class="estimacion">
                     <div>Entrega estimada</div>
@@ -51,25 +51,31 @@
                 </div>
                 
                 <div class="pagos">
-                    <div class="metodop">
-                        <div class="sign"><i class="btnTop"></i><p id="signo">!</p></div>
-                        <div class="metodopaguito">Metodo de pago</div>
-                        <div class="campobli">Obligatorio</div>
-                    </div>
-                    <hr>
-                    <div class="metodispo">
-                        <div class="disponible">Agregar método de pago</div>
-                        <div>
-                            <input id="inpago" type="search" placeholder="Agregar tarjeta de crédito o débito">
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="nodispo">
-                        <div class="metno">Métodos no disponibles</div>
-                        <div>
-                            <input id="cash" type="search"  placeholder="Efectivo">
-                        </div>
-                    </div>
+                    <form>
+                        <fieldset id="group1">
+                            <div class="metodop">
+                                <div class="sign"><i class="btnTop"></i><p id="signo">!</p></div>
+                                <div class="metodopaguito">Metodo de pago</div>
+                                <div class="campobli">Obligatorio</div>
+                            </div>
+                            <hr>
+                            <div id="RadioOptions1">
+                                <input type="radio" class="modalidad" id="mod1" name="ModDomi" value="Efectivo">
+                                <label id="labelt" for="yo1">Efectivo</label>
+                            </div>
+            
+                            <div id="RadioOptions2">
+                                <input type="radio" class="modalidad" id="mod2" name="ModDomi" value="Tarjeta">
+                                <label id="labelt" for="yo2">Tarjeta</label>
+                            </div>
+    
+                            <div id="RadioOptions2">
+                                <input type="radio" class="modalidad" id="mod3" name="ModDomi" value="Pontipuntos">
+                                <label id="labelt" for="yo3">Pontipuntos</label>
+                            </div>
+                        </fieldset>
+                    </form>
+                    
                 </div>
             </div>
 
@@ -84,16 +90,20 @@
                     <div class="pontip">Pontipuntos</div>
                     <div class="agrega">Agregar</div>
                 </div>
-
-                <div id="RadioOptions1">
-                    <input type="radio" class="modalidad" id="mod1" name="ModDomi" value="Domicilio">
-                    <label id="labelt" for="yo1">Domicilio</label>
-                </div>
-
-                <div id="RadioOptions2">
-                    <input type="radio" class="modalidad" id="mod2" name="ModDomi" value="Reservar">
-                    <label id="labelt" for="yo2">Entrega Inmediata</label>
-                </div>
+                <form>
+                    <fieldset id="group1">
+                        <div id="RadioOptions1">
+                            <input type="radio" class="modalidad" id="mod4" name="ModDomi" value="Domicilio">
+                            <label id="labelt" for="yo4">Domicilio</label>
+                        </div>
+    
+                        <div id="RadioOptions2">
+                            <input type="radio" class="modalidad" id="mod5" name="ModDomi" value="Entrega Inmediata">
+                            <label id="labelt" for="yo5">Entrega Inmediata</label>
+                        </div>
+                    </fieldset>
+                </form>
+                
                 <div class="resumen_mayor">
                     <div class="resumenmini">
                         <div>
@@ -120,7 +130,7 @@
                     </div>
                     <div class="total">
                         <div class="totalito">Total</div>
-                        <div class="totaldetodo">$</div>
+                        <div class="totaldetodo" id="megatotal">$</div>
                     </div>
                     <p id="detalle">Ver detalles</p>
                     <div class="hacerpedido">
@@ -133,7 +143,6 @@
         </div>
 
     </div>
-
 
     <script type="module" src="../js/pago.js"></script>
     </body>

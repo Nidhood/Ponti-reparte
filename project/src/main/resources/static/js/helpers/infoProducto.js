@@ -255,7 +255,7 @@ export function funcionalidadBotonesProductoCarrito()
 
 function  evaluarItemsAnadir(cantidad, tipo, event)
 {
-if (isNaN(cantidad) || cantidad.trim() === "" || cantidad==0) {
+if (isNaN(cantidad) || cantidad.trim() === "" || cantidad<=0) {
   alert("Por favor, introduce un número válido en la cantidad.");
   event.preventDefault(); // Evita que se ejecute cualquier otro comportamiento del botón.
 } 
@@ -420,7 +420,7 @@ export function getCantidadPorProductoId(pedido, idProductoBuscado) {
         //mirar como saber cual tienda es
         //en este caso se mandan las tiendas donde esta disponible el producto
         //en radio se pone en value el valor que se enviara al servidor (que es el id de la tienda)
-    
+        console.log(tiendasList[i].cantidad)
         //si todavia no ha pedido otros productos y por ende no ha seleccionado la tienda
         if(pedidoActual.idTienda==null && tiendasList[i].cantidad>0)
         {

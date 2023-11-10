@@ -981,6 +981,10 @@ body.overlayActive {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    max-height: 69%;
+    overflow-x: hidden;   /* Habilita el desplazamiento horizontal */
+    overflow-y: auto; /* Desactiva el desplazamiento vertical */
+    white-space: nowrap;  /* Esto evita que los hijos salten a la siguiente lÃ­nea */
 }
 
 #carrito_contiene
@@ -1022,7 +1026,7 @@ body.overlayActive {
 }
 
 #comienza_compra:hover {
-    background-color: green; 
+    background-color: #3d87a4; 
 }
 
 
@@ -1089,33 +1093,6 @@ body.overlayActive {
   .container .sumatoria{
     height: 16px;
   }
-  
-
-  
-
-  #irpago
-  {
-      background-color: #68A8C1;
-      color: #fff;
-      border: none;
-      border-radius: 13px;
-      padding: 5px 10px;
-      text-align: center;
-      width: 180px;
-  }
-  
-  
-  .container #irpago
-  {
-      width: 100%;
-      display: flex;
-  }
-  
-
-  #irpago:hover {
-      background-color: green; 
-  }
-
 
   #caneca
   {
@@ -1125,15 +1102,17 @@ body.overlayActive {
       z-index: 2000;
       margin-right: 220px;
       margin-top: 20px;
-      background-color: rgba(195, 84, 76, 0.793); /* Color de fondo del botón */
-      color: white; /* Color del texto del botón */
+      background-color: rgb(238, 229, 189); /* Color de fondo del botón */
+      color: rgb(53, 48, 48); /* Color del texto del botón */
       padding: 5px 10px; /* Espaciado interno del botón (vertical horizontal) */
       border: none; /* Borde del botón */
       border-radius: 5px; /* Bordes redondeados del botón */
       cursor: pointer; /* Cambiar el cursor al pasar el ratón por encima */
-      width: 30%;
+      width: 90%;
       left: 50%; /* Mover el elemento a la mitad de su contenedor */
-    transform: translateX(-50%);
+     transform: translateX(-50%);
+     text-align: center;
+
   }
   
   .vaciar_basura {
@@ -1143,5 +1122,5 @@ body.overlayActive {
   }
     
   #caneca:hover {
-      background: red; /* Cambiar el color de fondo al pasar el ratón por encima */
-    }
+        background-color: rgba(214, 193, 125, 0.793); /* Cambiar el color de fondo al pasar el ratón por encima */
+  }

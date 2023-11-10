@@ -1,5 +1,7 @@
   
 function mostrarTotal() {
+
+  sessionStorage.setItem("idUsuario","6713830e-9af4-4d4d-a190-e7a0899eb499");
 // Obtener el pedido actual del sessionStorage
 var pedidoActual = JSON.parse(sessionStorage.getItem("pedido"));
 
@@ -73,6 +75,10 @@ promesaUbicaciones
 
 
   async function mandado(tiendaid,tipopedido,valortotal,aclaraciones,propina,tipopago,tipotarjeta,productos,ubicacionid){
+    //alert(tiendaid+tipopedido+valortotal+aclaraciones+propina+tipopago+tipotarjeta+productos+ubicacionid)
+
+    //NaN $6600 null 2000 Efectivo null undefined 18a193cd-6f4b-430b-bc32-11dcd313baf5
+    
     return await fetch('http://localhost:8080/pedidos/crear', {
       method:"POST",
       headers: {
@@ -80,10 +86,10 @@ promesaUbicaciones
         },
 
         body: JSON.stringify({
-          compradorid : tiendaid, 
-          tiendaid: tipopedido,
-          tipopedido: valortotal,
-          valortotal: 7000,
+          compradorid : sessionStorage.getItem("idUsuario"),
+          tiendaid: tiendaid,
+          tipopedido: tipopedido,
+          valortotal: valortotal,
           aclaraciones: aclaraciones,
           propina: propina,
           tipopago: tipopago,
@@ -100,16 +106,36 @@ promesaUbicaciones
 // Agrega un controlador de eventos para el clic
   miBoton.addEventListener("click", function(event) {
 
-   var pedido = sessionStorage.getItem("pedido")
+   var pedido = JSON.parse(sessionStorage.getItem("pedido"))
+   //alert()
 
-   var tiendaid = pedido.idTienda;
-   var tipopedido = $('input[name="ModDomi"]:checked').val();
-   var valortotal = pedido.total;
+   var tiendaid = JSON.parse(sessionStorage.getItem("pedido")).idTienda; //no esta cogiendo el get item pedido
+   var tipopedido = null; //creo que no se esta mostrando
+   var valortotal = document.getElementById("megatotal").innerHTML.replace(/^./, "");//ya cpge, falta quitar el primer caracter que es el simbolo peso
    var aclaraciones = $("#inp2").val();
    var tipopago = null;
    var tipotarjeta = null;
    //VOLVER A AHCER LA LISTA 
    var productos = pedido.productos;
+
+
+   if(document.getElementById("mod1").checked){
+    tipopago = document.getElementById("mod1").value
+  }
+  else if(document.getElementById("mod2").checked){
+    tipopago = document.getElementById("mod2").value
+  }
+  else if(document.getElementById("mod3").checked){
+    tipopago = document.getElementById("mod3").value
+  }
+
+
+  if(document.getElementById("mod4").checked){
+    tipopedido = document.getElementById("mod4").value
+  }
+  else if(document.getElementById("mod5").checked){
+    tipopedido = document.getElementById("mod5").value
+  }
    
    // Obtén el elemento <select> por su ID
     var selectElement = document.getElementById("Nombre-tiendas");
@@ -123,7 +149,7 @@ promesaUbicaciones
     var ubicacionid = selectedValue;
 
     //MIRAR QUE TODO ESTE CORRECTO ANTES DE HACER LA EXCEPCION
-
+    
     var informa =  mandado(tiendaid,tipopedido,valortotal,aclaraciones,2000,tipopago,tipotarjeta,productos,ubicacionid)
 
     informa
@@ -134,6 +160,7 @@ promesaUbicaciones
         console.log(data)
         console.log("hola")
         sessionStorage.setItem("IDpedido", data)
+        alert(sessionStorage.setItem("IDpedido"))
         window.location.href = "../html/pedidoAceptado.html"; 
 
       })
