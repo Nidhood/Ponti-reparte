@@ -202,7 +202,7 @@ promesaTiendas
 //todo lo relacionado con la modificacion de la cantidad de producto
 //tambien hara la labor de main
 $(document).ready(function () {
-  //EvaluarIngresoDeSesion();
+  EvaluarIngresoDeSesion();
   InicializarPedido();
 
   //asignar la foto del usuario

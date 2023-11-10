@@ -338,7 +338,7 @@ return false;
 }
 
 
-async function getInfoProducto(idproducto) {
+export async function getInfoProducto(idproducto) {
   return await fetch("http://localhost:8080/productos/" + idproducto+"/tiendas", {
     headers: {
       "Content-Type": "application/json",
@@ -728,3 +728,55 @@ container.find(".productLink").on("click", function (event) {
   });
 
 }
+
+export function generateProductListTiendas(data) {
+  console.log(data);
+      var container = $(".scrollBoxProducto");
+    
+      for (var i = 0; i < 8; i++) {
+        if (data[i]) {
+          var productBlock = `
+              <a href="#" class="productLink" id="${data[i].id}">
+                  <div class="producto">
+                      <div class="circuloproducto">
+                          <img class="fotominipRODUCTO" src="${data[i].foto}" alt="foto Producto">
+                      </div>
+                      <p class="nombreminiProducto">
+                          ${data[i].nombreProducto}
+                      </p>
+                  </div>
+              </a>
+          `;
+    
+          container.append(productBlock);
+      }
+      }
+      // Es importante hacer el evento click DESPUÉS de agregar los productos al contenedor
+      container.find(".productLink").on("click", function (event) {
+          
+            event.preventDefault(); // Prevenir la acción predeterminada del enlace
+            console.log(event.currentTarget.id);
+        
+            //SE MANDA EL ID DEL PRODUCTO PARA QUE ME MANDEN LA INFO DE ESE PRODUCTO
+            const promesaInformacionProducto = getInfoProducto(event.currentTarget.id);
+        
+            //guardar el id del producto para usarlo despues//
+            sessionStorage.setItem("idproducto", event.currentTarget.id);
+        
+            promesaInformacionProducto
+              .then((res) => {
+                console.log(res.ok);
+                return res.json();
+              })
+              .then((data) => {
+                console.log(data);
+                generateInfoProducto(data);
+                show("popup");
+              })
+              .catch(() => {
+                console.log("errorrrr");
+              });
+    
+        });
+      
+    }

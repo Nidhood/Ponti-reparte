@@ -222,7 +222,7 @@ main();
 
 function main()
 {
-  //EvaluarIngresoDeSesion();
+  EvaluarIngresoDeSesion();
 // Luego, llama a la función mostrarTotal() para actualizar el div del total
    mostrarTotal();
 }

@@ -93,7 +93,7 @@ function generateInfoPedido(data)
 
 async function main()
 {
- // EvaluarIngresoDeSesion();
+  EvaluarIngresoDeSesion();
 }
 
 window.addEventListener('DOMContentLoaded', (event) => {
