@@ -347,6 +347,7 @@ async function getInfoProducto(idproducto) {
 }
 
 export function generateProductList(data) {
+  console.log(data);
       var container = $(".scrollBoxProducto");
     
       for (var i = 0; i < 8; i++) {
