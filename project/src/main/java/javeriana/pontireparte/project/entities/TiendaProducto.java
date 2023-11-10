@@ -23,6 +23,7 @@ public class TiendaProducto {
     @Transient
     public ProductoDTO toDTO() {
         ProductoDTO productoDTO = new ProductoDTO();
+        productoDTO.setId(this.id.getProducto().getId());
         productoDTO.setNombreProducto(this.id.getProducto().getNombreproducto());
         productoDTO.setFoto(this.id.getProducto() .getFoto() != null ? this.id.getProducto().getFoto().getFoto() : null);
         productoDTO.setCantidad(this.cantidaddisponible);

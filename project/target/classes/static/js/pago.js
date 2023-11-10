@@ -1,7 +1,12 @@
-  
+export function EvaluarIngresoDeSesion() {
+  if (!sessionStorage.getItem("idUsuario")) {
+    window.location.href = "../index.html";
+  }
+} 
+
 function mostrarTotal() {
 
-  sessionStorage.setItem("idUsuario","6713830e-9af4-4d4d-a190-e7a0899eb499");
+  //sessionStorage.setItem("idUsuario","6713830e-9af4-4d4d-a190-e7a0899eb499");
 // Obtener el pedido actual del sessionStorage
 var pedidoActual = JSON.parse(sessionStorage.getItem("pedido"));
 
@@ -100,6 +105,22 @@ promesaUbicaciones
     })
   }
 
+  class producto {
+    constructor(id, cantidad) {
+      this.id = id;
+      this.cantidad = cantidad;
+    }
+  }
+
+  class ProductosPedidos {
+    constructor(idProducto, cantidad, precio, link, nombre) {
+      this.idProducto = idProducto;
+      this.cantidad = cantidad;
+      this.precio = precio;
+      this.link=link;
+      this.nombre=nombre;
+    }
+  }
 
   var miBoton = document.getElementById("hacepedido");
 
@@ -115,9 +136,16 @@ promesaUbicaciones
    var aclaraciones = $("#inp2").val();
    var tipopago = null;
    var tipotarjeta = null;
-   //VOLVER A AHCER LA LISTA 
-   var productos = pedido.productos;
+   var correcto=true;
 
+   //VOLVER A HACER LA LISTA 
+   var productos = pedido.productos
+
+   console.log(productos)
+  
+   var productosTransformados = productos.map(Productos => new producto(Productos.idProducto, Productos.cantidad));
+
+   console.log(productosTransformados)
 
    if(document.getElementById("mod1").checked){
     tipopago = document.getElementById("mod1").value
@@ -128,6 +156,10 @@ promesaUbicaciones
   else if(document.getElementById("mod3").checked){
     tipopago = document.getElementById("mod3").value
   }
+  else
+  {
+    correcto=false;
+  }
 
 
   if(document.getElementById("mod4").checked){
@@ -136,21 +168,30 @@ promesaUbicaciones
   else if(document.getElementById("mod5").checked){
     tipopedido = document.getElementById("mod5").value
   }
+  else
+  {
+    correcto=false;
+  }
    
-   // Obtén el elemento <select> por su ID
-    var selectElement = document.getElementById("Nombre-tiendas");
+  // Obtén el elemento <select> por su ID
+  var selectElement = document.getElementById("Nombre-tiendas");
 
-    // Obtén el valor del elemento <option> seleccionado
-    var selectedValue = selectElement.value;
+  // Obtén el valor del elemento <option> seleccionado
+  var selectedValue = selectElement.value;
 
-    // Luego puedes utilizar la variable selectedValue para acceder al valor seleccionado
-    console.log("El valor seleccionado es: " + selectedValue);
+  // Luego puedes utilizar la variable selectedValue para acceder al valor seleccionado
+  console.log("El valor seleccionado es: " + selectedValue);
 
-    var ubicacionid = selectedValue;
+  if (selectElement.value === "" || aclaraciones=== "") {
+    correcto=false;
+  }
 
-    //MIRAR QUE TODO ESTE CORRECTO ANTES DE HACER LA EXCEPCION
-    
-    var informa =  mandado(tiendaid,tipopedido,valortotal,aclaraciones,2000,tipopago,tipotarjeta,productos,ubicacionid)
+  var ubicacionid = selectedValue;
+
+  if(correcto)
+  {
+        //MIRAR QUE TODO ESTE CORRECTO ANTES DE HACER LA EXCEPCION
+    var informa =  mandado(tiendaid,tipopedido,valortotal,aclaraciones,2000,tipopago,tipotarjeta,productosTransformados,ubicacionid)
 
     informa
       .then((res) => {
@@ -159,14 +200,20 @@ promesaUbicaciones
       .then((data) => {
         console.log(data)
         console.log("hola")
-        sessionStorage.setItem("IDpedido", data)
-        alert(sessionStorage.setItem("IDpedido"))
+        sessionStorage.setItem("IDpedido", data.id)
         window.location.href = "../html/pedidoAceptado.html"; 
 
       })
       .catch(() => {
         console.log("error");
       });
+    }
+    else
+    {
+      alert("Ingrese los campos correctos")
+    }
+
+    
 
   });
 
@@ -175,8 +222,9 @@ main();
 
 function main()
 {
+  //EvaluarIngresoDeSesion();
 // Luego, llama a la función mostrarTotal() para actualizar el div del total
-mostrarTotal();
+   mostrarTotal();
 }
 
 

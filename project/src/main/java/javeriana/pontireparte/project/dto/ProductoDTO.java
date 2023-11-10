@@ -1,11 +1,21 @@
 package javeriana.pontireparte.project.dto;
 
+import java.util.UUID;
+
 public class ProductoDTO {
+    private UUID id;
     private String nombreProducto;
     private String foto;
     private int cantidad;
 
     // Gettter & Setters:
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
 
     public String getNombreProducto() {
         return nombreProducto;
@@ -35,7 +45,8 @@ public class ProductoDTO {
     @Override
     public String toString() {
         return "ProductoDTO{" +
-                "nombreProducto='" + nombreProducto + '\'' +
+                "id=" + id +
+                ", nombreProducto='" + nombreProducto + '\'' +
                 ", foto='" + foto + '\'' +
                 ", cantidad=" + cantidad +
                 '}';

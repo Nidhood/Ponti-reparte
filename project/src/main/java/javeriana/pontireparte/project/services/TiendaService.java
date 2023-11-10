@@ -50,6 +50,7 @@ public class TiendaService {
                     TiendaProducto tiendaProducto = new TiendaProducto();
                     Producto producto = new Producto();
                     TiendaProductoId tiendaProductoId = new TiendaProductoId();
+                    producto.setId((UUID) tienda[3]);
                     producto.setNombreproducto((String) tienda[0]);
                     producto.setFoto((Foto) tienda[2]);
                     tiendaProductoId.setProducto(producto);
